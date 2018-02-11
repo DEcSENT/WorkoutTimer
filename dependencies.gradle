@@ -1,0 +1,41 @@
+def android_support_version = '27.0.2'
+def constraint_layout_version = '1.0.2'
+def butterKnife_version = '8.7.0'
+def dagger_version = '2.11'
+def rxJava_version = '2.1.1'
+def rxAndroid_version = '2.0.1'
+def android_room_version = '1.0.0-alpha5'
+def android_room_processor_version = '1.0.0-alpha5'
+def android_room_rx_version = '1.0.0-alpha5'
+def retrofit_version = '2.3.0'
+def stetho_version = '1.5.0'
+def timber_version = '4.6.0'
+
+ext{
+    support_library = "com.android.support:appcompat-v7:$android_support_version"
+    support_design = "com.android.support:design:$android_support_version"
+    constraint_layout = "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+
+    butterknife = "com.jakewharton:butterknife:$butterKnife_version"
+    butterknife_processor = "com.jakewharton:butterknife-compiler:$butterKnife_version"
+
+    dagger = "com.google.dagger:dagger:$dagger_version"
+    dagger_processor = "com.google.dagger:dagger-compiler:$dagger_version"
+
+    rxjava = "io.reactivex.rxjava2:rxjava:$rxJava_version"
+    rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+
+    android_room =  "android.arch.persistence.room:runtime:$android_room_version"
+    android_room_processor =  "android.arch.persistence.room:compiler:$android_room_processor_version"
+    android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_rx_version"
+
+    retrofit = [
+            "com.squareup.retrofit2:retrofit:${retrofit_version}",
+            "com.squareup.retrofit2:converter-gson:${retrofit_version}",
+            "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
+    ]
+
+    stetho = "com.facebook.stetho:stetho:$stetho_version"
+
+    timber = "com.jakewharton.timber:timber:$timber_version"
+}
