@@ -27,7 +27,6 @@ public class CircleView extends View {
     private final static float ONE_ANGLE_SECOND = 6f;
     private final static float CIRCLE_STROKE_WIDTH = 5;
     private final static int SECOND_DELAY = 1000;
-    private final static int ONE_MINUTE_SECONDS = 60;
 
     /**
      * Initial start value for acr. Don't ask me why -90, this is android...
@@ -37,7 +36,7 @@ public class CircleView extends View {
 
     private float startArcAngle;
     private float finishArcAngle;
-    private int minute;
+    private int minutes;
     private int seconds;
 
     @Nullable
@@ -57,7 +56,7 @@ public class CircleView extends View {
     private final Runnable secondsLapRunnable = new Runnable() {
         @Override
         public void run() {
-            recalculateCoordinates();
+            calculateCircleParams();
         }
     };
 
@@ -85,7 +84,7 @@ public class CircleView extends View {
     }
 
     public void setTime(@IntRange(from = 0, to = 1000) int minuteValue, @IntRange(from = 0, to = 59) int secondValue) {
-        minute = minuteValue;
+        minutes = minuteValue;
         seconds = secondValue;
 
         startArcAngle = DEFAULT_START_ARC_ANGLE;
@@ -108,16 +107,23 @@ public class CircleView extends View {
         setUpSecondsCircle();
     }
 
-    private void recalculateCoordinates() {
-        startArcAngle += ONE_ANGLE_SECOND;
-        finishArcAngle -= ONE_ANGLE_SECOND;
-        invalidate();
-
-        if (finishArcAngle > 0) {
+    private void calculateCircleParams() {
+        if (seconds != 0) {
+            startArcAngle += ONE_ANGLE_SECOND;
+            finishArcAngle -= ONE_ANGLE_SECOND;
+            seconds -= 1;
+            handler.postDelayed(secondsLapRunnable, SECOND_DELAY);
+        } else if (minutes != 0) {
+            setDefaultArcValues();
+            minutes -= 1;
+            seconds = 59;
             handler.postDelayed(secondsLapRunnable, SECOND_DELAY);
         } else {
+            setDefaultArcValues();
             handler.removeCallbacks(secondsLapRunnable);
         }
+
+        invalidate();
     }
 
     private void setUpSecondsCircle() {
@@ -131,5 +137,10 @@ public class CircleView extends View {
         circlePaint.setAntiAlias(true);
         circlePaint.setStrokeWidth(CIRCLE_STROKE_WIDTH);
         circlePaint.setStyle(Paint.Style.STROKE);
+    }
+
+    private void setDefaultArcValues() {
+        startArcAngle = DEFAULT_START_ARC_ANGLE;
+        finishArcAngle = DEFAULT_FINISH_ARC_ANGLE;
     }
 }
