@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        circleView.setTime(0, 50);
+        circleView.setTime(1, 50);
     }
 
     @OnClick(R.id.startButton)
