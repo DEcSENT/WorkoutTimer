@@ -1,7 +1,9 @@
 package com.dvinc.circlestimer.ui;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.dvinc.circlestimer.R;
 import com.dvinc.circlestimer.ui.circle_view.CircleView;
@@ -24,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.startButton)
-    void onClickStart() {
+    void onStartClick(@NonNull View v) {
         circleView.start();
     }
 
     @OnClick(R.id.finishButton)
-    void onClickPause() {
+    void onPauseClick(@NonNull View v) {
         circleView.stop();
     }
 
     @OnClick(R.id.stopButton)
-    void onClickStop() {
+    void onStopClick(@NonNull View v) {
         circleView.stop();
         circleView.setTime(0, 25);
     }
