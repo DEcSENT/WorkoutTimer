@@ -25,7 +25,7 @@ public class CircleView extends View {
 
     private final static int CIRCLE_RADIUS_DP = 150;
     private final static float ONE_ANGLE_SECOND = 6f;
-    private final static float CIRCLE_STROKE_WIDTH_PX = 5;
+    private final static float CIRCLE_STROKE_WIDTH_DP = 1;
     private final static int SECOND_DELAY = 1000;
 
     /**
@@ -39,7 +39,9 @@ public class CircleView extends View {
     private int minutes;
     private int seconds;
 
+    @NonNull
     private final Paint circlePaint;
+    @NonNull
     private final RectF circle;
     @Nullable
     private TimeChangeListener timeChangeListener;
@@ -71,7 +73,7 @@ public class CircleView extends View {
     public CircleView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        CircleViewHelper circleViewHelper = new CircleViewHelper(getContext());
+        CircleViewHelper circleViewHelper = new CircleViewHelper(getContext().getResources());
         Point centerPoint = circleViewHelper.calculateCenterPoint();
         float radius = Dimens.dpToPx(CIRCLE_RADIUS_DP);
         circle = new RectF(centerPoint.x - radius, centerPoint.y - radius, centerPoint.x + radius, centerPoint.y + radius);
@@ -79,7 +81,7 @@ public class CircleView extends View {
         circlePaint = new Paint();
         circlePaint.setColor(Color.RED);
         circlePaint.setAntiAlias(true);
-        circlePaint.setStrokeWidth(CIRCLE_STROKE_WIDTH_PX);
+        circlePaint.setStrokeWidth(Dimens.dpToPx(CIRCLE_STROKE_WIDTH_DP));
         circlePaint.setStyle(Paint.Style.STROKE);
     }
 
