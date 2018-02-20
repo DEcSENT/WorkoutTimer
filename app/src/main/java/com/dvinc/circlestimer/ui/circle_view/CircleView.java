@@ -25,7 +25,7 @@ public class CircleView extends View {
 
     private final static int CIRCLE_RADIUS_DP = 150;
     private final static float ONE_ANGLE_SECOND = 6f;
-    private final static float CIRCLE_STROKE_WIDTH = 5;
+    private final static float CIRCLE_STROKE_WIDTH_PX = 5;
     private final static int SECOND_DELAY = 1000;
 
     /**
@@ -39,16 +39,14 @@ public class CircleView extends View {
     private int minutes;
     private int seconds;
 
-    @Nullable
-    private Paint circlePaint;
-    @Nullable
-    private RectF circle;
+    private final Paint circlePaint;
+    private final RectF circle;
 
     private final Handler handler = new Handler();
 
     public interface onTimeChanged {
 
-        void onTimeChanged(@IntRange(from = 0, to = 1000) int minuteValue, @IntRange(from = 0, to = 59) int secondValue);
+        void onTimeChanged(@IntRange(from = 0) int minuteValue, @IntRange(from = 0, to = 59) int secondValue);
 
         void onFinish();
     }
@@ -61,31 +59,37 @@ public class CircleView extends View {
     };
 
     public CircleView(@NonNull Context context) {
-        super(context);
-        initCircleView();
+        this(context, null);
     }
 
     public CircleView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        initCircleView();
+        this(context, attrs, 0);
     }
 
     public CircleView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initCircleView();
+
+        CircleViewHelper circleViewHelper = new CircleViewHelper(getContext());
+        Point centerPoint = circleViewHelper.calculateCenterPoint();
+        float radius = Dimens.dpToPx(CIRCLE_RADIUS_DP);
+        circle = new RectF(centerPoint.x - radius, centerPoint.y - radius, centerPoint.x + radius, centerPoint.y + radius);
+
+        circlePaint = new Paint();
+        circlePaint.setColor(Color.RED);
+        circlePaint.setAntiAlias(true);
+        circlePaint.setStrokeWidth(CIRCLE_STROKE_WIDTH_PX);
+        circlePaint.setStyle(Paint.Style.STROKE);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (circle != null && circlePaint != null) {
-            canvas.drawArc(circle, startArcAngle, finishArcAngle, false, circlePaint);
-        }
+        canvas.drawArc(circle, startArcAngle, finishArcAngle, false, circlePaint);
     }
 
-    public void setTime(@IntRange(from = 0, to = 1000) int minuteValue, @IntRange(from = 0, to = 59) int secondValue) {
-        minutes = minuteValue;
-        seconds = secondValue;
+    public void setTime(@IntRange(from = 0) int minutes, @IntRange(from = 0, to = 59) int seconds) {
+        this.minutes = minutes;
+        this.seconds = seconds;
 
         startArcAngle = DEFAULT_START_ARC_ANGLE;
         finishArcAngle = DEFAULT_FINISH_ARC_ANGLE;
@@ -101,10 +105,6 @@ public class CircleView extends View {
 
     public void stop() {
         handler.removeCallbacks(secondsLapRunnable);
-    }
-
-    private void initCircleView() {
-        setUpSecondsCircle();
     }
 
     private void calculateCircleParams() {
@@ -124,19 +124,6 @@ public class CircleView extends View {
         }
 
         invalidate();
-    }
-
-    private void setUpSecondsCircle() {
-        CircleViewHelper circleViewHelper = new CircleViewHelper(getContext());
-        Point centerPoint = circleViewHelper.calculateCenterPoint();
-        float radius = Dimens.dpToPx(CIRCLE_RADIUS_DP);
-        circle = new RectF(centerPoint.x - radius, centerPoint.y - radius, centerPoint.x + radius, centerPoint.y + radius);
-
-        circlePaint = new Paint();
-        circlePaint.setColor(Color.RED);
-        circlePaint.setAntiAlias(true);
-        circlePaint.setStrokeWidth(CIRCLE_STROKE_WIDTH);
-        circlePaint.setStyle(Paint.Style.STROKE);
     }
 
     private void setDefaultArcValues() {

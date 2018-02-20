@@ -15,7 +15,7 @@ import android.util.DisplayMetrics;
  */
 class CircleViewHelper {
 
-    private Context context;
+    private final Context context;
 
     CircleViewHelper(@NonNull Context context) {
         this.context = context;
