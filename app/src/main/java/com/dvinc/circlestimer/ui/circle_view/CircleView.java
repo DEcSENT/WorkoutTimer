@@ -41,12 +41,14 @@ public class CircleView extends View {
 
     private final Paint circlePaint;
     private final RectF circle;
+    @Nullable
+    private TimeChangeListener timeChangeListener;
 
     private final Handler handler = new Handler();
 
-    public interface onTimeChanged {
+    public interface TimeChangeListener {
 
-        void onTimeChanged(@IntRange(from = 0) int minuteValue, @IntRange(from = 0, to = 59) int secondValue);
+        void onTimeChanged(@IntRange(from = 0) int minutes, @IntRange(from = 0, to = 59) int seconds);
 
         void onFinish();
     }
@@ -107,26 +109,40 @@ public class CircleView extends View {
         handler.removeCallbacks(secondsLapRunnable);
     }
 
+    public void setTimeChangeListener(@NonNull TimeChangeListener timeChangeListener) {
+        this.timeChangeListener = timeChangeListener;
+    }
+
     private void calculateCircleParams() {
+         if (seconds == 0 && minutes == 0){
+            resetCircle();
+            invalidate();
+            handler.removeCallbacks(secondsLapRunnable);
+            if (timeChangeListener != null) {
+                timeChangeListener.onFinish();
+            }
+            return;
+        }
+
         if (seconds != 0) {
             startArcAngle += ONE_ANGLE_SECOND;
             finishArcAngle -= ONE_ANGLE_SECOND;
             seconds -= 1;
-            handler.postDelayed(secondsLapRunnable, SECOND_DELAY);
-        } else if (minutes != 0) {
-            setDefaultArcValues();
+        } else {
+            resetCircle();
             minutes -= 1;
             seconds = 59;
-            handler.postDelayed(secondsLapRunnable, SECOND_DELAY);
-        } else {
-            setDefaultArcValues();
-            handler.removeCallbacks(secondsLapRunnable);
+        }
+
+        handler.postDelayed(secondsLapRunnable, SECOND_DELAY);
+        if (timeChangeListener != null) {
+            timeChangeListener.onTimeChanged(minutes, seconds);
         }
 
         invalidate();
     }
 
-    private void setDefaultArcValues() {
+    private void resetCircle() {
         startArcAngle = DEFAULT_START_ARC_ANGLE;
         finishArcAngle = DEFAULT_FINISH_ARC_ANGLE;
     }
