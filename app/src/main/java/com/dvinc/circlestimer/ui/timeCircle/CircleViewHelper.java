@@ -3,9 +3,8 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.circle_view;
+package com.dvinc.circlestimer.ui.timeCircle;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.support.annotation.NonNull;

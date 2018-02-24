@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.circle_view;
+package com.dvinc.circlestimer.ui.timeCircle;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -73,7 +73,7 @@ public class CircleView extends View {
     public CircleView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        CircleViewHelper circleViewHelper = new CircleViewHelper(getContext().getResources());
+        CircleViewHelper circleViewHelper = new CircleViewHelper(context.getResources());
         Point centerPoint = circleViewHelper.calculateCenterPoint();
         float radius = Dimens.dpToPx(CIRCLE_RADIUS_DP);
         circle = new RectF(centerPoint.x - radius, centerPoint.y - radius, centerPoint.x + radius, centerPoint.y + radius);
