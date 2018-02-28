@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dvinc.circlestimer.R;
-import com.dvinc.circlestimer.ui.timeCircle.CircleView;
+import com.dvinc.circlestimer.ui.timeсircle.CircleView;
 
 import java.util.Locale;
 
