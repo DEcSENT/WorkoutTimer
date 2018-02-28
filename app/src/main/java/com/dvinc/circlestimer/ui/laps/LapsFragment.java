@@ -5,22 +5,13 @@
 
 package com.dvinc.circlestimer.ui.laps;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.dvinc.circlestimer.R;
+import com.dvinc.circlestimer.ui.base.BaseFragment;
 
-public class LapsFragment extends Fragment {
+public class LapsFragment extends BaseFragment {
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View lapsView = inflater.inflate(R.layout.fragment_laps, container);
-        return lapsView;
+    protected int getFragmentLayoutId() {
+        return R.layout.fragment_laps;
     }
 }
