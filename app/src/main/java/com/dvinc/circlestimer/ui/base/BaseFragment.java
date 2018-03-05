@@ -6,6 +6,7 @@
 package com.dvinc.circlestimer.ui.base;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,7 +19,6 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment {
 
-    @Nullable
     private Unbinder unbinder;
 
     @Nullable
@@ -32,9 +32,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (unbinder != null) {
-            unbinder.unbind();
-        }
+        unbinder.unbind();
     }
 
     /**
@@ -42,5 +40,6 @@ public abstract class BaseFragment extends Fragment {
      *
      * @return - fragment layout id.
      */
+    @LayoutRes
     protected abstract int getFragmentLayoutId();
 }
