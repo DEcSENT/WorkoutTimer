@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.circle_view;
+package com.dvinc.circlestimer.ui.timeсircle;
 
 import android.content.res.Resources;
 import android.util.TypedValue;

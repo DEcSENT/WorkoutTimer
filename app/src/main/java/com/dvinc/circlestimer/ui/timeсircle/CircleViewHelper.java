@@ -3,9 +3,9 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.circle_view;
+package com.dvinc.circlestimer.ui.timeсircle;
 
-import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
@@ -15,15 +15,16 @@ import android.util.DisplayMetrics;
  */
 class CircleViewHelper {
 
-    private final Context context;
+    @NonNull
+    private final Resources resources;
 
-    CircleViewHelper(@NonNull Context context) {
-        this.context = context;
+    CircleViewHelper(@NonNull Resources resources) {
+        this.resources = resources;
     }
 
     @NonNull
     Point calculateCenterPoint() {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
         int screenHeightPx = displayMetrics.heightPixels;
         int screenWidthPx = displayMetrics.widthPixels;
         return new Point(screenWidthPx / 2, screenHeightPx / 2);
