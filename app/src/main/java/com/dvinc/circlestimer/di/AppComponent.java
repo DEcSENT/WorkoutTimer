@@ -1,0 +1,18 @@
+/*
+ * Copyright (c) 2018 by Denis Verentsov (decsent@Yandex.ru)
+ * All rights reserved.
+ */
+
+package com.dvinc.circlestimer.di;
+
+import com.dvinc.circlestimer.ui.programs.ProgramsFragment;
+
+import javax.inject.Singleton;
+
+import dagger.Component;
+
+@Singleton
+@Component(modules = {AppModule.class})
+public interface AppComponent {
+    void inject(ProgramsFragment programsFragment);
+}
