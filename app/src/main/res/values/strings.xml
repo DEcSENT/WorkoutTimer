@@ -3,4 +3,5 @@
     <string name="stopButtonText">Stop</string>
     <string name="startButtonText">Start</string>
     <string name="pauseButtonText">Pause</string>
+    <string name="menu_programs_title">Programs</string>
 </resources>
