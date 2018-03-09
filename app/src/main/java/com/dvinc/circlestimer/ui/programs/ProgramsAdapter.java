@@ -23,10 +23,12 @@ public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView programNameTextView;
+        private TextView programCurrentText;
 
         MyViewHolder(View view) {
             super(view);
-            programNameTextView = view.findViewById(R.id.programName);
+            programNameTextView = view.findViewById(R.id.item_program_name);
+            programCurrentText = view.findViewById(R.id.item_program_currentTextView);
         }
     }
 
@@ -49,6 +51,7 @@ public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.MyView
     public void onBindViewHolder(ProgramsAdapter.MyViewHolder holder, final int position) {
         final ProgramEntity program = programsEntitiesList.get(position);
         holder.programNameTextView.setText(program.getProgramName());
+        holder.programCurrentText.setVisibility(program.isCurrentProgram() ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Override

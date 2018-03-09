@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorItemProgramMain">#000000</color>
+    <color name="colorItemProgramBackground">#ffffff</color>
+    <color name="colorItemProgramCurrentText">#00ac1a</color>
+    <color name="colorProgramsFragmentBackground">#d1d1d1</color>
 </resources>

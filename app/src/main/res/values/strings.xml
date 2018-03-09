@@ -4,4 +4,7 @@
     <string name="startButtonText">Start</string>
     <string name="pauseButtonText">Pause</string>
     <string name="menu_programs_title">Programs</string>
+    <string name="item_program_totalLaps">Total laps:</string>
+    <string name="item_program_totalTime">Total time:</string>
+    <string name="item_program_current">Current</string>
 </resources>

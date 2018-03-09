@@ -3,20 +3,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginTop="2dp"
+    android:background="@drawable/background_item_program">
 
     <TextView
-        android:id="@+id/programName"
+        android:id="@+id/item_program_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/colorItemProgramMain"
+        android:textSize="@dimen/item_program_name_textSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TestName" />
+
+    <TextView
+        android:id="@+id/item_program_totalLapsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/item_program_totalLaps"
+        android:textSize="@dimen/item_program_small_textSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/item_program_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_program_name" />
+
+    <TextView
+        android:id="@+id/item_program_totalLaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/colorItemProgramMain"
+        android:textSize="@dimen/item_program_small_textSize"
+        app:layout_constraintBottom_toBottomOf="@+id/item_program_totalLapsTextView"
+        app:layout_constraintStart_toEndOf="@+id/item_program_totalLapsTextView"
+        app:layout_constraintTop_toTopOf="@+id/item_program_totalLapsTextView"
+        tools:text="20" />
+
+    <TextView
+        android:id="@+id/item_program_totalTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/item_program_totalTime"
+        android:textSize="@dimen/item_program_small_textSize"
+        app:layout_constraintBottom_toBottomOf="@+id/item_program_totalLaps"
+        app:layout_constraintEnd_toStartOf="@+id/item_program_totalTime"
+        app:layout_constraintTop_toTopOf="@+id/item_program_totalLaps" />
+
+    <TextView
+        android:id="@+id/item_program_totalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/colorItemProgramMain"
+        android:textSize="@dimen/item_program_small_textSize"
+        app:layout_constraintBottom_toBottomOf="@+id/item_program_totalTimeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_program_totalTimeTextView"
+        tools:text="0:10:50" />
+
+    <TextView
+        android:id="@+id/item_program_currentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/item_program_current"
+        android:textColor="@color/colorItemProgramCurrentText"
+        android:textSize="@dimen/item_program_small_textSize"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/item_program_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_program_name" />
 
 </android.support.constraint.ConstraintLayout>
