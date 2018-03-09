@@ -7,4 +7,5 @@
     <string name="item_program_totalLaps">Total laps:</string>
     <string name="item_program_totalTime">Total time:</string>
     <string name="item_program_current">Current</string>
+    <string name="button_add_program">Add program</string>
 </resources>

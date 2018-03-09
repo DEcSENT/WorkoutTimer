@@ -8,4 +8,6 @@
     <color name="colorItemProgramBackground">#ffffff</color>
     <color name="colorItemProgramCurrentText">#00ac1a</color>
     <color name="colorProgramsFragmentBackground">#d1d1d1</color>
+    <color name="colorAddProgramButton">#008b02</color>
+    <color name="colorAddProgramButtonPressed">#00c703</color>
 </resources>
