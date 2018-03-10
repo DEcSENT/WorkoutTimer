@@ -8,4 +8,9 @@
     <string name="item_program_totalTime">Total time:</string>
     <string name="item_program_current">Current</string>
     <string name="button_add_program">Add program</string>
+    <string name="new_program_header">New program</string>
+    <string name="new_program_name">New program name</string>
+    <string name="new_program_default_laps_text">Default laps count</string>
+    <string name="new_program_cancel_button">Cancel</string>
+    <string name="new_program_add_button">Add</string>
 </resources>
