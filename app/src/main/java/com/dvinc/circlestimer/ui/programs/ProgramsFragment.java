@@ -27,7 +27,7 @@ import butterknife.OnClick;
 
 public class ProgramsFragment extends BaseFragment implements ProgramsView {
 
-    @BindView(R.id.programsRecyclerView) RecyclerView programsRecyclerView;
+    @BindView(R.id.rv_programs) RecyclerView programsRecyclerView;
 
     @Inject
     ProgramsPresenter programsPresenter;
@@ -73,7 +73,7 @@ public class ProgramsFragment extends BaseFragment implements ProgramsView {
         programsAdapter.setList(programsList);
     }
 
-    @OnClick(R.id.button_add_new_program)
+    @OnClick(R.id.btn_programs_add_program)
     void onClickNewProgramButton(View view) {
         FragmentManager fragmentManager = getFragmentManager();
         if (fragmentManager != null) {

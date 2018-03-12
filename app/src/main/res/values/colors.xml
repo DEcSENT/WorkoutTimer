@@ -3,11 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorWhite">#ffffff</color>
-    <color name="colorItemProgramMain">#000000</color>
-    <color name="colorItemProgramBackground">#ffffff</color>
-    <color name="colorItemProgramCurrentText">#00ac1a</color>
-    <color name="colorProgramsFragmentBackground">#d1d1d1</color>
-    <color name="colorAddProgramButton">#008b02</color>
-    <color name="colorAddProgramButtonPressed">#00c703</color>
+    <color name="color_item_program_main_text">#000000</color>
+    <color name="color_item_program_background">#FFFFFF</color>
+    <color name="color_item_program_current">#00AC1A</color>
+    <color name="color_programs_background">#D1D1D1</color>
+    <color name="color_add_program_button_normal">#008B02</color>
+    <color name="color_add_program_button_pressed">#00C703</color>
 </resources>

@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <solid android:color="@color/colorAddProgramButton" />
+            <solid android:color="@color/color_item_program_background" />
             <corners android:radius="10.0dip" />
         </shape>
     </item>

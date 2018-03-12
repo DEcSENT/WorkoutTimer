@@ -8,64 +8,64 @@
     tools:context="com.dvinc.circlestimer.ui.MainActivity">
 
     <com.dvinc.circlestimer.ui.timeсircle.CircleView
-        android:id="@+id/circleView"
+        android:id="@+id/circleview_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <Button
-        android:id="@+id/stopButton"
+        android:id="@+id/btn_main_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/stopButtonText"
-        app:layout_constraintEnd_toStartOf="@+id/startButton"
+        android:text="@string/main_stop"
+        app:layout_constraintEnd_toStartOf="@+id/btn_main_start"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/startButton"
+        android:id="@+id/btn_main_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/startButtonText"
-        app:layout_constraintEnd_toStartOf="@+id/finishButton"
+        android:text="@string/main_start"
+        app:layout_constraintEnd_toStartOf="@+id/btn_main_finish"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/stopButton"
-        app:layout_constraintTop_toTopOf="@+id/circleView" />
+        app:layout_constraintStart_toEndOf="@+id/btn_main_stop"
+        app:layout_constraintTop_toTopOf="@+id/circleview_main" />
 
     <Button
-        android:id="@+id/finishButton"
+        android:id="@+id/btn_main_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/pauseButtonText"
+        android:text="@string/main_pause"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/startButton"
+        app:layout_constraintStart_toEndOf="@+id/btn_main_start"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/timeTextView"
+        android:id="@+id/tv_main_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/colorWhite"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startButton"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_start"
         tools:text="0:12" />
 
     <LinearLayout
-        android:id="@+id/fragmentContainer"
+        android:id="@+id/ll_main_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"

@@ -21,8 +21,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.circleView) CircleView circleView;
-    @BindView(R.id.timeTextView) TextView timeTextView;
+    @BindView(R.id.circleview_main) CircleView circleView;
+    @BindView(R.id.tv_main_time) TextView timeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,26 +56,26 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.programsMenuItem:
+            case R.id.menu_item_programs:
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().add(R.id.fragmentContainer, new ProgramsFragment(), "test").commit();
+                fragmentManager.beginTransaction().add(R.id.ll_main_container, new ProgramsFragment(), "test").commit();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    @OnClick(R.id.startButton)
+    @OnClick(R.id.btn_main_start)
     void onStartClick(@NonNull View v) {
         circleView.start();
     }
 
-    @OnClick(R.id.finishButton)
+    @OnClick(R.id.btn_main_finish)
     void onPauseClick(@NonNull View v) {
         circleView.stop();
     }
 
-    @OnClick(R.id.stopButton)
+    @OnClick(R.id.btn_main_stop)
     void onStopClick(@NonNull View v) {
         circleView.stop();
         circleView.setTime(0, 25);

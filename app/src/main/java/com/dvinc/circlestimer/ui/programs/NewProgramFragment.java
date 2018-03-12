@@ -30,7 +30,7 @@ public class NewProgramFragment extends DialogFragment {
 
     public static final String TAG = "NewProgramFragment";
 
-    @BindView(R.id.new_program_nameEditText) EditText newProgramEditText;
+    @BindView(R.id.et_new_program_name) EditText newProgramEditText;
 
     private Unbinder unbinder;
 
@@ -76,12 +76,12 @@ public class NewProgramFragment extends DialogFragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.new_program_cancelButton)
+    @OnClick(R.id.btn_new_program_cancel)
     void onClickCancel(View view) {
         dismiss();
     }
 
-    @OnClick(R.id.new_program_addButton)
+    @OnClick(R.id.btn_new_program_add)
     void onClickAddProgram(View view) {
         if (newProgramListener != null) {
             String newProgramName = newProgramEditText.getText().toString();

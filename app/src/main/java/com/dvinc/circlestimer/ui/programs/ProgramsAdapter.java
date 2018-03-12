@@ -27,8 +27,8 @@ public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.MyView
 
         MyViewHolder(View view) {
             super(view);
-            programNameTextView = view.findViewById(R.id.item_program_name);
-            programCurrentText = view.findViewById(R.id.item_program_currentTextView);
+            programNameTextView = view.findViewById(R.id.tv_item_program_name);
+            programCurrentText = view.findViewById(R.id.tv_item_program_current);
         }
     }
 
