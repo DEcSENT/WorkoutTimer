@@ -17,6 +17,7 @@ import com.dvinc.circlestimer.App;
 import com.dvinc.circlestimer.R;
 import com.dvinc.circlestimer.data.db.entities.Training;
 import com.dvinc.circlestimer.ui.base.BaseFragment;
+import com.dvinc.circlestimer.ui.trainings.newtraining.NewTrainingFragment;
 
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
     }
 
     @Override
-    public void showError(int stringResID) {
+    public void showError(int stringResId) {
         //TODO
     }
 
@@ -78,12 +79,6 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
         FragmentManager fragmentManager = getFragmentManager();
         if (fragmentManager != null) {
             NewTrainingFragment newTrainingFragment = new NewTrainingFragment();
-            newTrainingFragment.setNewTrainingListener(new NewTrainingFragment.NewTrainingListener() {
-                @Override
-                public void onNewTrainingAdded(@NonNull String trainingName, int defaultLapsCount) {
-                    //TODO: call presenter method here
-                }
-            });
             newTrainingFragment.show(getFragmentManager(), NewTrainingFragment.TAG);
         }
     }

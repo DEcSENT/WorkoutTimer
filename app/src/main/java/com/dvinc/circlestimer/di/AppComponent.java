@@ -6,6 +6,7 @@
 package com.dvinc.circlestimer.di;
 
 import com.dvinc.circlestimer.ui.trainings.TrainingsFragment;
+import com.dvinc.circlestimer.ui.trainings.newtraining.NewTrainingFragment;
 
 import javax.inject.Singleton;
 
@@ -15,4 +16,5 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 public interface AppComponent {
     void inject(TrainingsFragment trainingsFragment);
+    void inject(NewTrainingFragment newTrainingFragment);
 }

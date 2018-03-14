@@ -41,4 +41,12 @@ public class TrainingsRepository {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    public Completable addNewTraining(@NonNull String trainingName) {
+        return Completable.fromAction(() -> trainingsDatabase
+                .trainingsDao()
+                .addTraining(new Training(trainingName, false)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

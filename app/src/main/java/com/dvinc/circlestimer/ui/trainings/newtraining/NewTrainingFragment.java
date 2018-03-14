@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.trainings;
+package com.dvinc.circlestimer.ui.trainings.newtraining;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -17,8 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.dvinc.circlestimer.App;
 import com.dvinc.circlestimer.R;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +30,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 //TODO: write code for laps spinner
-public class NewTrainingFragment extends DialogFragment {
+public class NewTrainingFragment extends DialogFragment implements NewTrainingView {
 
     public static final String TAG = "NewTrainingFragment";
 
@@ -34,8 +38,8 @@ public class NewTrainingFragment extends DialogFragment {
 
     private Unbinder unbinder;
 
-    @Nullable
-    private NewTrainingListener newTrainingListener;
+    @Inject
+    NewTrainingPresenter newTrainingPresenter;
 
     @Override
     public void onStart() {
@@ -63,12 +67,21 @@ public class NewTrainingFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_new_training, container);
         unbinder = ButterKnife.bind(this, view);
 
+        App.get(getActivity().getApplicationContext()).getAppComponent().inject(this);
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        newTrainingPresenter.attachView(this);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        newTrainingPresenter.detachView();
         unbinder.unbind();
     }
 
@@ -79,17 +92,19 @@ public class NewTrainingFragment extends DialogFragment {
 
     @OnClick(R.id.btn_new_training_add)
     void onClickAddTraining(View view) {
-        if (newTrainingListener != null) {
-            String newTrainingName = newTrainingEditText.getText().toString();
-            newTrainingListener.onNewTrainingAdded(newTrainingName, 0);
+        String newTrainingName = newTrainingEditText.getText().toString();
+        newTrainingPresenter.addNewTraining(newTrainingName);
+    }
+
+    @Override
+    public void showError(int stringResId) {
+        if (getContext() != null) {
+            Toast.makeText(getContext(), getContext().getResources().getString(stringResId), Toast.LENGTH_LONG).show();
         }
     }
 
-    void setNewTrainingListener(@NonNull NewTrainingListener newTrainingListener) {
-        this.newTrainingListener = newTrainingListener;
-    }
-
-    interface NewTrainingListener {
-        void onNewTrainingAdded(@NonNull String trainingName, int defaultLapsCount);
+    @Override
+    public void onSuccessfullyAddedTraining() {
+        dismiss();
     }
 }

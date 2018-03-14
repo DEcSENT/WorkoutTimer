@@ -13,4 +13,5 @@
     <string name="new_training_default_laps">Default laps count</string>
     <string name="new_training_cancel">Cancel</string>
     <string name="new_training_add">Add</string>
+    <string name="new_training_error_message">An error occurred while adding new training.</string>
 </resources>
