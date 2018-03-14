@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.programs;
+package com.dvinc.circlestimer.ui.trainings;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -26,20 +26,16 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 //TODO: write code for laps spinner
-public class NewProgramFragment extends DialogFragment {
+public class NewTrainingFragment extends DialogFragment {
 
-    public static final String TAG = "NewProgramFragment";
+    public static final String TAG = "NewTrainingFragment";
 
-    @BindView(R.id.et_new_program_name) EditText newProgramEditText;
+    @BindView(R.id.et_new_training_name) EditText newTrainingEditText;
 
     private Unbinder unbinder;
 
     @Nullable
-    private NewProgramListener newProgramListener;
-
-    interface NewProgramListener {
-        void onNewProgramAdded(String programName, int defaultLapsCount);
-    }
+    private NewTrainingListener newTrainingListener;
 
     @Override
     public void onStart() {
@@ -64,7 +60,7 @@ public class NewProgramFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new_program, container);
+        View view = inflater.inflate(R.layout.fragment_new_training, container);
         unbinder = ButterKnife.bind(this, view);
 
         return view;
@@ -76,20 +72,24 @@ public class NewProgramFragment extends DialogFragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.btn_new_program_cancel)
+    @OnClick(R.id.btn_new_training_cancel)
     void onClickCancel(View view) {
         dismiss();
     }
 
-    @OnClick(R.id.btn_new_program_add)
-    void onClickAddProgram(View view) {
-        if (newProgramListener != null) {
-            String newProgramName = newProgramEditText.getText().toString();
-            newProgramListener.onNewProgramAdded(newProgramName, 0);
+    @OnClick(R.id.btn_new_training_add)
+    void onClickAddTraining(View view) {
+        if (newTrainingListener != null) {
+            String newTrainingName = newTrainingEditText.getText().toString();
+            newTrainingListener.onNewTrainingAdded(newTrainingName, 0);
         }
     }
 
-    void setNewProgramListener(@NonNull NewProgramListener newProgramListener) {
-        this.newProgramListener = newProgramListener;
+    void setNewTrainingListener(@NonNull NewTrainingListener newTrainingListener) {
+        this.newTrainingListener = newTrainingListener;
+    }
+
+    interface NewTrainingListener {
+        void onNewTrainingAdded(@NonNull String trainingName, int defaultLapsCount);
     }
 }

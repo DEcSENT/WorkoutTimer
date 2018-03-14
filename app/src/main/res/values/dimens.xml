@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="item_program_text_big">20sp</dimen>
-    <dimen name="item_program_text_small">16sp</dimen>
+    <dimen name="item_training_text_big">20sp</dimen>
+    <dimen name="item_training_text_small">16sp</dimen>
 </resources>

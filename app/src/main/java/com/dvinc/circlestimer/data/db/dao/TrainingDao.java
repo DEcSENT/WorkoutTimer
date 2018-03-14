@@ -8,19 +8,21 @@ package com.dvinc.circlestimer.data.db.dao;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.support.annotation.NonNull;
 
-import com.dvinc.circlestimer.data.db.entities.ProgramEntity;
+import com.dvinc.circlestimer.data.db.entities.Training;
 
 import java.util.List;
 
 import io.reactivex.Single;
 
 @Dao
-public interface ProgramDAO {
+public interface TrainingDao {
 
     @Insert
-    void addProgram(ProgramEntity programEntity);
+    void addTraining(@NonNull Training training);
 
-    @Query("SELECT * FROM ProgramsTable")
-    Single<List<ProgramEntity>> getAllPrograms();
+    @Query("SELECT * FROM Training")
+    @NonNull
+    Single<List<Training>> getAllTrainings();
 }

@@ -8,6 +8,6 @@ package com.dvinc.circlestimer.data.db.dao;
 import android.arch.persistence.room.Dao;
 
 @Dao
-public interface LapDAO {
+public interface LapDao {
     //TODO
 }

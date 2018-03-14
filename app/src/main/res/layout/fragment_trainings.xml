@@ -4,28 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_programs_background">
+    android:background="@color/color_trainings_background">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_programs"
+        android:id="@+id/rv_trainings"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_programs_add_program"
+        app:layout_constraintBottom_toTopOf="@+id/btn_trainings_add_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </android.support.v7.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btn_programs_add_program"
+        android:id="@+id/btn_trainings_add_training"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginStart="4dp"
-        android:background="@drawable/button_add_program"
-        android:text="@string/main_add_program"
+        android:background="@drawable/button_add_training"
+        android:text="@string/main_add_training"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

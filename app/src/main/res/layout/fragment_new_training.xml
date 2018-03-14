@@ -12,13 +12,13 @@
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/tv_new_program_header"
+            android:id="@+id/tv_new_training_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/new_program_header"
+            android:text="@string/new_training_header"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,60 +26,60 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/et_new_program_name"
+            android:id="@+id/et_new_training_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/new_program_name"
+            android:hint="@string/new_training_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_new_program_header" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_training_header" />
 
         <TextView
-            android:id="@+id/tv_new_program_laps"
+            android:id="@+id/tv_new_training_laps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/new_program_default_laps"
+            android:text="@string/new_training_default_laps"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_new_program_name" />
+            app:layout_constraintTop_toBottomOf="@+id/et_new_training_name" />
 
         <Spinner
-            android:id="@+id/spn_new_program_laps"
+            android:id="@+id/spn_new_training_laps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_new_program_name">
+            app:layout_constraintTop_toBottomOf="@+id/et_new_training_name">
         </Spinner>
 
         <Button
-            android:id="@+id/btn_new_program_cancel"
+            android:id="@+id/btn_new_training_cancel"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="32dp"
-            android:text="@string/new_program_cancel"
+            android:text="@string/new_training_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_new_program_add"
-            app:layout_constraintTop_toBottomOf="@+id/tv_new_program_laps" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_new_training_add"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_training_laps" />
 
         <Button
-            android:id="@+id/btn_new_program_add"
+            android:id="@+id/btn_new_training_add"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="@string/new_program_add"
+            android:text="@string/new_training_add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_new_program_cancel" />
+            app:layout_constraintTop_toTopOf="@+id/btn_new_training_cancel" />
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

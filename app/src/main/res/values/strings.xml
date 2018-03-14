@@ -3,14 +3,14 @@
     <string name="main_stop">Stop</string>
     <string name="main_start">Start</string>
     <string name="main_pause">Pause</string>
-    <string name="main_add_program">Add program</string>
-    <string name="menu_title_programs">Programs</string>
-    <string name="item_program_total_laps">Total laps:</string>
-    <string name="item_program_total_time">Total time:</string>
-    <string name="item_program_current">Current</string>
-    <string name="new_program_header">New program</string>
-    <string name="new_program_name">New program name</string>
-    <string name="new_program_default_laps">Default laps count</string>
-    <string name="new_program_cancel">Cancel</string>
-    <string name="new_program_add">Add</string>
+    <string name="main_add_training">Add training</string>
+    <string name="menu_title_trainings">trainings</string>
+    <string name="item_training_total_laps">Total laps:</string>
+    <string name="item_training_total_time">Total time:</string>
+    <string name="item_training_current">Current</string>
+    <string name="new_training_header">New training</string>
+    <string name="new_training_name">New training name</string>
+    <string name="new_training_default_laps">Default laps count</string>
+    <string name="new_training_cancel">Cancel</string>
+    <string name="new_training_add">Add</string>
 </resources>

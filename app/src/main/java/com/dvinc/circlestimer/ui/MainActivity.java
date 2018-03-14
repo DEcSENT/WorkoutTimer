@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dvinc.circlestimer.R;
-import com.dvinc.circlestimer.ui.programs.ProgramsFragment;
+import com.dvinc.circlestimer.ui.trainings.TrainingsFragment;
 import com.dvinc.circlestimer.ui.timeсircle.CircleView;
 
 import java.util.Locale;
@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.menu_item_programs:
+            case R.id.menu_item_trainings:
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().add(R.id.ll_main_container, new ProgramsFragment(), "test").commit();
+                fragmentManager.beginTransaction().add(R.id.ll_main_container, new TrainingsFragment(), "test").commit();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

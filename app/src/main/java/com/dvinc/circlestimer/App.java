@@ -15,8 +15,10 @@ import com.dvinc.circlestimer.di.DaggerAppComponent;
 
 public class App extends Application {
 
+    @NonNull
     private AppComponent appComponent;
 
+    @NonNull
     public static App get(@NonNull Context context) {
         return (App) context.getApplicationContext();
     }
@@ -34,6 +36,7 @@ public class App extends Application {
                 .build();
     }
 
+    @NonNull
     public AppComponent getAppComponent() {
         return appComponent;
     }

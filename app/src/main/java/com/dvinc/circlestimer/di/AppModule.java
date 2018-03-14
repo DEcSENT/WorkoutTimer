@@ -9,8 +9,8 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.dvinc.circlestimer.data.db.ProgramsDatabase;
-import com.dvinc.circlestimer.data.repositories.ProgramsRepository;
+import com.dvinc.circlestimer.data.db.TrainingsDatabase;
+import com.dvinc.circlestimer.data.repositories.TrainingsRepository;
 
 import javax.inject.Singleton;
 
@@ -21,7 +21,7 @@ import dagger.Provides;
 public class AppModule {
 
     @NonNull
-    private Context context;
+    private final Context context;
 
     public AppModule(@NonNull Context context) {
         this.context = context;
@@ -35,14 +35,14 @@ public class AppModule {
 
     @Provides
     @Singleton
-    ProgramsDatabase provideCityDataBase() {
+    TrainingsDatabase provideCityDataBase() {
         return Room.databaseBuilder(context,
-                ProgramsDatabase.class, "programDatabase").build();
+                TrainingsDatabase.class, "trainingDatabase").build();
     }
 
     @Provides
     @Singleton
-    ProgramsRepository provideProgramsRepository(ProgramsDatabase programsDatabase) {
-        return new ProgramsRepository(programsDatabase);
+    TrainingsRepository provideTrainingsRepository(TrainingsDatabase trainingsDatabase) {
+        return new TrainingsRepository(trainingsDatabase);
     }
 }

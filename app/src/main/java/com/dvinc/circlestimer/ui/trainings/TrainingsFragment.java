@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.programs;
+package com.dvinc.circlestimer.ui.trainings;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +15,7 @@ import android.view.View;
 
 import com.dvinc.circlestimer.App;
 import com.dvinc.circlestimer.R;
-import com.dvinc.circlestimer.data.db.entities.ProgramEntity;
+import com.dvinc.circlestimer.data.db.entities.Training;
 import com.dvinc.circlestimer.ui.base.BaseFragment;
 
 import java.util.List;
@@ -25,18 +25,18 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class ProgramsFragment extends BaseFragment implements ProgramsView {
+public class TrainingsFragment extends BaseFragment implements TrainingsView {
 
-    @BindView(R.id.rv_programs) RecyclerView programsRecyclerView;
+    @BindView(R.id.rv_trainings) RecyclerView trainingsRecyclerView;
 
     @Inject
-    ProgramsPresenter programsPresenter;
+    TrainingsPresenter trainingsPresenter;
 
-    private final ProgramsAdapter programsAdapter = new ProgramsAdapter();
+    private final TrainingsAdapter trainingsAdapter = new TrainingsAdapter();
 
     @Override
     protected int getFragmentLayoutId() {
-        return R.layout.fragment_programs;
+        return R.layout.fragment_trainings;
     }
 
     @Override
@@ -44,23 +44,23 @@ public class ProgramsFragment extends BaseFragment implements ProgramsView {
         super.onViewCreated(view, savedInstanceState);
         App.get(getActivity()).getAppComponent().inject(this);
 
-        programsRecyclerView.setAdapter(programsAdapter);
+        trainingsRecyclerView.setAdapter(trainingsAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        programsRecyclerView.setLayoutManager(layoutManager);
+        trainingsRecyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        programsPresenter.attachView(this);
-        programsPresenter.initPrograms();
+        trainingsPresenter.attachView(this);
+        trainingsPresenter.initTrainings();
 
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        programsPresenter.detachView();
+        trainingsPresenter.detachView();
     }
 
     @Override
@@ -69,22 +69,22 @@ public class ProgramsFragment extends BaseFragment implements ProgramsView {
     }
 
     @Override
-    public void showPrograms(List<ProgramEntity> programsList) {
-        programsAdapter.setList(programsList);
+    public void showTrainings(@NonNull List<Training> trainings) {
+        trainingsAdapter.setList(trainings);
     }
 
-    @OnClick(R.id.btn_programs_add_program)
-    void onClickNewProgramButton(View view) {
+    @OnClick(R.id.btn_trainings_add_training)
+    void onClickNewTrainingButton(View view) {
         FragmentManager fragmentManager = getFragmentManager();
         if (fragmentManager != null) {
-            NewProgramFragment newProgramFragment = new NewProgramFragment();
-            newProgramFragment.setNewProgramListener(new NewProgramFragment.NewProgramListener() {
+            NewTrainingFragment newTrainingFragment = new NewTrainingFragment();
+            newTrainingFragment.setNewTrainingListener(new NewTrainingFragment.NewTrainingListener() {
                 @Override
-                public void onNewProgramAdded(String programName, int defaultLapsCount) {
+                public void onNewTrainingAdded(@NonNull String trainingName, int defaultLapsCount) {
                     //TODO: call presenter method here
                 }
             });
-            newProgramFragment.show(getFragmentManager(), NewProgramFragment.TAG);
+            newTrainingFragment.show(getFragmentManager(), NewTrainingFragment.TAG);
         }
     }
 }

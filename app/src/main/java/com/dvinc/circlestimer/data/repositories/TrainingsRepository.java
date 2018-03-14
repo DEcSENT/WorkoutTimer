@@ -7,8 +7,8 @@ package com.dvinc.circlestimer.data.repositories;
 
 import android.support.annotation.NonNull;
 
-import com.dvinc.circlestimer.data.db.ProgramsDatabase;
-import com.dvinc.circlestimer.data.db.entities.ProgramEntity;
+import com.dvinc.circlestimer.data.db.TrainingsDatabase;
+import com.dvinc.circlestimer.data.db.entities.Training;
 
 import java.util.List;
 
@@ -20,24 +20,24 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 @Singleton
-public class ProgramsRepository {
+public class TrainingsRepository {
 
     @NonNull
-    private ProgramsDatabase programsDatabase;
+    private final TrainingsDatabase trainingsDatabase;
 
-    public ProgramsRepository(@NonNull ProgramsDatabase programsDatabase) {
-        this.programsDatabase = programsDatabase;
+    public TrainingsRepository(@NonNull TrainingsDatabase trainingsDatabase) {
+        this.trainingsDatabase = trainingsDatabase;
     }
 
-    public Single<List<ProgramEntity>> getAllPrograms() {
+    public Single<List<Training>> getAllTrainings() {
         //For test adding 2 program
         return Completable.fromAction(() -> {
             for (int i = 0; i < 2; i++) {
-                programsDatabase.programsDao().addProgram(new ProgramEntity("Program: " + i, false));
+                trainingsDatabase.trainingsDao().addTraining(new Training("Training: " + i, false));
             }
-        }).andThen(programsDatabase
-                .programsDao()
-                .getAllPrograms())
+        }).andThen(trainingsDatabase
+                .trainingsDao()
+                .getAllTrainings())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

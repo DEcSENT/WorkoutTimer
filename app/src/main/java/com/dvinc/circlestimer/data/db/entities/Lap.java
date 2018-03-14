@@ -8,69 +8,54 @@ package com.dvinc.circlestimer.data.db.entities;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(tableName = "LapsTable")
-public class LapEntity {
+@Entity(tableName = "Laps")
+public class Lap {
 
     @PrimaryKey(autoGenerate = true)
     private int uid;
 
     @ColumnInfo(name = "order_number")
-    private int orderNumber;
+    private final int orderNumber;
 
     @ColumnInfo(name = "lap_name")
-    private String lapName;
+    private final String lapName;
 
     @ColumnInfo(name = "lap_color")
-    private String lapColor;
+    private final String lapColor;
 
     @ColumnInfo(name = "lap_time")
-    private int lapTime;
+    private final int lapTime;
 
-    public LapEntity(int orderNumber, String lapName, String lapColor, int lapTime) {
+    public Lap(int orderNumber, @NonNull String lapName, @NonNull String lapColor, int lapTime) {
         this.orderNumber = orderNumber;
         this.lapName = lapName;
         this.lapColor = lapColor;
         this.lapTime = lapTime;
-    }
-
-    public int getUid() {
-        return uid;
     }
 
     public void setUid(int uid) {
         this.uid = uid;
     }
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getUid() {
+        return uid;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public int getOrderNumber() {
+        return orderNumber;
     }
 
     public String getLapName() {
         return lapName;
     }
 
-    public void setLapName(String lapName) {
-        this.lapName = lapName;
-    }
-
     public String getLapColor() {
         return lapColor;
     }
 
-    public void setLapColor(String lapColor) {
-        this.lapColor = lapColor;
-    }
-
     public int getLapTime() {
         return lapTime;
-    }
-
-    public void setLapTime(int lapTime) {
-        this.lapTime = lapTime;
     }
 }
