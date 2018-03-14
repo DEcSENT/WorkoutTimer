@@ -15,7 +15,7 @@ import java.util.List;
 import javax.inject.Singleton;
 
 import io.reactivex.Completable;
-import io.reactivex.Single;
+import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -29,15 +29,10 @@ public class TrainingsRepository {
         this.trainingsDatabase = trainingsDatabase;
     }
 
-    public Single<List<Training>> getAllTrainings() {
-        //For test adding 2 program
-        return Completable.fromAction(() -> {
-            for (int i = 0; i < 2; i++) {
-                trainingsDatabase.trainingsDao().addTraining(new Training("Training: " + i, false));
-            }
-        }).andThen(trainingsDatabase
+    public Flowable<List<Training>> getAllTrainings() {
+        return trainingsDatabase
                 .trainingsDao()
-                .getAllTrainings())
+                .getAllTrainings()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

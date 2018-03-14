@@ -14,7 +14,7 @@ import com.dvinc.circlestimer.data.db.entities.Training;
 
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.Flowable;
 
 @Dao
 public interface TrainingDao {
@@ -24,5 +24,5 @@ public interface TrainingDao {
 
     @Query("SELECT * FROM Training")
     @NonNull
-    Single<List<Training>> getAllTrainings();
+    Flowable<List<Training>> getAllTrainings();
 }
