@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import com.dvinc.circlestimer.di.AppComponent;
 import com.dvinc.circlestimer.di.AppModule;
 import com.dvinc.circlestimer.di.DaggerAppComponent;
+import com.facebook.stetho.Stetho;
 
 public class App extends Application {
 
@@ -27,6 +28,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         appComponent = buildDi();
+        Stetho.initializeWithDefaults(this);
     }
 
     private AppComponent buildDi() {
