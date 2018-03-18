@@ -23,6 +23,8 @@ public interface TrainingDao {
     void addTraining(@NonNull Training training);
 
     @Query("SELECT * FROM Training")
-    @NonNull
     Flowable<List<Training>> getAllTrainings();
+
+    @Query("SELECT * FROM Training ORDER BY uid DESC LIMIT 1")
+    int getLastAddedTrainingId();
 }

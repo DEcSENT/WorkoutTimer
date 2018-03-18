@@ -6,8 +6,16 @@
 package com.dvinc.circlestimer.data.db.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+
+import com.dvinc.circlestimer.data.db.entities.Lap;
+
+import java.util.List;
 
 @Dao
 public interface LapDao {
-    //TODO
+
+    @Insert
+    void insertAll(List<Lap> laps);
+
 }

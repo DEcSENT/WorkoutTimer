@@ -7,6 +7,7 @@ package com.dvinc.circlestimer.data.db.entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -15,6 +16,9 @@ public class Lap {
 
     @PrimaryKey(autoGenerate = true)
     private int uid;
+
+    @ColumnInfo(name = "training_id")
+    private final int trainingId;
 
     @ColumnInfo(name = "order_number")
     private final int orderNumber;
@@ -28,7 +32,8 @@ public class Lap {
     @ColumnInfo(name = "lap_time")
     private final int lapTime;
 
-    public Lap(int orderNumber, @NonNull String lapName, @NonNull String lapColor, int lapTime) {
+    public Lap(int trainingId, int orderNumber, @NonNull String lapName, @NonNull String lapColor, int lapTime) {
+        this.trainingId = trainingId;
         this.orderNumber = orderNumber;
         this.lapName = lapName;
         this.lapColor = lapColor;
@@ -37,6 +42,10 @@ public class Lap {
 
     public void setUid(int uid) {
         this.uid = uid;
+    }
+
+    public int getTrainingId() {
+        return trainingId;
     }
 
     public int getUid() {

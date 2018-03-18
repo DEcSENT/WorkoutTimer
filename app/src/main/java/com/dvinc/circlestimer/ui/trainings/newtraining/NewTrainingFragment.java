@@ -16,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.dvinc.circlestimer.App;
@@ -29,12 +31,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-//TODO: write code for laps spinner
 public class NewTrainingFragment extends DialogFragment implements NewTrainingView {
 
     public static final String TAG = "NewTrainingFragment";
 
     @BindView(R.id.et_new_training_name) EditText newTrainingEditText;
+    @BindView(R.id.spn_new_training_laps) Spinner lapsSpinner;
 
     private Unbinder unbinder;
 
@@ -69,6 +71,12 @@ public class NewTrainingFragment extends DialogFragment implements NewTrainingVi
 
         App.get(getActivity().getApplicationContext()).getAppComponent().inject(this);
 
+        if (getContext() != null) {
+            ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(getContext(), R.array.default_laps, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            lapsSpinner.setAdapter(adapter);
+        }
+
         return view;
     }
 
@@ -92,8 +100,11 @@ public class NewTrainingFragment extends DialogFragment implements NewTrainingVi
 
     @OnClick(R.id.btn_new_training_add)
     void onClickAddTraining(View view) {
-        String newTrainingName = newTrainingEditText.getText().toString();
-        newTrainingPresenter.addNewTraining(newTrainingName);
+        String name = newTrainingEditText.getText().toString();
+        String selectedValue = lapsSpinner.getSelectedItem().toString();
+        int laps = Integer.valueOf(selectedValue);
+
+        newTrainingPresenter.addNewTraining(name, laps);
     }
 
     @Override
