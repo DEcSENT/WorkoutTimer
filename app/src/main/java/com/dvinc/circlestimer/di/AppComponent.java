@@ -13,7 +13,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {AppModule.class})
+@Component(modules = {AppModule.class, DataModule.class})
 public interface AppComponent {
     void inject(TrainingsFragment trainingsFragment);
     void inject(NewTrainingFragment newTrainingFragment);
