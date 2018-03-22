@@ -10,11 +10,16 @@ import android.content.Context;
 
 import com.dvinc.circlestimer.data.db.TrainingsDatabase;
 import com.dvinc.circlestimer.data.repositories.TrainingsRepository;
+import com.dvinc.circlestimer.di.IoScheduler;
+import com.dvinc.circlestimer.di.UiScheduler;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 @Module
 public class DataModule {
@@ -26,7 +31,21 @@ public class DataModule {
 
     @Provides
     @Singleton
-    TrainingsRepository provideTrainingsRepository(TrainingsDatabase trainingsDatabase) {
-        return new TrainingsRepository(trainingsDatabase);
+    TrainingsRepository provideTrainingsRepository(TrainingsDatabase trainingsDatabase,
+                                                   @IoScheduler Scheduler schedulerIo,
+                                                   @UiScheduler Scheduler schedulerUi) {
+        return new TrainingsRepository(trainingsDatabase, schedulerIo, schedulerUi);
+    }
+
+    @Provides
+    @IoScheduler
+    Scheduler provideIoScheduler() {
+        return Schedulers.io();
+    }
+
+    @Provides
+    @UiScheduler
+    Scheduler provideUiScheduler() {
+        return AndroidSchedulers.mainThread();
     }
 }

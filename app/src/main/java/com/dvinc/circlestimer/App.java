@@ -10,8 +10,9 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.dvinc.circlestimer.di.components.AppComponent;
+import com.dvinc.circlestimer.di.components.DaggerAppComponent;
 import com.dvinc.circlestimer.di.modules.AppModule;
-import com.dvinc.circlestimer.di.DaggerAppComponent;
+
 import com.facebook.stetho.Stetho;
 
 public class App extends Application {

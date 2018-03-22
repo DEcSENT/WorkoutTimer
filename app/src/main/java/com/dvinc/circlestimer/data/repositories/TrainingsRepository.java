@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import com.dvinc.circlestimer.data.db.TrainingsDatabase;
 import com.dvinc.circlestimer.data.db.entities.Lap;
 import com.dvinc.circlestimer.data.db.entities.Training;
+import com.dvinc.circlestimer.di.IoScheduler;
+import com.dvinc.circlestimer.di.UiScheduler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +21,8 @@ import javax.inject.Singleton;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Scheduler;
 import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 @Singleton
 public class TrainingsRepository {
@@ -44,8 +45,18 @@ public class TrainingsRepository {
     @NonNull
     private final TrainingsDatabase trainingsDatabase;
 
-    public TrainingsRepository(@NonNull TrainingsDatabase trainingsDatabase) {
+    @NonNull
+    private final Scheduler schedulerIo;
+
+    @NonNull
+    private final Scheduler schedulerUi;
+
+    public TrainingsRepository(@NonNull TrainingsDatabase trainingsDatabase,
+                               @NonNull @IoScheduler Scheduler schedulerIo,
+                               @NonNull @UiScheduler Scheduler schedulerUi) {
         this.trainingsDatabase = trainingsDatabase;
+        this.schedulerIo = schedulerIo;
+        this.schedulerUi = schedulerUi;
     }
 
     /**
@@ -57,8 +68,8 @@ public class TrainingsRepository {
         return trainingsDatabase
                 .trainingsDao()
                 .getAllTrainings()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .subscribeOn(schedulerIo)
+                .observeOn(schedulerUi);
     }
 
     /**
@@ -78,8 +89,8 @@ public class TrainingsRepository {
                     }
                     return Completable.fromAction(() -> addLaps(laps));
                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .subscribeOn(schedulerIo)
+                .observeOn(schedulerUi);
     }
 
     private void addTraining(@NonNull String trainingName) {
