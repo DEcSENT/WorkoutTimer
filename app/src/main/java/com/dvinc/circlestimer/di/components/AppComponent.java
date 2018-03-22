@@ -3,8 +3,10 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.di;
+package com.dvinc.circlestimer.di.components;
 
+import com.dvinc.circlestimer.di.modules.AppModule;
+import com.dvinc.circlestimer.di.modules.DataModule;
 import com.dvinc.circlestimer.ui.trainings.TrainingsFragment;
 import com.dvinc.circlestimer.ui.trainings.newtraining.NewTrainingFragment;
 

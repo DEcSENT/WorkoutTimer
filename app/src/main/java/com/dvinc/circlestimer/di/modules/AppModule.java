@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.di;
+package com.dvinc.circlestimer.di.modules;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

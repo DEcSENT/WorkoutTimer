@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.di;
+package com.dvinc.circlestimer.di.modules;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -17,7 +17,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-class DataModule {
+public class DataModule {
     @Provides
     @Singleton
     TrainingsDatabase provideTrainingDataBase(Context context) {
