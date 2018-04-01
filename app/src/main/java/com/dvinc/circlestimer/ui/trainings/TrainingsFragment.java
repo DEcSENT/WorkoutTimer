@@ -11,7 +11,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.Toast;
 
 import com.dvinc.circlestimer.App;
 import com.dvinc.circlestimer.R;
@@ -48,6 +50,8 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
         trainingsRecyclerView.setAdapter(trainingsAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         trainingsRecyclerView.setLayoutManager(layoutManager);
+
+        setupSwipeToDelete();
     }
 
     @Override
@@ -74,6 +78,11 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
         trainingsAdapter.setList(trainings);
     }
 
+    @Override
+    public void showDeleteSuccessMessage() {
+        Toast.makeText(getContext(), R.string.message_delete_training_success, Toast.LENGTH_LONG).show();
+    }
+
     @OnClick(R.id.btn_trainings_add_training)
     void onClickNewTrainingButton(View view) {
         FragmentManager fragmentManager = getFragmentManager();
@@ -81,5 +90,28 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
             NewTrainingFragment newTrainingFragment = new NewTrainingFragment();
             newTrainingFragment.show(getFragmentManager(), NewTrainingFragment.TAG);
         }
+    }
+
+    private void setupSwipeToDelete() {
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                int position = viewHolder.getAdapterPosition();
+                Training selectedItem = trainingsAdapter.getItem(position);
+                if ( selectedItem != null && !selectedItem.isCurrentTraining()) {
+                    trainingsPresenter.deleteTraining(selectedItem.getUid());
+                }
+
+                trainingsAdapter.notifyItemChanged(position);
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(trainingsRecyclerView);
     }
 }

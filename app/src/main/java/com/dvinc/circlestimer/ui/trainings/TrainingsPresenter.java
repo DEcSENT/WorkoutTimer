@@ -15,6 +15,8 @@ import com.dvinc.circlestimer.ui.base.BasePresenter;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+//TODO: handle errors messages
+//TODO: handle view null
 @Singleton
 public class TrainingsPresenter extends BasePresenter<TrainingsView> {
 
@@ -29,6 +31,13 @@ public class TrainingsPresenter extends BasePresenter<TrainingsView> {
     void initTrainings() {
         addSubscription(trainingsRepository.getAllTrainings().subscribe(
                 list -> getView().showTrainings(list),
+                error -> getView().showError(R.string.app_name)
+        ));
+    }
+
+    void deleteTraining(int trainingId) {
+        addSubscription(trainingsRepository.deleteTraining(trainingId).subscribe(
+                () -> getView().showDeleteSuccessMessage(),
                 error -> getView().showError(R.string.app_name)
         ));
     }

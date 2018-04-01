@@ -93,6 +93,19 @@ public class TrainingsRepository {
                 .observeOn(schedulerUi);
     }
 
+    /**
+     * Deleting training from data source.
+     *
+     * @param trainingId - id number of training.
+     * @return - completable source.
+     */
+    public Completable deleteTraining(int trainingId) {
+        return Completable.fromAction(() -> removeTraining(trainingId))
+                .andThen(Completable.fromAction(() -> removeLapsByTrainingId(trainingId)))
+                .subscribeOn(schedulerIo)
+                .observeOn(schedulerUi);
+    }
+
     private void addTraining(@NonNull String trainingName) {
         trainingsDatabase.trainingsDao().addTraining(new Training(trainingName, false));
     }
@@ -103,5 +116,13 @@ public class TrainingsRepository {
 
     private void addLaps(@NonNull List<Lap> laps) {
         trainingsDatabase.lapsDao().insertAll(laps);
+    }
+
+    private void removeTraining(int trainingId) {
+        trainingsDatabase.trainingsDao().removeTraining(trainingId);
+    }
+
+    private void removeLapsByTrainingId(int trainingId) {
+        trainingsDatabase.lapsDao().removeLaps(trainingId);
     }
 }

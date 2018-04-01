@@ -5,6 +5,7 @@
 
 package com.dvinc.circlestimer.ui.trainings;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,5 +55,14 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
     @Override
     public int getItemCount() {
         return trainingsList.size();
+    }
+
+    @Nullable
+    Training getItem(int itemPosition) {
+        if (trainingsList.size() > 0) {
+            return  trainingsList.get(itemPosition);
+        } else {
+            return null;
+        }
     }
 }

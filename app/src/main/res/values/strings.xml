@@ -14,4 +14,5 @@
     <string name="new_training_cancel">Cancel</string>
     <string name="new_training_add">Add</string>
     <string name="new_training_error_message">An error occurred while adding new training.</string>
+    <string name="message_delete_training_success">Training deleted</string>
 </resources>

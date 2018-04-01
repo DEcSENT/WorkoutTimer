@@ -15,4 +15,5 @@ import java.util.List;
 
 public interface TrainingsView extends MvpView, ErrorView {
     void showTrainings(@NonNull List<Training> trainings);
+    void showDeleteSuccessMessage();
 }
