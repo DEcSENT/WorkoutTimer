@@ -15,4 +15,7 @@
     <string name="new_training_add">Add</string>
     <string name="new_training_error_message">An error occurred while adding new training.</string>
     <string name="message_delete_training_success">Training deleted</string>
+    <string name="delete_training_dialog_header">Delete training?</string>
+    <string name="delete_training_dialog_positive_btn">OK</string>
+    <string name="delete_training_dialog_negative_btn">@android:string/cancel</string>
 </resources>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -93,7 +94,8 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
     }
 
     private void setupSwipeToDelete() {
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(
+                0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
 
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -104,7 +106,7 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
                 int position = viewHolder.getAdapterPosition();
                 Training selectedItem = trainingsAdapter.getItem(position);
                 if ( selectedItem != null && !selectedItem.isCurrentTraining()) {
-                    trainingsPresenter.deleteTraining(selectedItem.getUid());
+                    showDeleteDialog(selectedItem);
                 }
 
                 trainingsAdapter.notifyItemChanged(position);
@@ -113,5 +115,18 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(trainingsRecyclerView);
+    }
+
+    private void showDeleteDialog(Training item) {
+        if (getContext() != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle(R.string.delete_training_dialog_header);
+            builder.setPositiveButton(R.string.delete_training_dialog_positive_btn,
+                    (dialogInterface, i) -> trainingsPresenter.deleteTraining(item.getUid()));
+            builder.setNegativeButton(R.string.delete_training_dialog_negative_btn,
+                    (dialogInterface, i) -> dialogInterface.cancel());
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 }
