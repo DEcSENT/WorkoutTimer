@@ -5,6 +5,7 @@
 
 package com.dvinc.circlestimer.ui.trainings;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,6 +22,8 @@ import java.util.List;
 public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyViewHolder> {
 
     private List<Training> trainingsList = new ArrayList<>();
+    @Nullable
+    private TrainingClickListener clickListener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView trainingNameTextView;
@@ -50,6 +53,11 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
         final Training training = trainingsList.get(position);
         holder.trainingNameTextView.setText(training.getTrainingName());
         holder.trainingCurrentText.setVisibility(training.isCurrentTraining() ? View.VISIBLE : View.INVISIBLE);
+        holder.itemView.setOnClickListener(view -> {
+            if (clickListener != null) {
+                clickListener.onItemClick(training);
+            }
+        });
     }
 
     @Override
@@ -57,12 +65,20 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
         return trainingsList.size();
     }
 
+    public void setOnClickTrainingListener(@NonNull TrainingClickListener listener) {
+        clickListener = listener;
+    }
+
     @Nullable
     Training getItem(int itemPosition) {
         if (trainingsList.size() > 0) {
-            return  trainingsList.get(itemPosition);
+            return trainingsList.get(itemPosition);
         } else {
             return null;
         }
+    }
+
+    interface TrainingClickListener {
+        void onItemClick(@NonNull Training item);
     }
 }

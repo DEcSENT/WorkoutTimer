@@ -106,6 +106,18 @@ public class TrainingsRepository {
                 .observeOn(schedulerUi);
     }
 
+    /**
+     * Setting current training.
+     *
+     * @param training - training
+     * @return - completable source
+     */
+    public Completable setCurrentTraining(@NonNull Training training) {
+        return Completable.fromAction(() -> updateCurrentTraining(training.getUid()))
+                .subscribeOn(schedulerIo)
+                .observeOn(schedulerUi);
+    }
+
     private void addTraining(@NonNull String trainingName) {
         trainingsDatabase.trainingsDao().addTraining(new Training(trainingName, false));
     }
@@ -124,5 +136,9 @@ public class TrainingsRepository {
 
     private void removeLapsByTrainingId(int trainingId) {
         trainingsDatabase.lapsDao().removeLaps(trainingId);
+    }
+
+    private void updateCurrentTraining(int trainingId) {
+        trainingsDatabase.trainingsDao().setCurrentTraining(trainingId);
     }
 }

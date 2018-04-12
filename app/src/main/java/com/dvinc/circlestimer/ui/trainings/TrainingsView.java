@@ -9,11 +9,11 @@ import android.support.annotation.NonNull;
 
 import com.dvinc.circlestimer.data.db.entities.Training;
 import com.dvinc.circlestimer.ui.base.ErrorView;
+import com.dvinc.circlestimer.ui.base.MessageView;
 import com.dvinc.circlestimer.ui.base.MvpView;
 
 import java.util.List;
 
-public interface TrainingsView extends MvpView, ErrorView {
+public interface TrainingsView extends MvpView, ErrorView, MessageView {
     void showTrainings(@NonNull List<Training> trainings);
-    void showDeleteSuccessMessage();
 }

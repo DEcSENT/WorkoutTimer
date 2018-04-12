@@ -52,6 +52,10 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         trainingsRecyclerView.setLayoutManager(layoutManager);
 
+        trainingsAdapter.setOnClickTrainingListener(item -> {
+            if (!item.isCurrentTraining()) trainingsPresenter.onTrainingClick(item);
+        });
+
         setupSwipeToDelete();
     }
 
