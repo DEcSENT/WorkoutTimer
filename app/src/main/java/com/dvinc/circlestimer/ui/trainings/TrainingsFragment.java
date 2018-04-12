@@ -60,7 +60,6 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
         super.onResume();
         trainingsPresenter.attachView(this);
         trainingsPresenter.initTrainings();
-
     }
 
     @Override
@@ -80,8 +79,8 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
     }
 
     @Override
-    public void showDeleteSuccessMessage() {
-        Toast.makeText(getContext(), R.string.message_delete_training_success, Toast.LENGTH_LONG).show();
+    public void showMessage(int message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.btn_trainings_add_training)
