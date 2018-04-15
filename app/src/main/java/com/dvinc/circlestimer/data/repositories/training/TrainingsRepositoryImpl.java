@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.data.repositories;
+package com.dvinc.circlestimer.data.repositories.training;
 
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
@@ -25,7 +25,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.Single;
 
 @Singleton
-public class TrainingsRepository {
+public class TrainingsRepositoryImpl implements TrainingsRepository {
 
     /**
      * Default lap name.
@@ -51,9 +51,9 @@ public class TrainingsRepository {
     @NonNull
     private final Scheduler schedulerUi;
 
-    public TrainingsRepository(@NonNull TrainingsDatabase trainingsDatabase,
-                               @NonNull @IoScheduler Scheduler schedulerIo,
-                               @NonNull @UiScheduler Scheduler schedulerUi) {
+    public TrainingsRepositoryImpl(@NonNull TrainingsDatabase trainingsDatabase,
+                                   @NonNull @IoScheduler Scheduler schedulerIo,
+                                   @NonNull @UiScheduler Scheduler schedulerUi) {
         this.trainingsDatabase = trainingsDatabase;
         this.schedulerIo = schedulerIo;
         this.schedulerUi = schedulerUi;
@@ -64,6 +64,7 @@ public class TrainingsRepository {
      *
      * @return flowable source with trainings list.
      */
+    @Override
     public Flowable<List<Training>> getAllTrainings() {
         return trainingsDatabase
                 .trainingsDao()
@@ -79,6 +80,7 @@ public class TrainingsRepository {
      * @param defaultLaps - count of default laps.
      * @return - completable source.
      */
+    @Override
     public Completable addNewTraining(@NonNull String name, @IntRange(from = 0) int defaultLaps) {
         return Completable.fromAction(() -> addTraining(name))
                 .andThen(Single.fromCallable(this::getTrainingId))
@@ -99,6 +101,7 @@ public class TrainingsRepository {
      * @param trainingId - id number of training.
      * @return - completable source.
      */
+    @Override
     public Completable deleteTraining(int trainingId) {
         return Completable.fromAction(() -> removeTraining(trainingId))
                 .andThen(Completable.fromAction(() -> removeLapsByTrainingId(trainingId)))
@@ -112,6 +115,7 @@ public class TrainingsRepository {
      * @param training - training
      * @return - completable source
      */
+    @Override
     public Completable setCurrentTraining(@NonNull Training training) {
         return Completable.fromAction(() -> updateCurrentTraining(training.getUid()))
                 .subscribeOn(schedulerIo)

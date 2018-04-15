@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 
 import com.dvinc.circlestimer.R;
 import com.dvinc.circlestimer.data.db.entities.Training;
-import com.dvinc.circlestimer.data.repositories.TrainingsRepository;
+import com.dvinc.circlestimer.data.repositories.training.TrainingsRepository;
 import com.dvinc.circlestimer.ui.base.BasePresenter;
 
 
