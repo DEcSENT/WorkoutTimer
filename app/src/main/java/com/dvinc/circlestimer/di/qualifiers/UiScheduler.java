@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.di;
+package com.dvinc.circlestimer.di.qualifiers;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

@@ -10,8 +10,8 @@ import android.content.Context;
 
 import com.dvinc.circlestimer.data.db.TrainingsDatabase;
 import com.dvinc.circlestimer.data.repositories.TrainingsRepository;
-import com.dvinc.circlestimer.di.IoScheduler;
-import com.dvinc.circlestimer.di.UiScheduler;
+import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
+import com.dvinc.circlestimer.di.qualifiers.UiScheduler;
 
 import javax.inject.Singleton;
 

@@ -11,8 +11,8 @@ import android.support.annotation.NonNull;
 import com.dvinc.circlestimer.data.db.TrainingsDatabase;
 import com.dvinc.circlestimer.data.db.entities.Lap;
 import com.dvinc.circlestimer.data.db.entities.Training;
-import com.dvinc.circlestimer.di.IoScheduler;
-import com.dvinc.circlestimer.di.UiScheduler;
+import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
+import com.dvinc.circlestimer.di.qualifiers.UiScheduler;
 
 import java.util.ArrayList;
 import java.util.List;
