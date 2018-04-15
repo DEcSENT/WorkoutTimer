@@ -41,15 +41,16 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public TrainingsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TrainingsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_training, parent, false);
         return new TrainingsAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(TrainingsAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull TrainingsAdapter.MyViewHolder holder, final int position) {
         final Training training = trainingsList.get(position);
         holder.trainingNameTextView.setText(training.getTrainingName());
         holder.trainingCurrentText.setVisibility(training.isCurrentTraining() ? View.VISIBLE : View.INVISIBLE);
