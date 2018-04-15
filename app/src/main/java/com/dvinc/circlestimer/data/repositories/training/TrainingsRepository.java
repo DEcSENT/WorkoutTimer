@@ -65,4 +65,12 @@ public interface TrainingsRepository {
      * @param trainingId - training id
      */
     void updateCurrentTraining(int trainingId);
+
+    /**
+     * Getting training laps.
+     *
+     * @param trainingId - training id
+     */
+    @NonNull
+    List<Lap> getLapsByTrainingId(int trainingId);
 }

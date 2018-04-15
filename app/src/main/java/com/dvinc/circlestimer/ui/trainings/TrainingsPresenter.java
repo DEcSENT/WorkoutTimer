@@ -8,7 +8,7 @@ package com.dvinc.circlestimer.ui.trainings;
 import android.support.annotation.NonNull;
 
 import com.dvinc.circlestimer.R;
-import com.dvinc.circlestimer.data.db.entities.Training;
+import com.dvinc.circlestimer.domain.entities.TrainingItem;
 import com.dvinc.circlestimer.domain.interactors.trainings.TrainingsInteractor;
 import com.dvinc.circlestimer.ui.base.BasePresenter;
 
@@ -43,7 +43,7 @@ public class TrainingsPresenter extends BasePresenter<TrainingsView> {
         ));
     }
 
-    void onTrainingClick(@NonNull Training training) {
+    void onTrainingClick(@NonNull TrainingItem training) {
         addSubscription(interactor.setCurrentTraining(training).subscribe(
                 () -> getView().showMessage(R.string.message_training_new_current_training),
                 error -> getView().showError(R.string.app_name)

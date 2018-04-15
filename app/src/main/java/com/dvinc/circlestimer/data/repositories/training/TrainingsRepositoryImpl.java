@@ -66,4 +66,10 @@ public class TrainingsRepositoryImpl implements TrainingsRepository {
     public void updateCurrentTraining(int trainingId) {
         trainingsDatabase.trainingsDao().setCurrentTraining(trainingId);
     }
+
+    @NonNull
+    @Override
+    public List<Lap> getLapsByTrainingId(int trainingId) {
+        return trainingsDatabase.lapsDao().getLaps(trainingId);
+    }
 }

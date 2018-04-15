@@ -21,4 +21,7 @@ public interface LapDao {
 
     @Query("DELETE FROM Laps WHERE training_id =:trainingId")
     void removeLaps(int trainingId);
+
+    @Query("SELECT * FROM Laps WHERE training_id =:trainingId")
+    List<Lap> getLaps(int trainingId);
 }

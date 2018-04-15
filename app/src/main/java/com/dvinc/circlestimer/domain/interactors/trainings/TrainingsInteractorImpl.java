@@ -13,6 +13,8 @@ import com.dvinc.circlestimer.data.db.entities.Training;
 import com.dvinc.circlestimer.data.repositories.training.TrainingsRepository;
 import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
 import com.dvinc.circlestimer.di.qualifiers.UiScheduler;
+import com.dvinc.circlestimer.domain.entities.TrainingItem;
+import com.dvinc.circlestimer.domain.mappers.TrainingMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +62,22 @@ public class TrainingsInteractorImpl implements TrainingsInteractor {
     }
 
     @Override
-    public Flowable<List<Training>> getAllTrainings() {
+    public Flowable<List<TrainingItem>> getAllTrainings() {
         return repository.getAllTrainings()
+                .map(rawList -> {
+                    final List<TrainingItem> mappedItems = new ArrayList<>();
+                    for (Training training : rawList) {
+                        List<Lap> trainingLaps = repository.getLapsByTrainingId(training.getUid());
+                        int lapsCount = trainingLaps.size();
+                        int totalTime = 0;
+                        for (Lap lap : trainingLaps) {
+                            totalTime += lap.getLapTime();
+                        }
+                        mappedItems.add(TrainingMapper.mapTraining(training, lapsCount, totalTime));
+
+                    }
+                    return mappedItems;
+                })
                 .subscribeOn(schedulerIo)
                 .observeOn(schedulerUi);
     }
@@ -90,8 +106,8 @@ public class TrainingsInteractorImpl implements TrainingsInteractor {
     }
 
     @Override
-    public Completable setCurrentTraining(@NonNull Training training) {
-        return Completable.fromAction(() -> repository.updateCurrentTraining(training.getUid()))
+    public Completable setCurrentTraining(@NonNull TrainingItem training) {
+        return Completable.fromAction(() -> repository.updateCurrentTraining(training.getId()))
                 .subscribeOn(schedulerIo)
                 .observeOn(schedulerUi);
     }

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.dvinc.circlestimer.App;
 import com.dvinc.circlestimer.R;
-import com.dvinc.circlestimer.data.db.entities.Training;
+import com.dvinc.circlestimer.domain.entities.TrainingItem;
 import com.dvinc.circlestimer.ui.base.BaseFragment;
 import com.dvinc.circlestimer.ui.trainings.newtraining.NewTrainingFragment;
 
@@ -54,12 +54,12 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
 
         trainingsAdapter.setOnClickTrainingListener(new TrainingsAdapter.TrainingClickListener() {
             @Override
-            public void onItemClick(@NonNull Training item) {
+            public void onItemClick(@NonNull TrainingItem item) {
                 if (!item.isCurrentTraining()) trainingsPresenter.onTrainingClick(item);
             }
 
             @Override
-            public void onLongItemClick(@NonNull Training item) {
+            public void onLongItemClick(@NonNull TrainingItem item) {
                 Toast.makeText(getContext(), "Edit me!", Toast.LENGTH_LONG).show();
             }
         });
@@ -86,7 +86,7 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
     }
 
     @Override
-    public void showTrainings(@NonNull List<Training> trainings) {
+    public void showTrainings(@NonNull List<TrainingItem> trainings) {
         trainingsAdapter.setList(trainings);
     }
 
@@ -115,7 +115,7 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 int position = viewHolder.getAdapterPosition();
-                Training selectedItem = trainingsAdapter.getItem(position);
+                TrainingItem selectedItem = trainingsAdapter.getItem(position);
                 if ( selectedItem != null && !selectedItem.isCurrentTraining()) {
                     showDeleteDialog(selectedItem);
                 }
@@ -128,12 +128,12 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
         itemTouchHelper.attachToRecyclerView(trainingsRecyclerView);
     }
 
-    private void showDeleteDialog(Training item) {
+    private void showDeleteDialog(TrainingItem item) {
         if (getContext() != null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle(R.string.delete_training_dialog_header);
             builder.setPositiveButton(R.string.delete_training_dialog_positive_btn,
-                    (dialogInterface, i) -> trainingsPresenter.deleteTraining(item.getUid()));
+                    (dialogInterface, i) -> trainingsPresenter.deleteTraining(item.getId()));
             builder.setNegativeButton(R.string.delete_training_dialog_negative_btn,
                     (dialogInterface, i) -> dialogInterface.cancel());
             AlertDialog dialog = builder.create();

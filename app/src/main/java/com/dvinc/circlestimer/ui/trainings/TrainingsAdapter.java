@@ -14,29 +14,33 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dvinc.circlestimer.R;
-import com.dvinc.circlestimer.data.db.entities.Training;
+import com.dvinc.circlestimer.domain.entities.TrainingItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyViewHolder> {
 
-    private List<Training> trainingsList = new ArrayList<>();
+    private List<TrainingItem> trainingsList = new ArrayList<>();
     @Nullable
     private TrainingClickListener clickListener;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView trainingNameTextView;
         private TextView trainingCurrentText;
+        private TextView trainingLaps;
+        private TextView trainingTime;
 
         MyViewHolder(View view) {
             super(view);
             trainingNameTextView = view.findViewById(R.id.tv_item_training_name);
             trainingCurrentText = view.findViewById(R.id.tv_item_training_current);
+            trainingLaps = view.findViewById(R.id.tv_item_training_laps);
+            trainingTime = view.findViewById(R.id.tv_item_training_time);
         }
     }
 
-    void setList(List<Training> list) {
+    void setList(List<TrainingItem> list) {
         this.trainingsList = list;
         notifyDataSetChanged();
     }
@@ -51,9 +55,12 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull TrainingsAdapter.MyViewHolder holder, final int position) {
-        final Training training = trainingsList.get(position);
-        holder.trainingNameTextView.setText(training.getTrainingName());
+        final TrainingItem training = trainingsList.get(position);
+        holder.trainingNameTextView.setText(training.getName());
         holder.trainingCurrentText.setVisibility(training.isCurrentTraining() ? View.VISIBLE : View.INVISIBLE);
+        holder.trainingLaps.setText(String.valueOf(training.getLapsCount()));
+        holder.trainingTime.setText(String.valueOf(training.getTotalTime()));
+
         holder.itemView.setOnClickListener(view -> {
             if (clickListener != null) {
                 clickListener.onItemClick(training);
@@ -77,7 +84,7 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
     }
 
     @Nullable
-    Training getItem(int itemPosition) {
+    TrainingItem getItem(int itemPosition) {
         if (trainingsList.size() > 0) {
             return trainingsList.get(itemPosition);
         } else {
@@ -86,7 +93,7 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
     }
 
     interface TrainingClickListener {
-        void onItemClick(@NonNull Training item);
-        void onLongItemClick(@NonNull Training item);
+        void onItemClick(@NonNull TrainingItem item);
+        void onLongItemClick(@NonNull TrainingItem item);
     }
 }

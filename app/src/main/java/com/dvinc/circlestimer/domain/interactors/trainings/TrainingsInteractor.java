@@ -9,7 +9,7 @@ package com.dvinc.circlestimer.domain.interactors.trainings;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 
-import com.dvinc.circlestimer.data.db.entities.Training;
+import com.dvinc.circlestimer.domain.entities.TrainingItem;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public interface TrainingsInteractor {
      *
      * @return - flowable source with list of trainings.
      */
-    Flowable<List<Training>> getAllTrainings();
+    Flowable<List<TrainingItem>> getAllTrainings();
 
     /**
      * Adding new training.
@@ -48,5 +48,5 @@ public interface TrainingsInteractor {
      * @param training - current training
      * @return - completable source
      */
-    Completable setCurrentTraining(@NonNull Training training);
+    Completable setCurrentTraining(@NonNull TrainingItem training);
 }
