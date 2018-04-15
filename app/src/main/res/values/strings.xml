@@ -19,4 +19,5 @@
     <string name="delete_training_dialog_positive_btn">OK</string>
     <string name="delete_training_dialog_negative_btn">@android:string/cancel</string>
     <string name="item_training_edit_button_description">Edit training button</string>
+    <string name="message_training_new_current_training">New current training selected</string>
 </resources>

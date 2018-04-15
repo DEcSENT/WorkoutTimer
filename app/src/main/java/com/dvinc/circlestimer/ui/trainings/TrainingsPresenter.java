@@ -46,7 +46,7 @@ public class TrainingsPresenter extends BasePresenter<TrainingsView> {
 
     void onTrainingClick(Training training) {
         addSubscription(trainingsRepository.setCurrentTraining(training).subscribe(
-                () -> getView().showMessage(R.string.message_delete_training_success),
+                () -> getView().showMessage(R.string.message_training_new_current_training),
                 error -> getView().showError(R.string.app_name)
         ));
     }
