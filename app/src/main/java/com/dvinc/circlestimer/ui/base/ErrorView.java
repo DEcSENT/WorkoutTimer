@@ -7,8 +7,6 @@ package com.dvinc.circlestimer.ui.base;
 
 import android.support.annotation.StringRes;
 
-public interface ErrorView extends MvpView {
-
-    void showError(@StringRes int stringResID);
-
+public interface ErrorView {
+    void showError(@StringRes int stringResId);
 }

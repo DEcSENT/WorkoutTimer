@@ -3,5 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorWhite">#ffffff</color>
+    <color name="color_item_training_main_text">#000000</color>
+    <color name="color_item_training_background">#FFFFFF</color>
+    <color name="color_item_training_current">#00AC1A</color>
+    <color name="color_trainings_background">#D1D1D1</color>
+    <color name="color_add_training_button_normal">#008B02</color>
+    <color name="color_add_training_button_pressed">#00C703</color>
 </resources>

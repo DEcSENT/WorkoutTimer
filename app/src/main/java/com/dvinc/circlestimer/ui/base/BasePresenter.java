@@ -20,7 +20,7 @@ public abstract class BasePresenter<T extends MvpView> {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public void attachView(@NonNull T view) {
-        Assert.assertNull(view, "View should be null while attach");
+        Assert.assertNull(this.view, "View should be null while attach");
         this.view = view;
     }
 
