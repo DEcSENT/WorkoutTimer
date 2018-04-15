@@ -59,6 +59,12 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
                 clickListener.onItemClick(training);
             }
         });
+        holder.itemView.setOnLongClickListener(v -> {
+            if (clickListener != null) {
+                clickListener.onLongItemClick(training);
+            }
+            return true;
+        });
     }
 
     @Override
@@ -81,5 +87,6 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
 
     interface TrainingClickListener {
         void onItemClick(@NonNull Training item);
+        void onLongItemClick(@NonNull Training item);
     }
 }
