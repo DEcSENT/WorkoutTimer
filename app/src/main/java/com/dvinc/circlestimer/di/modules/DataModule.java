@@ -32,10 +32,8 @@ public class DataModule {
 
     @Provides
     @Singleton
-    TrainingsRepository provideTrainingsRepository(TrainingsDatabase trainingsDatabase,
-                                                   @IoScheduler Scheduler schedulerIo,
-                                                   @UiScheduler Scheduler schedulerUi) {
-        return new TrainingsRepositoryImpl(trainingsDatabase, schedulerIo, schedulerUi);
+    TrainingsRepository provideTrainingsRepository(TrainingsDatabase trainingsDatabase) {
+        return new TrainingsRepositoryImpl(trainingsDatabase);
     }
 
     @Provides

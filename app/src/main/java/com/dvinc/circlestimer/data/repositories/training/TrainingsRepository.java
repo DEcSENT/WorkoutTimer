@@ -6,23 +6,63 @@
 
 package com.dvinc.circlestimer.data.repositories.training;
 
-import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 
+import com.dvinc.circlestimer.data.db.entities.Lap;
 import com.dvinc.circlestimer.data.db.entities.Training;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 public interface TrainingsRepository {
 
+    /**
+     * Obtaining all trainings from data source.
+     *
+     * @return flowable source with trainings list
+     */
     Flowable<List<Training>> getAllTrainings();
 
-    Completable addNewTraining(@NonNull String name, @IntRange(from = 0) int defaultLaps);
+    /**
+     * Adding new training to data source.
+     *
+     * @param name - new training name
+     */
+    void addNewTraining(@NonNull String name);
 
-    Completable deleteTraining(int trainingId);
+    /**
+     * Deleting training from data source.
+     *
+     * @param trainingId - id number of training
+     */
+    void deleteTraining(int trainingId);
 
-    Completable setCurrentTraining(@NonNull Training training);
+    /**
+     * Getting id of last added training.
+     *
+     * @return training id
+     */
+    int getLastAddedTrainingId();
+
+    /**
+     * Adding training laps in to data source.
+     *
+     * @param laps - training laps
+     */
+    void addLaps(@NonNull List<Lap> laps);
+
+    /**
+     * Removing training laps by training id.
+     *
+     * @param trainingId - training id
+     */
+    void removeLapsByTrainingId(int trainingId);
+
+    /**
+     * Setting current training.
+     *
+     * @param trainingId - training id
+     */
+    void updateCurrentTraining(int trainingId);
 }
