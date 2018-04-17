@@ -22,7 +22,7 @@ import javax.inject.Inject;
 public class LapsFragment extends BaseFragment implements LapsView {
 
     @Inject
-    private LapsPresenter presenter;
+    LapsPresenter presenter;
 
     @Override
     protected int getFragmentLayoutId() {
