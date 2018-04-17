@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.trainings.newtraining;
+package com.dvinc.circlestimer.ui.newtraining;
 
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
