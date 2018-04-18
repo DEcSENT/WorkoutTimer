@@ -51,4 +51,11 @@ public interface TrainingsRepository {
      * @param trainingId - training id
      */
     void updateCurrentTraining(int trainingId);
+
+    /**
+     * Getting current selected training.
+     *
+     * @return - current training.
+     */
+    Training getCurrentTraining();
 }

@@ -55,4 +55,9 @@ public class TrainingsRepositoryImpl implements TrainingsRepository {
     public void updateCurrentTraining(int trainingId) {
         trainingsDatabase.trainingsDao().setCurrentTraining(trainingId);
     }
+
+    @Override
+    public Training getCurrentTraining() {
+        return trainingsDatabase.trainingsDao().getCurrentTraining();
+    }
 }

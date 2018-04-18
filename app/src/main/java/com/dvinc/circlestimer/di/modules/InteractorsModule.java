@@ -33,9 +33,10 @@ public class InteractorsModule {
     }
 
     @Provides
-    LapsInteractor provideLapsInteractor(@NonNull LapsRepository lapsRepository,
-                                              @IoScheduler Scheduler schedulerIo,
-                                              @UiScheduler Scheduler schedulerUi) {
-        return new LapsInteractorImpl(lapsRepository, schedulerIo, schedulerUi);
+    LapsInteractor provideLapsInteractor(@NonNull TrainingsRepository repository,
+                                         @NonNull LapsRepository lapsRepository,
+                                         @IoScheduler Scheduler schedulerIo,
+                                         @UiScheduler Scheduler schedulerUi) {
+        return new LapsInteractorImpl(repository, lapsRepository, schedulerIo, schedulerUi);
     }
 }
