@@ -9,6 +9,8 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.dvinc.circlestimer.data.db.TrainingsDatabase;
+import com.dvinc.circlestimer.data.repositories.laps.LapsRepository;
+import com.dvinc.circlestimer.data.repositories.laps.LapsRepositoryImpl;
 import com.dvinc.circlestimer.data.repositories.training.TrainingsRepository;
 import com.dvinc.circlestimer.data.repositories.training.TrainingsRepositoryImpl;
 import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
@@ -34,6 +36,12 @@ public class DataModule {
     @Singleton
     TrainingsRepository provideTrainingsRepository(TrainingsDatabase trainingsDatabase) {
         return new TrainingsRepositoryImpl(trainingsDatabase);
+    }
+
+    @Provides
+    @Singleton
+    LapsRepository provideLapsRepository(TrainingsDatabase trainingsDatabase) {
+        return new LapsRepositoryImpl(trainingsDatabase);
     }
 
     @Provides

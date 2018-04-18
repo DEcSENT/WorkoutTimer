@@ -9,7 +9,7 @@ package com.dvinc.circlestimer.domain.interactors.laps;
 
 import android.support.annotation.NonNull;
 
-import com.dvinc.circlestimer.data.repositories.training.TrainingsRepository;
+import com.dvinc.circlestimer.data.repositories.laps.LapsRepository;
 import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
 import com.dvinc.circlestimer.di.qualifiers.UiScheduler;
 import com.dvinc.circlestimer.domain.entities.LapItem;
@@ -24,7 +24,7 @@ import io.reactivex.Scheduler;
 public class LapsInteractorImpl implements LapsInteractor {
 
     @NonNull
-    private TrainingsRepository repository;
+    private LapsRepository repository;
 
     @NonNull
     private final Scheduler schedulerIo;
@@ -33,7 +33,7 @@ public class LapsInteractorImpl implements LapsInteractor {
     private final Scheduler schedulerUi;
 
     @Inject
-    public LapsInteractorImpl(@NonNull TrainingsRepository repository,
+    public LapsInteractorImpl(@NonNull LapsRepository lapsRepository,
                               @NonNull @IoScheduler Scheduler schedulerIo,
                               @NonNull @UiScheduler Scheduler schedulerUi) {
         this.repository = repository;

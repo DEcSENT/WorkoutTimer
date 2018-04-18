@@ -20,6 +20,11 @@ class LapsPresenter extends BasePresenter<LapsView> {
     @Inject
     LapsInteractor interactor;
 
+    @Inject
+    LapsPresenter(LapsInteractor lapsInteractor) {
+        interactor = lapsInteractor;
+    }
+
     void initLapsView() {
         //TODO: load laps list from interactor here
     }

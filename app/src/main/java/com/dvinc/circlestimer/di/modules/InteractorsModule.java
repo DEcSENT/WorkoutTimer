@@ -8,6 +8,7 @@ package com.dvinc.circlestimer.di.modules;
 
 import android.support.annotation.NonNull;
 
+import com.dvinc.circlestimer.data.repositories.laps.LapsRepository;
 import com.dvinc.circlestimer.data.repositories.training.TrainingsRepository;
 import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
 import com.dvinc.circlestimer.di.qualifiers.UiScheduler;
@@ -25,15 +26,16 @@ public class InteractorsModule {
 
     @Provides
     TrainingsInteractor provideTrainingsInteractor(@NonNull TrainingsRepository repository,
+                                                   @NonNull LapsRepository lapsRepository,
                                                    @IoScheduler Scheduler schedulerIo,
                                                    @UiScheduler Scheduler schedulerUi) {
-        return new TrainingsInteractorImpl(repository, schedulerIo, schedulerUi);
+        return new TrainingsInteractorImpl(repository, lapsRepository, schedulerIo, schedulerUi);
     }
 
     @Provides
-    LapsInteractor provideLapsInteractor(@NonNull TrainingsRepository repository,
+    LapsInteractor provideLapsInteractor(@NonNull LapsRepository lapsRepository,
                                               @IoScheduler Scheduler schedulerIo,
                                               @UiScheduler Scheduler schedulerUi) {
-        return new LapsInteractorImpl(repository, schedulerIo, schedulerUi);
+        return new LapsInteractorImpl(lapsRepository, schedulerIo, schedulerUi);
     }
 }

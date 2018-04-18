@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 
 import com.dvinc.circlestimer.data.db.entities.Lap;
 import com.dvinc.circlestimer.data.db.entities.Training;
+import com.dvinc.circlestimer.data.repositories.laps.LapsRepository;
 import com.dvinc.circlestimer.data.repositories.training.TrainingsRepository;
 import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
 import com.dvinc.circlestimer.di.qualifiers.UiScheduler;
@@ -47,6 +48,9 @@ public class TrainingsInteractorImpl implements TrainingsInteractor {
     private TrainingsRepository repository;
 
     @NonNull
+    private LapsRepository lapsRepository;
+
+    @NonNull
     private final Scheduler schedulerIo;
 
     @NonNull
@@ -54,9 +58,11 @@ public class TrainingsInteractorImpl implements TrainingsInteractor {
 
     @Inject
     public TrainingsInteractorImpl(@NonNull TrainingsRepository repository,
+                                   @NonNull LapsRepository lapsRepository,
                                    @NonNull @IoScheduler Scheduler schedulerIo,
                                    @NonNull @UiScheduler Scheduler schedulerUi) {
         this.repository = repository;
+        this.lapsRepository = lapsRepository;
         this.schedulerIo = schedulerIo;
         this.schedulerUi = schedulerUi;
     }
@@ -67,7 +73,7 @@ public class TrainingsInteractorImpl implements TrainingsInteractor {
                 .map(rawList -> {
                     final List<TrainingItem> mappedItems = new ArrayList<>();
                     for (Training training : rawList) {
-                        List<Lap> trainingLaps = repository.getLapsByTrainingId(training.getUid());
+                        List<Lap> trainingLaps = lapsRepository.getLapsByTrainingId(training.getUid());
                         int lapsCount = trainingLaps.size();
                         int totalTime = 0;
                         for (Lap lap : trainingLaps) {
@@ -91,7 +97,7 @@ public class TrainingsInteractorImpl implements TrainingsInteractor {
                     for (int i = 0; i < defaultLaps; i++) {
                         laps.add(new Lap(trainingId, i, DEFAULT_LAP_NAME, DEFAULT_LAP_COLOR, DEFAULT_LAP_TIME));
                     }
-                    return Completable.fromAction(() -> repository.addLaps(laps));
+                    return Completable.fromAction(() -> lapsRepository.addLaps(laps));
                 })
                 .subscribeOn(schedulerIo)
                 .observeOn(schedulerUi);
@@ -100,7 +106,7 @@ public class TrainingsInteractorImpl implements TrainingsInteractor {
     @Override
     public Completable deleteTraining(int trainingId) {
         return Completable.fromAction(() -> repository.deleteTraining(trainingId))
-                .andThen(Completable.fromAction(() -> repository.removeLapsByTrainingId(trainingId)))
+                .andThen(Completable.fromAction(() -> lapsRepository.removeLapsByTrainingId(trainingId)))
                 .subscribeOn(schedulerIo)
                 .observeOn(schedulerUi);
     }
