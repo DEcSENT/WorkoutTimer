@@ -8,6 +8,7 @@
 package com.dvinc.circlestimer.di.modules;
 
 import com.dvinc.circlestimer.domain.mappers.LapsMapper;
+import com.dvinc.circlestimer.domain.mappers.TrainingsMapper;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,5 +19,10 @@ public class MapperModule {
     @Provides
     LapsMapper provideLapsMapper() {
         return new LapsMapper();
+    }
+
+    @Provides
+    TrainingsMapper provideTrainingsMapper() {
+        return new TrainingsMapper();
     }
 }

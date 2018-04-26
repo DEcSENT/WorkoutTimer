@@ -19,6 +19,20 @@ import java.util.List;
  * This is prototype class for mapping.
  */
 public class LapsMapper {
+    /**
+     * Default lap name.
+     */
+    private static final String DEFAULT_LAP_NAME = "Lap";
+
+    /**
+     * Default lap cell color in hex.
+     */
+    private static final String DEFAULT_LAP_COLOR = "#FFFFFF";
+
+    /**
+     * Default lap time in seconds.
+     */
+    private static final int DEFAULT_LAP_TIME = 30;
 
     @NonNull
     public List<LapItem> map(@NonNull List<Lap> laps) {
@@ -29,6 +43,15 @@ public class LapsMapper {
         }
 
         return mappedLaps;
+    }
+
+    @NonNull
+    public List<Lap> generateDefaultLaps(int trainingId, int defaultLapsAmount) {
+        List<Lap> laps = new ArrayList<>();
+        for (int i = 0; i < defaultLapsAmount; i++) {
+            laps.add(new Lap(trainingId, i, DEFAULT_LAP_NAME, DEFAULT_LAP_COLOR, DEFAULT_LAP_TIME));
+        }
+        return laps;
     }
 
     @NonNull

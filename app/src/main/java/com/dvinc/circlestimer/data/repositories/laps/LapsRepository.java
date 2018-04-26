@@ -36,4 +36,7 @@ public interface LapsRepository {
      */
     @NonNull
     List<Lap> getLapsByTrainingId(int trainingId);
+
+    @NonNull
+    List<Lap> getAllLaps();
 }

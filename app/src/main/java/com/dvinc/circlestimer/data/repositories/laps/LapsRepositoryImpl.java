@@ -43,4 +43,10 @@ public class LapsRepositoryImpl implements LapsRepository {
     public List<Lap> getLapsByTrainingId(int trainingId) {
         return trainingsDatabase.lapsDao().getLaps(trainingId);
     }
+
+    @NonNull
+    @Override
+    public List<Lap> getAllLaps() {
+        return  trainingsDatabase.lapsDao().getAllLaps();
+    }
 }

@@ -17,6 +17,7 @@ import com.dvinc.circlestimer.domain.interactors.laps.LapsInteractorImpl;
 import com.dvinc.circlestimer.domain.interactors.trainings.TrainingsInteractor;
 import com.dvinc.circlestimer.domain.interactors.trainings.TrainingsInteractorImpl;
 import com.dvinc.circlestimer.domain.mappers.LapsMapper;
+import com.dvinc.circlestimer.domain.mappers.TrainingsMapper;
 
 import dagger.Module;
 import dagger.Provides;
@@ -29,8 +30,10 @@ public class InteractorsModule {
     TrainingsInteractor provideTrainingsInteractor(@NonNull TrainingsRepository repository,
                                                    @NonNull LapsRepository lapsRepository,
                                                    @IoScheduler Scheduler schedulerIo,
-                                                   @UiScheduler Scheduler schedulerUi) {
-        return new TrainingsInteractorImpl(repository, lapsRepository, schedulerIo, schedulerUi);
+                                                   @UiScheduler Scheduler schedulerUi,
+                                                   @NonNull LapsMapper lapsMapper,
+                                                   @NonNull TrainingsMapper trainingsMapper) {
+        return new TrainingsInteractorImpl(repository, lapsRepository, schedulerIo, schedulerUi, lapsMapper, trainingsMapper);
     }
 
     @Provides

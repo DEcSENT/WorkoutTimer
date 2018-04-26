@@ -24,4 +24,7 @@ public interface LapDao {
 
     @Query("SELECT * FROM Laps WHERE training_id =:trainingId")
     List<Lap> getLaps(int trainingId);
+
+    @Query("SELECT * FROM Laps")
+    List<Lap> getAllLaps();
 }
