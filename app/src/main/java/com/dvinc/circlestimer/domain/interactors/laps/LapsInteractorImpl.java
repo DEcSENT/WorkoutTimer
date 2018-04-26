@@ -29,7 +29,7 @@ import io.reactivex.Scheduler;
 public class LapsInteractorImpl implements LapsInteractor {
 
     @NonNull
-    private TrainingsRepository repository;
+    private TrainingsRepository trainingsRepository;
 
     @NonNull
     private LapsRepository lapsRepository;
@@ -41,11 +41,11 @@ public class LapsInteractorImpl implements LapsInteractor {
     private final Scheduler schedulerUi;
 
     @Inject
-    public LapsInteractorImpl(@NonNull TrainingsRepository repository,
+    public LapsInteractorImpl(@NonNull TrainingsRepository trainingsRepository,
                               @NonNull LapsRepository lapsRepository,
                               @NonNull @IoScheduler Scheduler schedulerIo,
                               @NonNull @UiScheduler Scheduler schedulerUi) {
-        this.repository = repository;
+        this.trainingsRepository = trainingsRepository;
         this.lapsRepository = lapsRepository;
         this.schedulerIo = schedulerIo;
         this.schedulerUi = schedulerUi;
@@ -53,7 +53,7 @@ public class LapsInteractorImpl implements LapsInteractor {
 
     @Override
     public Flowable<List<LapItem>> getLaps() {
-        return Flowable.fromCallable(() -> repository.getCurrentTraining())
+        return Flowable.fromCallable(() -> trainingsRepository.getCurrentTraining())
                 .filter(training -> training != null)
                 .map(Training::getUid)
                 .map(trainingId -> lapsRepository.getLapsByTrainingId(trainingId))
