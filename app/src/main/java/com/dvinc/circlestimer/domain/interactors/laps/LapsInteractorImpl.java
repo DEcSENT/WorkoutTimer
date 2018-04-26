@@ -16,7 +16,7 @@ import com.dvinc.circlestimer.data.repositories.training.TrainingsRepository;
 import com.dvinc.circlestimer.di.qualifiers.IoScheduler;
 import com.dvinc.circlestimer.di.qualifiers.UiScheduler;
 import com.dvinc.circlestimer.domain.entities.LapItem;
-import com.dvinc.circlestimer.domain.mappers.LapMapper;
+import com.dvinc.circlestimer.domain.mappers.LapsMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,15 +40,20 @@ public class LapsInteractorImpl implements LapsInteractor {
     @NonNull
     private final Scheduler schedulerUi;
 
+    @NonNull
+    private final LapsMapper lapsMapper;
+
     @Inject
     public LapsInteractorImpl(@NonNull TrainingsRepository trainingsRepository,
                               @NonNull LapsRepository lapsRepository,
                               @NonNull @IoScheduler Scheduler schedulerIo,
-                              @NonNull @UiScheduler Scheduler schedulerUi) {
+                              @NonNull @UiScheduler Scheduler schedulerUi,
+                              @NonNull LapsMapper lapsMapper) {
         this.trainingsRepository = trainingsRepository;
         this.lapsRepository = lapsRepository;
         this.schedulerIo = schedulerIo;
         this.schedulerUi = schedulerUi;
+        this.lapsMapper = lapsMapper;
     }
 
     @Override
@@ -57,19 +62,8 @@ public class LapsInteractorImpl implements LapsInteractor {
                 .filter(training -> training != null)
                 .map(Training::getUid)
                 .map(trainingId -> lapsRepository.getLapsByTrainingId(trainingId))
-                .map(this::mapLaps)
+                .map(lapsMapper::map)
                 .subscribeOn(schedulerIo)
                 .observeOn(schedulerUi);
-    }
-
-    @NonNull
-    private List<LapItem> mapLaps(@NonNull List<Lap> rawLaps) {
-        List<LapItem> mappedLaps = new ArrayList<>();
-
-        for (Lap lap : rawLaps) {
-            mappedLaps.add(LapMapper.mapLap(lap));
-        }
-
-        return mappedLaps;
     }
 }
