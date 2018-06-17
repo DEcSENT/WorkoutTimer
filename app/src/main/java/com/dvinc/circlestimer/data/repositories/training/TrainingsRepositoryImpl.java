@@ -52,24 +52,12 @@ public class TrainingsRepositoryImpl implements TrainingsRepository {
     }
 
     @Override
-    public void addLaps(@NonNull List<Lap> laps) {
-        trainingsDatabase.lapsDao().insertAll(laps);
-    }
-
-    @Override
-    public void removeLapsByTrainingId(int trainingId) {
-        trainingsDatabase.lapsDao().removeLaps(trainingId);
-    }
-
-
-    @Override
     public void updateCurrentTraining(int trainingId) {
         trainingsDatabase.trainingsDao().setCurrentTraining(trainingId);
     }
 
-    @NonNull
     @Override
-    public List<Lap> getLapsByTrainingId(int trainingId) {
-        return trainingsDatabase.lapsDao().getLaps(trainingId);
+    public Training getCurrentTraining() {
+        return trainingsDatabase.trainingsDao().getCurrentTraining();
     }
 }

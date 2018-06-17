@@ -46,20 +46,6 @@ public interface TrainingsRepository {
     int getLastAddedTrainingId();
 
     /**
-     * Adding training laps in to data source.
-     *
-     * @param laps - training laps
-     */
-    void addLaps(@NonNull List<Lap> laps);
-
-    /**
-     * Removing training laps by training id.
-     *
-     * @param trainingId - training id
-     */
-    void removeLapsByTrainingId(int trainingId);
-
-    /**
      * Setting current training.
      *
      * @param trainingId - training id
@@ -67,10 +53,9 @@ public interface TrainingsRepository {
     void updateCurrentTraining(int trainingId);
 
     /**
-     * Getting training laps.
+     * Getting current selected training.
      *
-     * @param trainingId - training id
+     * @return - current training.
      */
-    @NonNull
-    List<Lap> getLapsByTrainingId(int trainingId);
+    Training getCurrentTraining();
 }

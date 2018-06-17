@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.circlestimer.ui.trainings.newtraining;
+package com.dvinc.circlestimer.ui.newtraining;
 
 import android.app.Dialog;
 import android.graphics.Color;

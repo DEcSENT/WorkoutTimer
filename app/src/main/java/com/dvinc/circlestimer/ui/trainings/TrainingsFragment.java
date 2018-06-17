@@ -20,7 +20,7 @@ import com.dvinc.circlestimer.App;
 import com.dvinc.circlestimer.R;
 import com.dvinc.circlestimer.domain.entities.TrainingItem;
 import com.dvinc.circlestimer.ui.base.BaseFragment;
-import com.dvinc.circlestimer.ui.trainings.newtraining.NewTrainingFragment;
+import com.dvinc.circlestimer.ui.newtraining.NewTrainingFragment;
 
 import java.util.List;
 
