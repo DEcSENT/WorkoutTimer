@@ -5,9 +5,7 @@ def dagger_version = '2.11'
 def rxJava_version = '2.1.1'
 def rxAndroid_version = '2.0.1'
 def android_room_version = '1.0.0'
-def retrofit_version = '2.3.0'
 def stetho_version = '1.5.0'
-def timber_version = '4.6.0'
 
 ext{
     support_library = "com.android.support:appcompat-v7:$android_support_version"
@@ -27,13 +25,5 @@ ext{
     android_room_processor =  "android.arch.persistence.room:compiler:$android_room_version"
     android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_version"
 
-    retrofit = [
-            "com.squareup.retrofit2:retrofit:${retrofit_version}",
-            "com.squareup.retrofit2:converter-gson:${retrofit_version}",
-            "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
-    ]
-
     stetho = "com.facebook.stetho:stetho:$stetho_version"
-
-    timber = "com.jakewharton.timber:timber:$timber_version"
 }
