@@ -31,7 +31,7 @@ import butterknife.OnClick;
 
 public class TrainingsFragment extends BaseFragment implements TrainingsView {
 
-    @BindView(R.id.rv_trainings) RecyclerView trainingsRecyclerView;
+    @BindView(R.id.fragment_workout_recycler) RecyclerView trainingsRecyclerView;
 
     @Inject
     TrainingsPresenter trainingsPresenter;
@@ -40,7 +40,7 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
 
     @Override
     protected int getFragmentLayoutId() {
-        return R.layout.fragment_trainings;
+        return R.layout.fragment_workout;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class TrainingsFragment extends BaseFragment implements TrainingsView {
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    @OnClick(R.id.btn_trainings_add_training)
+    @OnClick(R.id.fragment_workout_add_button)
     void onClickNewTrainingButton(View view) {
         FragmentManager fragmentManager = getFragmentManager();
         if (fragmentManager != null) {

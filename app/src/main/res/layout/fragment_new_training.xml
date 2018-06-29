@@ -12,7 +12,7 @@
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/tv_new_training_header"
+            android:id="@+id/fragment_new_workout_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -26,19 +26,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/et_new_training_name"
+            android:id="@+id/fragment_new_workout_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:hint="@string/new_training_name"
+            android:inputType="textCapSentences"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_new_training_header" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_new_workout_header" />
 
         <TextView
-            android:id="@+id/tv_new_training_laps"
+            android:id="@+id/fragment_new_workout_laps_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -46,20 +47,20 @@
             android:text="@string/new_training_default_laps"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_new_training_name" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_new_workout_name" />
 
         <Spinner
-            android:id="@+id/spn_new_training_laps"
+            android:id="@+id/fragment_new_workout_laps_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_new_training_name">
+            app:layout_constraintTop_toBottomOf="@+id/fragment_new_workout_name">
         </Spinner>
 
         <Button
-            android:id="@+id/btn_new_training_cancel"
+            android:id="@+id/fragment_new_workout_cancel_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,18 +69,18 @@
             android:layout_marginTop="32dp"
             android:text="@string/new_training_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_new_training_add"
-            app:layout_constraintTop_toBottomOf="@+id/tv_new_training_laps" />
+            app:layout_constraintEnd_toStartOf="@+id/fragment_new_workout_add_button"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_new_workout_laps_count" />
 
         <Button
-            android:id="@+id/btn_new_training_add"
+            android:id="@+id/fragment_new_workout_add_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:text="@string/new_training_add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_new_training_cancel" />
+            app:layout_constraintTop_toTopOf="@+id/fragment_new_workout_cancel_button" />
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
