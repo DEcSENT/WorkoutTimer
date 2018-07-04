@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_timer"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_main_timer"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_exercise"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_main_exercise"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_workout"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_main_workout"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_music"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_main_settings"
+        app:showAsAction="ifRoom" />
+</menu>
