@@ -20,4 +20,10 @@
     <string name="delete_training_dialog_negative_btn">@android:string/cancel</string>
     <string name="item_training_edit_button_description">Edit training button</string>
     <string name="message_training_new_current_training">New current training selected</string>
+
+    <!--New string res-->
+    <string name="menu_main_timer">Timer</string>
+    <string name="menu_main_exercise">Exercises</string>
+    <string name="menu_main_workout">Workouts</string>
+    <string name="menu_main_settings">Settings</string>
 </resources>

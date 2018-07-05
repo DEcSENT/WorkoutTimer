@@ -35,8 +35,8 @@ public class NewTrainingFragment extends DialogFragment implements NewTrainingVi
 
     public static final String TAG = "NewTrainingFragment";
 
-    @BindView(R.id.et_new_training_name) EditText newTrainingEditText;
-    @BindView(R.id.spn_new_training_laps) Spinner lapsSpinner;
+    @BindView(R.id.fragment_new_workout_name) EditText newTrainingEditText;
+    @BindView(R.id.fragment_new_workout_laps_spinner) Spinner lapsSpinner;
 
     private Unbinder unbinder;
 
@@ -93,12 +93,12 @@ public class NewTrainingFragment extends DialogFragment implements NewTrainingVi
         unbinder.unbind();
     }
 
-    @OnClick(R.id.btn_new_training_cancel)
+    @OnClick(R.id.fragment_new_workout_cancel_button)
     void onClickCancel(View view) {
         dismiss();
     }
 
-    @OnClick(R.id.btn_new_training_add)
+    @OnClick(R.id.fragment_new_workout_add_button)
     void onClickAddTraining(View view) {
         String name = newTrainingEditText.getText().toString();
         String selectedValue = lapsSpinner.getSelectedItem().toString();
