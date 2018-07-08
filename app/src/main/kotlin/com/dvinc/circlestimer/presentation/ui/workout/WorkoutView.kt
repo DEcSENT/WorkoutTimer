@@ -12,9 +12,9 @@ import com.dvinc.circlestimer.presentation.ui.base.MessageView
 
 interface WorkoutView : BaseMvpView, MessageView {
 
-    fun showWorkouts(workouts: List<Workout>)
+    fun showWorkouts(workouts: List<WorkoutUi>)
 
-    fun showDeleteWorkoutDialog(workout: Workout)
+    fun showDeleteWorkoutDialog(workout: WorkoutUi)
 
     fun showNewWorkoutDialog()
 }

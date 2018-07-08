@@ -16,6 +16,7 @@ import com.dvinc.circlestimer.presentation.common.extension.makeGone
 import com.dvinc.circlestimer.presentation.common.extension.makeVisible
 import com.dvinc.circlestimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.circlestimer.presentation.model.workout.WorkoutItem
+import com.dvinc.circlestimer.presentation.model.workout.WorkoutUi
 import com.dvinc.circlestimer.ui.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -56,13 +57,13 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         presenter.detachView()
     }
 
-    override fun showWorkouts(workouts: List<Workout>) {
+    override fun showWorkouts(workouts: List<WorkoutUi>) {
         workoutAdapter.clear()
         workoutAdapter.addAll(workouts
                 .map { WorkoutItem(it) })
     }
 
-    override fun showDeleteWorkoutDialog(workout: Workout) {
+    override fun showDeleteWorkoutDialog(workout: WorkoutUi) {
         //TODO: show delete dialog
     }
 
