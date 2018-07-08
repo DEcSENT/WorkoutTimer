@@ -3,7 +3,6 @@
     <string name="main_stop">Stop</string>
     <string name="main_start">Start</string>
     <string name="main_pause">Pause</string>
-    <string name="main_add_training">Add training</string>
     <string name="menu_title_trainings">trainings</string>
     <string name="new_training_header">New training</string>
     <string name="new_training_name">New training name</string>
@@ -27,4 +26,7 @@
     <string name="item_workout_total_exercise">Exercises:</string>
     <string name="item_workout_total_time">Time:</string>
     <string name="item_workout_active">Active</string>
+
+    <string name="workout_add_workout">Add workout</string>
+
 </resources>
