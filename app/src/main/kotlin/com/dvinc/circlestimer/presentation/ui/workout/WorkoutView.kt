@@ -5,7 +5,8 @@
 
 package com.dvinc.circlestimer.presentation.ui.workout
 
-import com.dvinc.circlestimer.presentation.model.workout.Workout
+import com.dvinc.circlestimer.domain.model.workout.Workout
+import com.dvinc.circlestimer.presentation.model.workout.WorkoutUi
 import com.dvinc.circlestimer.presentation.ui.base.BaseMvpView
 import com.dvinc.circlestimer.presentation.ui.base.MessageView
 

@@ -8,7 +8,8 @@ package com.dvinc.circlestimer.presentation.ui.workout
 import android.os.Bundle
 import android.view.View
 import com.dvinc.circlestimer.R
-import com.dvinc.circlestimer.presentation.model.workout.Workout
+import com.dvinc.circlestimer.domain.model.workout.Workout
+import com.dvinc.circlestimer.presentation.model.workout.WorkoutUi
 import com.dvinc.circlestimer.ui.base.BaseFragment
 
 class WorkoutFragment : BaseFragment(), WorkoutView {

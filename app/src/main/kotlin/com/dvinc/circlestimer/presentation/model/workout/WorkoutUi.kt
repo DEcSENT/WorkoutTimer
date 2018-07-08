@@ -5,4 +5,4 @@
 
 package com.dvinc.circlestimer.presentation.model.workout
 
-data class Workout(val name: String)
+data class WorkoutUi(val name: String)
