@@ -9,8 +9,11 @@ import android.os.Bundle
 import android.view.View
 import com.dvinc.circlestimer.R
 import com.dvinc.circlestimer.domain.model.workout.Workout
-import com.dvinc.circlestimer.presentation.model.workout.WorkoutUi
+import com.dvinc.circlestimer.presentation.model.workout.WorkoutItem
 import com.dvinc.circlestimer.ui.base.BaseFragment
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.fragment_workout.fragment_workout_recycler as workoutRecycler
 
 class WorkoutFragment : BaseFragment(), WorkoutView {
 
@@ -23,10 +26,12 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     override fun getFragmentLayoutId() = R.layout.fragment_workout
 
+    private val workoutAdapter: GroupAdapter<ViewHolder> = GroupAdapter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupWorkoutsList()
+        initWorkoutsList()
         setupSwipeToDelete()
         setupAddButton()
     }
@@ -42,7 +47,9 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
     }
 
     override fun showWorkouts(workouts: List<Workout>) {
-        //TODO: handle new list
+        workoutAdapter.clear()
+        workoutAdapter.addAll(workouts
+                .map { WorkoutItem(it) })
     }
 
     override fun showDeleteWorkoutDialog(workout: Workout) {
@@ -61,8 +68,8 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         //TODO: show error
     }
 
-    private fun setupWorkoutsList() {
-        //TODO: recycler and adapter with listener, etc.
+    private fun initWorkoutsList() {
+        workoutRecycler.adapter = workoutAdapter
     }
 
     private fun setupSwipeToDelete() {

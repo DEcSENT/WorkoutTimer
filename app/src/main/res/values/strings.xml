@@ -5,9 +5,6 @@
     <string name="main_pause">Pause</string>
     <string name="main_add_training">Add training</string>
     <string name="menu_title_trainings">trainings</string>
-    <string name="item_training_total_laps">Total laps:</string>
-    <string name="item_training_total_time">Total time:</string>
-    <string name="item_training_current">Current</string>
     <string name="new_training_header">New training</string>
     <string name="new_training_name">New training name</string>
     <string name="new_training_default_laps">Default laps count</string>
@@ -26,4 +23,8 @@
     <string name="menu_main_exercise">Exercises</string>
     <string name="menu_main_workout">Workouts</string>
     <string name="menu_main_settings">Settings</string>
+
+    <string name="item_workout_total_exercise">Total exercises:</string>
+    <string name="item_workout_total_time">Total time:</string>
+    <string name="item_workout_active">Active</string>
 </resources>
