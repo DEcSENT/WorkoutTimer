@@ -7,12 +7,14 @@ package com.dvinc.circlestimer.presentation.ui.workout
 
 import android.os.Bundle
 import android.view.View
+import com.dvinc.circlestimer.App
 import com.dvinc.circlestimer.R
 import com.dvinc.circlestimer.domain.model.workout.Workout
 import com.dvinc.circlestimer.presentation.model.workout.WorkoutItem
 import com.dvinc.circlestimer.ui.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_workout.fragment_workout_recycler as workoutRecycler
 
 class WorkoutFragment : BaseFragment(), WorkoutView {
@@ -21,7 +23,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         const val TAG = "WorkoutFragment"
     }
 
-    //TODO: Inject presenter
+    @Inject
     lateinit var presenter: WorkoutPresenter
 
     override fun getFragmentLayoutId() = R.layout.fragment_workout
@@ -30,6 +32,10 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        context?.let {
+            App.get(it).appComponent.inject(this)
+        }
 
         initWorkoutsList()
         setupSwipeToDelete()
