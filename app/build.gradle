@@ -34,6 +34,10 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    androidExtensions {
+        experimental = true
+    }
+
 }
 
 dependencies {
@@ -78,6 +82,12 @@ dependencies {
 
             android_room_rx,
 
-            stetho
+            stetho,
+
+            groupie,
+
+            groipieExt,
+
+            card_view
     )
 }

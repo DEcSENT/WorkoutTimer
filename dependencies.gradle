@@ -6,11 +6,13 @@ def rxJava_version = '2.1.1'
 def rxAndroid_version = '2.0.1'
 def android_room_version = '1.0.0'
 def stetho_version = '1.5.0'
+def groupie_version = '2.1.0'
 
 ext{
     support_library = "com.android.support:appcompat-v7:$android_support_version"
     support_design = "com.android.support:design:$android_support_version"
     constraint_layout = "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+    card_view = "com.android.support:cardview-v7:$android_support_version"
 
     butterknife = "com.jakewharton:butterknife:$butterKnife_version"
     butterknife_processor = "com.jakewharton:butterknife-compiler:$butterKnife_version"
@@ -26,4 +28,7 @@ ext{
     android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_version"
 
     stetho = "com.facebook.stetho:stetho:$stetho_version"
+
+    groupie = "com.xwray:groupie:$groupie_version"
+    groipieExt = "com.xwray:groupie-kotlin-android-extensions:$groupie_version"
 }
