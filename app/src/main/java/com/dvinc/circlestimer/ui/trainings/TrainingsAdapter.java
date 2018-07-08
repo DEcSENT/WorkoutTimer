@@ -36,8 +36,8 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
             super(view);
             trainingNameTextView = view.findViewById(R.id.item_workout_name);
             trainingCurrentText = view.findViewById(R.id.item_workout_active);
-            trainingLaps = view.findViewById(R.id.item_workout_total_exercises_value);
-            trainingTime = view.findViewById(R.id.item_wotkout_exercises_total_time_value);
+            trainingLaps = view.findViewById(R.id.item_workout_total_exercises_count);
+            trainingTime = view.findViewById(R.id.item_workout_exercises_total_time);
         }
     }
 

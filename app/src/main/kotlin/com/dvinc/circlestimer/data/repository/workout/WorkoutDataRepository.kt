@@ -19,7 +19,7 @@ class WorkoutDataRepository : WorkoutRepository {
         val list = ArrayList<Workout>()
 
         (1..7).forEach {
-            list.add(Workout(it, "Workout$it", 10, 100000, false))
+            list.add(Workout(it, "Workout$it", "Hilarious workout with girls, beer, and thousands exercises", 10, 100000, false))
         }
 
         return list

@@ -24,7 +24,7 @@
     <string name="menu_main_workout">Workouts</string>
     <string name="menu_main_settings">Settings</string>
 
-    <string name="item_workout_total_exercise">Total exercises:</string>
-    <string name="item_workout_total_time">Total time:</string>
+    <string name="item_workout_total_exercise">Exercises:</string>
+    <string name="item_workout_total_time">Time:</string>
     <string name="item_workout_active">Active</string>
 </resources>

@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="2dp"
-    android:background="@color/white">
+    android:layout_marginBottom="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/item_workout_name"
@@ -27,59 +29,72 @@
             tools:text="TestName" />
 
         <TextView
-            android:id="@+id/item_workout_total_exercises"
+            android:id="@+id/item_workout_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/item_workout_name"
+            app:layout_constraintTop_toBottomOf="@+id/item_workout_name"
+            tools:text="So, this is long workout description..." />
+
+        <TextView
+            android:id="@+id/item_workout_total_exercises_count_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
             android:text="@string/item_workout_total_exercise"
             android:textSize="@dimen/item_training_text_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/item_workout_name"
-            app:layout_constraintTop_toBottomOf="@+id/item_workout_name" />
+            app:layout_constraintTop_toBottomOf="@+id/item_workout_description" />
 
         <TextView
-            android:id="@+id/item_workout_total_exercises_value"
+            android:id="@+id/item_workout_total_exercises_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textColor="@color/color_item_training_main_text"
             android:textSize="@dimen/item_training_text_small"
-            app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises"
-            app:layout_constraintStart_toEndOf="@+id/item_workout_total_exercises"
-            app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises"
+            app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises_count_text"
+            app:layout_constraintStart_toEndOf="@+id/item_workout_total_exercises_count_text"
+            app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises_count_text"
             tools:text="20" />
 
         <TextView
-            android:id="@+id/item_workout_exercises_total_time"
+            android:id="@+id/item_workout_exercises_total_time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:text="@string/item_workout_total_time"
             android:textSize="@dimen/item_training_text_small"
-            app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises_value"
-            app:layout_constraintEnd_toStartOf="@+id/item_wotkout_exercises_total_time_value"
-            app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises_value" />
+            app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises_count"
+            app:layout_constraintEnd_toStartOf="@+id/item_workout_exercises_total_time"
+            app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises_count" />
 
         <TextView
-            android:id="@+id/item_wotkout_exercises_total_time_value"
+            android:id="@+id/item_workout_exercises_total_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:textColor="@color/color_item_training_main_text"
             android:textSize="@dimen/item_training_text_small"
-            app:layout_constraintBottom_toBottomOf="@+id/item_workout_exercises_total_time"
+            app:layout_constraintBottom_toBottomOf="@+id/item_workout_exercises_total_time_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_workout_exercises_total_time"
+            app:layout_constraintTop_toTopOf="@+id/item_workout_exercises_total_time_text"
             tools:text="0:10:50" />
 
         <TextView
             android:id="@+id/item_workout_active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/color_item_workout_active"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
             android:text="@string/item_workout_active"
-            android:textColor="@color/color_item_training_current"
+            android:textColor="@color/white"
             android:textSize="@dimen/item_training_text_small"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/item_workout_name"
