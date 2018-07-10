@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.dvinc.circlestimer.App
 import com.dvinc.circlestimer.R
-import com.dvinc.circlestimer.domain.model.workout.Workout
 import com.dvinc.circlestimer.presentation.common.extension.makeGone
 import com.dvinc.circlestimer.presentation.common.extension.makeVisible
 import com.dvinc.circlestimer.presentation.common.view.SimpleAnimationListener
@@ -58,6 +57,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
     }
 
     override fun showWorkouts(workouts: List<WorkoutUi>) {
+        //TODO: Refactor this 2 lines?
         workoutAdapter.clear()
         workoutAdapter.addAll(workouts
                 .map { WorkoutItem(it) })
@@ -87,6 +87,11 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     private fun initWorkoutsList() {
         workoutRecycler.adapter = workoutAdapter
+        workoutAdapter.setOnItemClickListener { item, _ ->
+            if (item is WorkoutItem) {
+                presenter.onWorkoutClick(item.workout)
+            }
+        }
     }
 
     private fun setupSwipeToDelete() {

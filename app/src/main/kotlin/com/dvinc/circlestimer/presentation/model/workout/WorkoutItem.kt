@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.item_workout.item_workout_exercises_total_
 import kotlinx.android.synthetic.main.item_workout.item_workout_active as activeLabel
 
 class WorkoutItem constructor(
-        private val workout: WorkoutUi
+        val workout: WorkoutUi
 ) : Item() {
 
     override fun getLayout() = R.layout.item_workout
