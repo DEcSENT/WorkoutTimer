@@ -25,6 +25,7 @@ import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
 
+@Deprecated
 public class TrainingsInteractorImpl implements TrainingsInteractor {
 
     @NonNull

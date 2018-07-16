@@ -16,6 +16,7 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
+@Deprecated
 public interface TrainingsInteractor {
 
     /**

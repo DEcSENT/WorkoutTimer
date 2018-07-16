@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.dvinc.circlestimer.presentation.ui.main.DummyFragment
+import com.dvinc.circlestimer.presentation.ui.workout.WorkoutFragment
 import com.dvinc.circlestimer.ui.laps.LapsFragment
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -22,7 +23,7 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         return when(position) {
             0 -> DummyFragment()
             1 -> DummyFragment()
-            2 -> DummyFragment()
+            2 -> WorkoutFragment()
             3 -> DummyFragment()
             else -> LapsFragment()
         }

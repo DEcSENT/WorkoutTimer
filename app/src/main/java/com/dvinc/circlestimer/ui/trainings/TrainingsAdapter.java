@@ -19,6 +19,7 @@ import com.dvinc.circlestimer.domain.entities.TrainingItem;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyViewHolder> {
 
     private List<TrainingItem> trainingsList = new ArrayList<>();
@@ -33,10 +34,10 @@ public class TrainingsAdapter extends RecyclerView.Adapter<TrainingsAdapter.MyVi
 
         MyViewHolder(View view) {
             super(view);
-            trainingNameTextView = view.findViewById(R.id.tv_item_training_name);
-            trainingCurrentText = view.findViewById(R.id.tv_item_training_current);
-            trainingLaps = view.findViewById(R.id.tv_item_training_laps);
-            trainingTime = view.findViewById(R.id.tv_item_training_time);
+            trainingNameTextView = view.findViewById(R.id.item_workout_name);
+            trainingCurrentText = view.findViewById(R.id.item_workout_active);
+            trainingLaps = view.findViewById(R.id.item_workout_total_exercises_count);
+            trainingTime = view.findViewById(R.id.item_workout_exercises_total_time);
         }
     }
 

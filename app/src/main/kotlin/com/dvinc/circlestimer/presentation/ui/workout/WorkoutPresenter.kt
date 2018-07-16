@@ -5,15 +5,21 @@
 
 package com.dvinc.circlestimer.presentation.ui.workout
 
-import com.dvinc.circlestimer.presentation.model.workout.Workout
+import com.dvinc.circlestimer.domain.model.workout.Workout
+import com.dvinc.circlestimer.domain.usecase.workout.WorkoutUseCase
+import com.dvinc.circlestimer.presentation.mapper.workout.WorkoutPresentationMapper
+import com.dvinc.circlestimer.presentation.model.workout.WorkoutUi
 import com.dvinc.circlestimer.presentation.ui.base.BasePresenter
+import javax.inject.Inject
 
-class WorkoutPresenter : BasePresenter<WorkoutView>() {
+class WorkoutPresenter @Inject constructor(
+        private val workoutUseCase: WorkoutUseCase,
+        private val mapper: WorkoutPresentationMapper
+) : BasePresenter<WorkoutView>() {
 
-    //TODO: Inject interactor
-
-    fun initWorkoutView() {
-        //TODO: load workouts here
+    override fun attachView(view: WorkoutView) {
+        super.attachView(view)
+        initWorkoutView()
     }
 
     fun onItemSwiped(workout: Workout)  {
@@ -22,5 +28,23 @@ class WorkoutPresenter : BasePresenter<WorkoutView>() {
 
     fun onWorkoutDeleted(workout: Workout) {
         //TODO: delete workout. And rename this method?
+    }
+
+    //TODO: handle error
+    fun onWorkoutClick(workout: WorkoutUi) {
+        addSubscription(workoutUseCase.selectActiveWorkout(workout.id)
+                .subscribe(
+                        {},
+                        { it.toString() }))
+    }
+
+    //TODO: handle error
+    private fun initWorkoutView() {
+        addSubscription(workoutUseCase.obtainWorkouts()
+                .map { mapper.mapDomainToUi(it) }
+                .subscribe(
+                        { getView()?.showWorkouts(it) },
+                        { it.printStackTrace() }
+                ))
     }
 }

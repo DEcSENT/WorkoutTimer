@@ -19,6 +19,7 @@ import javax.inject.Singleton;
 import io.reactivex.Flowable;
 
 @Singleton
+@Deprecated
 public class TrainingsRepositoryImpl implements TrainingsRepository {
 
     @NonNull

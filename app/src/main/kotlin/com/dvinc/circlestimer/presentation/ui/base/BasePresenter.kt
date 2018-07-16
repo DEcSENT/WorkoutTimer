@@ -14,7 +14,7 @@ abstract class BasePresenter<T : BaseMvpView> {
     private var view: T? = null
     private val compositeDisposable = CompositeDisposable()
 
-    fun attachView(view: T) {
+    open fun attachView(view: T) {
         Assert.assertNull(this.view, "View should be null while attach")
         this.view = view
     }

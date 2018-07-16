@@ -15,6 +15,7 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 
+@Deprecated
 public interface TrainingsRepository {
 
     /**
