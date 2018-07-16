@@ -29,6 +29,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+@Deprecated
 public class TrainingsFragment extends BaseFragment implements TrainingsView {
 
     @BindView(R.id.fragment_workout_recycler) RecyclerView trainingsRecyclerView;

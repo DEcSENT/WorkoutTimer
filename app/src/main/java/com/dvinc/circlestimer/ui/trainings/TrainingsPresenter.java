@@ -19,6 +19,7 @@ import javax.inject.Singleton;
 //TODO: handle view null
 //TODO: update string res for messages
 @Singleton
+@Deprecated
 public class TrainingsPresenter extends BasePresenter<TrainingsView> {
 
     @NonNull
