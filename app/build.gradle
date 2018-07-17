@@ -49,47 +49,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    annotationProcessor(
-            butterknife_processor,
+    annotationProcessor(librariesAnnotationProcessors)
 
-            dagger_processor,
+    kapt(librariesAnnotationProcessors)
 
-            android_room_processor
-    )
-
-    kapt(
-            butterknife_processor,
-
-            dagger_processor,
-
-            android_room_processor
-    )
-
-    implementation (
-            support_library,
-
-            support_design,
-
-            constraint_layout,
-
-            butterknife,
-
-            dagger,
-
-            rxjava,
-
-            rxandroid,
-
-            android_room,
-
-            android_room_rx,
-
-            stetho,
-
-            groupie,
-
-            groipieExt,
-
-            card_view
-    )
+    implementation (appDependencies)
 }
