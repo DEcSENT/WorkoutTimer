@@ -9,6 +9,10 @@ def android_room_version = '1.0.0'
 def stetho_version = '1.5.0'
 def groupie_version = '2.1.0'
 
+def jUnit_version = '4.12'
+def test_runner_version = '1.0.2'
+def espresso_version = '3.0.2'
+
 ext{
 
     librariesAnnotationProcessors = [
@@ -57,5 +61,14 @@ ext{
             rxjava = "io.reactivex.rxjava2:rxjava:$rxJava_version",
 
             rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+    ]
+
+    jUnit = "junit:junit:$jUnit_version"
+
+    testDependencies = [
+
+            testRunner = "com.android.support.test:runner:$test_runner_version",
+
+            espresso = "com.android.support.test.espresso:espresso-core:$espresso_version"
     ]
 }
