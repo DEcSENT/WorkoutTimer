@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -6,14 +6,16 @@ apply from: rootProject.file('dependencies.gradle')
 
 android {
     compileSdkVersion 27
+
     defaultConfig {
-        applicationId "com.dvinc.circlestimer"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,38 +23,11 @@ android {
         }
     }
 
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
-    }
-
-    kapt {
-        generateStubs = true
-    }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
-    androidExtensions {
-        experimental = true
-    }
-
 }
 
 dependencies {
-    implementation project(path: ':domain')
-    implementation project(path: ':data')
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    testImplementation jUnit
-
-    androidTestImplementation(testDependencies)
-
-    annotationProcessor(librariesAnnotationProcessors)
-
-    kapt(librariesAnnotationProcessors)
-
-    implementation (appDependencies)
 }
