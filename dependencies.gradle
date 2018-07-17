@@ -63,6 +63,16 @@ ext{
             rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
     ]
 
+    dataDependencies = [
+            kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+
+            dagger = "com.google.dagger:dagger:$dagger_version",
+
+            rxjava = "io.reactivex.rxjava2:rxjava:$rxJava_version",
+
+            rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+    ]
+
     jUnit = "junit:junit:$jUnit_version"
 
     testDependencies = [
