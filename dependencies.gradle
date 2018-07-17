@@ -1,3 +1,4 @@
+def kotlin_version = '1.2.50'
 def android_support_version = '27.1.1'
 def constraint_layout_version = '1.1.0'
 def butterKnife_version = '8.7.0'
@@ -12,13 +13,17 @@ ext{
 
     librariesAnnotationProcessors = [
             butterknife_processor = "com.jakewharton:butterknife-compiler:$butterKnife_version",
+
             dagger_processor = "com.google.dagger:dagger-compiler:$dagger_version",
+
             android_room_processor = "android.arch.persistence.room:compiler:$android_room_version"
     ]
 
     appDependencies = [
+            kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+
             support_library = "com.android.support:appcompat-v7:$android_support_version",
-            
+
             support_design = "com.android.support:design:$android_support_version",
 
             constraint_layout = "com.android.support.constraint:constraint-layout:$constraint_layout_version",
@@ -42,5 +47,15 @@ ext{
             groupie = "com.xwray:groupie:$groupie_version",
 
             groipieExt = "com.xwray:groupie-kotlin-android-extensions:$groupie_version"
+    ]
+
+    domainDependencies = [
+            kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+
+            dagger = "com.google.dagger:dagger:$dagger_version",
+
+            rxjava = "io.reactivex.rxjava2:rxjava:$rxJava_version",
+
+            rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
     ]
 }
