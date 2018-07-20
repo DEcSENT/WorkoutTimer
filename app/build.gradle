@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('dependencies.gradle')
 apply from: rootProject.file('versions.gradle')
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -64,4 +65,8 @@ dependencies {
     kapt(librariesAnnotationProcessors)
 
     implementation (appDependencies)
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+        transitive = true;
+    }
 }

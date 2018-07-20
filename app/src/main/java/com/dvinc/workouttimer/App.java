@@ -10,11 +10,14 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.crashlytics.android.Crashlytics;
 import com.dvinc.workouttimer.di.components.AppComponent;
 import com.dvinc.workouttimer.di.components.DaggerAppComponent;
 import com.dvinc.workouttimer.di.modules.AppModule;
 
 import com.facebook.stetho.Stetho;
+
+import io.fabric.sdk.android.Fabric;
 
 public class App extends Application {
 
@@ -38,6 +41,8 @@ public class App extends Application {
         Stetho.initializeWithDefaults(this);
 
         context = this;
+
+        Fabric.with(this, new Crashlytics());
     }
 
     private AppComponent buildDi() {

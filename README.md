@@ -6,6 +6,11 @@
 
 There will be beautiful application with great code. Work in progress.
 
+## Notes
+
+If you want to clone and build this project you should remember about hidden Fabric keys - add your personal keys in *app* folder in fabric.properties file.
+And don't forget to write me why you want to clone and build this project.
+
 ## License
 
 MIT License
