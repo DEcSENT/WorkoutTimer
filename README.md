@@ -1,6 +1,6 @@
 # Workout Timer
 
-[![Build Status](https://travis-ci.org/DEcSENT/CirclesTimer.svg?branch=master)](https://travis-ci.org/DEcSENT/CirclesTimer)
+[![Build Status](https://travis-ci.org/DEcSENT/WorkoutTimer.svg?branch=master)](https://travis-ci.org/DEcSENT/WorkoutTimer)
 
 ## Description
 
