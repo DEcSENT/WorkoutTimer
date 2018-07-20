@@ -1,6 +1,6 @@
 ext.versions = [
 
-        appId : 'com.dvinc.circlestimer',
+        appId : 'com.dvinc.workouttimer',
 
         compileSdk : 27,
 
