@@ -3,20 +3,29 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('dependencies.gradle')
+apply from: rootProject.file('versions.gradle')
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion versions.compileSdk
     defaultConfig {
-        applicationId "com.dvinc.circlestimer"
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        applicationId versions.appId
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.code
+        versionName versions.name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -41,53 +50,18 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    annotationProcessor(
-            butterknife_processor,
+    testImplementation jUnit
 
-            dagger_processor,
+    androidTestImplementation(testDependencies)
 
-            android_room_processor
-    )
+    annotationProcessor(librariesAnnotationProcessors)
 
-    kapt(
-            butterknife_processor,
+    kapt(librariesAnnotationProcessors)
 
-            dagger_processor,
-
-            android_room_processor
-    )
-
-    implementation (
-            support_library,
-
-            support_design,
-
-            constraint_layout,
-
-            butterknife,
-
-            dagger,
-
-            rxjava,
-
-            rxandroid,
-
-            android_room,
-
-            android_room_rx,
-
-            stetho,
-
-            groupie,
-
-            groipieExt,
-
-            card_view
-    )
+    implementation (appDependencies)
 }

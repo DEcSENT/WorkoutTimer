@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Circles timer</string>
+    <string name="app_name">WorkoutTimer</string>
     <string name="main_stop">Stop</string>
     <string name="main_start">Start</string>
     <string name="main_pause">Pause</string>
