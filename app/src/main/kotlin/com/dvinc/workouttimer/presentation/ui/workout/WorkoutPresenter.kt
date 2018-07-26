@@ -10,6 +10,7 @@ import com.dvinc.workouttimer.domain.usecase.workout.WorkoutUseCase
 import com.dvinc.workouttimer.presentation.mapper.workout.WorkoutPresentationMapper
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BasePresenter
+import timber.log.Timber
 import javax.inject.Inject
 
 class WorkoutPresenter @Inject constructor(
@@ -30,21 +31,19 @@ class WorkoutPresenter @Inject constructor(
         //TODO: delete workout. And rename this method?
     }
 
-    //TODO: handle error
     fun onWorkoutClick(workout: WorkoutUi) {
         addSubscription(workoutUseCase.selectActiveWorkout(workout.id)
                 .subscribe(
                         {},
-                        { it.toString() }))
+                        { Timber.e(it) }))
     }
 
-    //TODO: handle error
     private fun initWorkoutView() {
         addSubscription(workoutUseCase.obtainWorkouts()
                 .map { mapper.mapDomainToUi(it) }
                 .subscribe(
                         { getView()?.showWorkouts(it) },
-                        { it.printStackTrace() }
+                        { Timber.e(it) }
                 ))
     }
 }
