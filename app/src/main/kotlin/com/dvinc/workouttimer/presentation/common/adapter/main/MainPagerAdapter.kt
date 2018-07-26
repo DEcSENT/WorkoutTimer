@@ -8,6 +8,7 @@ package com.dvinc.workouttimer.presentation.common.adapter.main
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment
 import com.dvinc.workouttimer.presentation.ui.main.DummyFragment
 import com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment
 import com.dvinc.workouttimer.ui.laps.LapsFragment
@@ -22,7 +23,7 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         //TODO: Replace dummy fragments
         return when(position) {
             0 -> DummyFragment()
-            1 -> DummyFragment()
+            1 -> ExerciseFragment()
             2 -> WorkoutFragment()
             3 -> DummyFragment()
             else -> LapsFragment()
