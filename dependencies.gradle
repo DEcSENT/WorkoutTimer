@@ -8,6 +8,7 @@ def rxAndroid_version = '2.0.1'
 def android_room_version = '1.0.0'
 def stetho_version = '1.5.0'
 def groupie_version = '2.1.0'
+def timber_version = '4.7.1'
 
 def jUnit_version = '4.12'
 def test_runner_version = '1.0.2'
@@ -50,7 +51,9 @@ ext{
 
             groupie = "com.xwray:groupie:$groupie_version",
 
-            groipieExt = "com.xwray:groupie-kotlin-android-extensions:$groupie_version"
+            groipieExt = "com.xwray:groupie-kotlin-android-extensions:$groupie_version",
+
+            timber = "com.jakewharton.timber:timber:$timber_version"
     ]
 
     domainDependencies = [
