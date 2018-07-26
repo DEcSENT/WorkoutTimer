@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.workouttimer.presentation.ui.adapter
+package com.dvinc.workouttimer.presentation.common.adapter.main
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
