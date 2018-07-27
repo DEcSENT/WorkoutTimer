@@ -13,5 +13,5 @@ enum class ExerciseTypeUi(@StringRes nameId: Int, @ColorRes color: Int) {
 
     PAUSE(R.string.exercise_type_pause, R.color.color_exercise_type_pause),
 
-    HARD(R.string.exercise_type_work, R.color.color_exercise_type_work)
+    WORK(R.string.exercise_type_work, R.color.color_exercise_type_work)
 }
