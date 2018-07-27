@@ -30,4 +30,6 @@
     <string name="workout_add_workout">Add workout</string>
     <string name="item_exercise_type_icon">Exercise type</string>
 
+    <string name="exercise_type_pause">Pause</string>
+    <string name="exercise_type_work">Work</string>
 </resources>
