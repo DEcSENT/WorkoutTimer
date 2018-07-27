@@ -8,8 +8,9 @@ package com.dvinc.workouttimer.data.repository.workout
 import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.domain.repository.workout.WorkoutRepository
 import io.reactivex.Flowable
+import javax.inject.Inject
 
-class WorkoutDataRepository : WorkoutRepository {
+class WorkoutDataRepository @Inject constructor() : WorkoutRepository {
 
     override fun obtainWorkouts(): Flowable<List<Workout>> {
         return Flowable.fromArray(generateMocks())

@@ -9,7 +9,7 @@ import com.dvinc.workouttimer.di.modules.AppModule;
 import com.dvinc.workouttimer.di.modules.DataModule;
 import com.dvinc.workouttimer.di.modules.InteractorsModule;
 import com.dvinc.workouttimer.di.modules.MapperModule;
-import com.dvinc.workouttimer.presentation.di.module.WorkoutScreenModule;
+import com.dvinc.workouttimer.presentation.di.module.NewApplicationModule;
 import com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment;
 import com.dvinc.workouttimer.ui.laps.LapsFragment;
 import com.dvinc.workouttimer.ui.trainings.TrainingsFragment;
@@ -25,7 +25,7 @@ import dagger.Component;
         DataModule.class,
         InteractorsModule.class,
         MapperModule.class,
-        WorkoutScreenModule.class})
+        NewApplicationModule.class})
 public interface AppComponent {
     void inject(TrainingsFragment trainingsFragment);
     void inject(NewTrainingFragment newTrainingFragment);

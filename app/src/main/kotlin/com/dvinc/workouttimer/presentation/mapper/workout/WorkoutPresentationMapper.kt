@@ -9,8 +9,9 @@ import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-class WorkoutPresentationMapper {
+class WorkoutPresentationMapper @Inject constructor() {
 
     private val dateFormat = SimpleDateFormat("hh:mm:ss", Locale.getDefault())
 
