@@ -28,5 +28,6 @@
     <string name="item_workout_active">Active</string>
 
     <string name="workout_add_workout">Add workout</string>
+    <string name="item_exercise_type_icon">Exercise type</string>
 
 </resources>
