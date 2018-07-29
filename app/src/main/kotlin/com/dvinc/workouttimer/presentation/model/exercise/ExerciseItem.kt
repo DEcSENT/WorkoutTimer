@@ -21,7 +21,8 @@ class ExerciseItem(val exercise: ExerciseUi) : Item() {
         with(viewHolder) {
             name.text = exercise.name
             time.text = exercise.time
-            //TODO: finish this
+            type.text = exercise.typeName
+            icon.setBackgroundColor(exercise.typeColor)
         }
     }
 }

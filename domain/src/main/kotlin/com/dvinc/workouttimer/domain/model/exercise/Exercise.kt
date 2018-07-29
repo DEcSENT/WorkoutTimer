@@ -10,5 +10,5 @@ data class Exercise(
         val name: String,
         val description: String,
         val time: Long,
-        val exerciseType: ExerciseType
+        val type: ExerciseType
 )
