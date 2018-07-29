@@ -32,4 +32,5 @@
 
     <string name="exercise_type_pause">Pause</string>
     <string name="exercise_type_work">Work</string>
+    <string name="exercise_add_button">Add exercise</string>
 </resources>

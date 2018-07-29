@@ -17,4 +17,17 @@
         tools:itemCount="4"
         tools:listitem="@layout/item_exercise" />
 
+    <Button
+        android:id="@+id/fragment_exercise_add_button"
+        style="@style/AddNewItemButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/button_add_training"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/exercise_add_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

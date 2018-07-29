@@ -42,8 +42,8 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
         injectPresenter()
         initWorkoutsList()
-        setupSwipeToDelete()
-        setupAddButton()
+        setupScrollListener()
+        setupAddButtonCLickListener()
     }
 
     override fun onResume() {
@@ -94,13 +94,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         }
     }
 
-    private fun setupSwipeToDelete() {
-        //TODO: setup swipe listener
-    }
-
-    private fun setupAddButton() {
-        //TODO: call new workout dialog from here
-
+    private fun setupScrollListener() {
         workoutRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 if (dy > 0)
@@ -110,6 +104,12 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
                 }
             }
         })
+    }
+
+    private fun setupAddButtonCLickListener() {
+        addWorkoutButton.setOnClickListener {
+            presenter.onAddButtonClick()
+        }
     }
 
     private fun hideAddWorkoutButton() {
