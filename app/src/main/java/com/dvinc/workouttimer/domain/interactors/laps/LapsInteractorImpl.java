@@ -26,6 +26,7 @@ import javax.inject.Inject;
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 
+@Deprecated
 public class LapsInteractorImpl implements LapsInteractor {
 
     @NonNull

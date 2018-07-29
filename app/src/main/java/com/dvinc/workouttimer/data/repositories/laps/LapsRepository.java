@@ -13,6 +13,7 @@ import com.dvinc.workouttimer.data.db.entities.Lap;
 
 import java.util.List;
 
+@Deprecated
 public interface LapsRepository {
 
     /**

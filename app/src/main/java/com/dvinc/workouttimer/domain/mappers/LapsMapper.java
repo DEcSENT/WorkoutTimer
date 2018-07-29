@@ -18,6 +18,7 @@ import java.util.List;
 /**
  * This is prototype class for mapping.
  */
+@Deprecated
 public class LapsMapper {
     /**
      * Default lap name.
@@ -25,7 +26,7 @@ public class LapsMapper {
     private static final String DEFAULT_LAP_NAME = "Lap";
 
     /**
-     * Default lap cell color in hex.
+     * Default lap cell colorId in hex.
      */
     private static final String DEFAULT_LAP_COLOR = "#FFFFFF";
 

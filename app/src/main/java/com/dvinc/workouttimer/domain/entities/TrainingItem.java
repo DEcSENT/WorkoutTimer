@@ -8,6 +8,7 @@ package com.dvinc.workouttimer.domain.entities;
 
 import android.support.annotation.NonNull;
 
+@Deprecated
 public class TrainingItem {
 
     private final int id;
