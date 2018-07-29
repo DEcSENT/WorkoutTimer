@@ -10,6 +10,7 @@ import com.dvinc.workouttimer.di.modules.DataModule;
 import com.dvinc.workouttimer.di.modules.InteractorsModule;
 import com.dvinc.workouttimer.di.modules.MapperModule;
 import com.dvinc.workouttimer.presentation.di.module.NewApplicationModule;
+import com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment;
 import com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment;
 import com.dvinc.workouttimer.ui.laps.LapsFragment;
 import com.dvinc.workouttimer.ui.trainings.TrainingsFragment;
@@ -32,4 +33,5 @@ public interface AppComponent {
     void inject(LapsFragment lapsFragment);
 
     void inject(WorkoutFragment workoutFragment);
+    void inject(ExerciseFragment exerciseFragment);
 }

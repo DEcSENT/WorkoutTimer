@@ -15,11 +15,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-class ExercisesPresentationMapper @Inject constructor(
+class ExercisePresentationMapper @Inject constructor(
         private val context: Context
 ) {
 
     private val timeFormat = SimpleDateFormat("mm:ss", Locale.getDefault())
+
+    fun mapDomainToUi(list: List<Exercise>): List<ExerciseUi> {
+        return list.map { mapDomainToUi(it) }
+    }
 
     fun mapDomainToUi(exercise: Exercise): ExerciseUi {
         return with(exercise) {
