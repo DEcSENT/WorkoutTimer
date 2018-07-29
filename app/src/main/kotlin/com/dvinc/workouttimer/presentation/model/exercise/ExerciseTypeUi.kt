@@ -9,7 +9,10 @@ import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
 import com.dvinc.workouttimer.R
 
-enum class ExerciseTypeUi(@StringRes nameId: Int, @ColorRes color: Int) {
+enum class ExerciseTypeUi(
+        @StringRes val nameId: Int,
+        @ColorRes val colorId: Int
+) {
 
     PAUSE(R.string.exercise_type_pause, R.color.color_exercise_type_pause),
 
