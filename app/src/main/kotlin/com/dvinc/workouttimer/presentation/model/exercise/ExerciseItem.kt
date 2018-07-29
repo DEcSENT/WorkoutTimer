@@ -5,6 +5,7 @@
 
 package com.dvinc.workouttimer.presentation.model.exercise
 
+import android.graphics.PorterDuff
 import com.dvinc.workouttimer.R
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -22,7 +23,7 @@ class ExerciseItem(val exercise: ExerciseUi) : Item() {
             name.text = exercise.name
             time.text = exercise.time
             type.text = exercise.typeName
-            icon.setBackgroundColor(exercise.typeColor)
+            icon.setColorFilter(exercise.typeColor, PorterDuff.Mode.SRC_IN)
         }
     }
 }
