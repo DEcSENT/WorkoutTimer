@@ -20,7 +20,7 @@
 
     <color name="color_item_name">#000000</color>
     <color name="color_item_secondary_text">#696969</color>
-    <color name="color_item_divider">#919191</color>
+    <color name="color_item_divider">#8be1e1e1</color>
 
     <color name="color_exercise_type_pause">#fff700</color>
     <color name="color_exercise_type_work">#ff0004</color>

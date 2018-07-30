@@ -11,8 +11,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.App
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
+import com.dvinc.workouttimer.presentation.common.extension.dp
 import com.dvinc.workouttimer.presentation.common.extension.makeGone
 import com.dvinc.workouttimer.presentation.common.extension.makeVisible
+import com.dvinc.workouttimer.presentation.common.view.EXERCISE_ITEM_LEFT_PADDING
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseItem
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
@@ -70,6 +73,10 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun initExercisesList() {
         exercisesRecycler.adapter = exercisesAdapter
+        context?.let {
+            exercisesRecycler.addItemDecoration(
+                    HorizontalDivider(it, leftPadding = EXERCISE_ITEM_LEFT_PADDING.dp()))
+        }
     }
 
     private fun setupScrollListener() {
