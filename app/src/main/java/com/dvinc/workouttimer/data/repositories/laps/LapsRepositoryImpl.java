@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
+@Deprecated
 public class LapsRepositoryImpl implements LapsRepository {
 
     @NonNull

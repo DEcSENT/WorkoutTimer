@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+@Deprecated
 public class LapsFragment extends BaseFragment implements LapsView {
 
     @Inject

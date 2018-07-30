@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import com.dvinc.workouttimer.R
-import com.dvinc.workouttimer.presentation.ui.adapter.MainPagerAdapter
+import com.dvinc.workouttimer.presentation.common.adapter.main.MainPagerAdapter
 import kotlinx.android.synthetic.main.activity_main_refactored.activity_main_bottom_navigation as bottomNavigation
 import kotlinx.android.synthetic.main.activity_main_refactored.activity_main_view_pager as viewPager
 

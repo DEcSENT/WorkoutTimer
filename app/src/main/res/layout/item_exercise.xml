@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    tools:background="#e2e2e2">
+
+    <ImageView
+        android:id="@+id/item_exercise_icon"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_simple_oval"
+        android:contentDescription="@string/item_exercise_type_icon_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_exercise_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/item_exercise_icon"
+        app:layout_constraintEnd_toEndOf="@+id/item_exercise_icon"
+        app:layout_constraintStart_toStartOf="@+id/item_exercise_icon"
+        app:layout_constraintTop_toTopOf="@+id/item_exercise_icon"
+        tools:text="23:10" />
+
+    <TextView
+        android:id="@+id/item_exercise_name"
+        style="@style/ItemNameStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/item_exercise_icon"
+        app:layout_constraintTop_toTopOf="@+id/item_exercise_icon"
+        tools:text="Exercise 1" />
+
+    <TextView
+        android:id="@+id/item_exercise_type"
+        style="@style/ItemSecondaryTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_exercise_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_exercise_name"
+        tools:text="Work" />
+
+    <TextView
+        android:id="@+id/item_exercise_description"
+        style="@style/ItemSecondaryTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintBottom_toBottomOf="@+id/item_exercise_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/item_exercise_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_exercise_name"
+        tools:text="There will be long exercise description, maybe" />
+
+</android.support.constraint.ConstraintLayout>

@@ -9,6 +9,7 @@ package com.dvinc.workouttimer.domain.entities;
 
 import android.support.annotation.NonNull;
 
+@Deprecated
 public class LapItem {
 
     private int uid;

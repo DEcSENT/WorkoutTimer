@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ItemNameStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/color_item_name</item>
+    </style>
+
+    <style name="ItemSecondaryTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/color_item_secondary_text</item>
+    </style>
+
+    <style name="AddNewItemButtonStyle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

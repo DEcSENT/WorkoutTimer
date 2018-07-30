@@ -15,6 +15,7 @@ import javax.inject.Singleton;
 
 //TODO: remove this singleton annotation
 @Singleton
+@Deprecated
 class LapsPresenter extends BasePresenter<LapsView> {
 
     @Inject

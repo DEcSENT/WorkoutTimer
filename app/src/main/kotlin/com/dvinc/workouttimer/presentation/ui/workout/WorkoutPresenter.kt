@@ -23,8 +23,8 @@ class WorkoutPresenter @Inject constructor(
         initWorkoutView()
     }
 
-    fun onItemSwiped(workout: Workout)  {
-        //TODO: call delete dialog
+    fun onAddButtonClick() {
+        //TODO: show dialog
     }
 
     fun onWorkoutDeleted(workout: Workout) {
