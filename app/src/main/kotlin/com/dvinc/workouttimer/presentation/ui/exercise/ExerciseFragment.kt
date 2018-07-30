@@ -12,9 +12,8 @@ import android.view.View
 import com.dvinc.workouttimer.App
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
-import com.dvinc.workouttimer.presentation.common.extension.dp
-import com.dvinc.workouttimer.presentation.common.extension.makeGone
-import com.dvinc.workouttimer.presentation.common.extension.makeVisible
+import com.dvinc.workouttimer.presentation.common.extension.*
+import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURATION
 import com.dvinc.workouttimer.presentation.common.view.EXERCISE_ITEM_LEFT_PADDING
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseItem
@@ -30,7 +29,6 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     companion object {
         const val TAG = "ExerciseFragment"
-        private const val ADD_BUTTON_ANIMATION_DURATION = 200L
     }
 
     @Inject
@@ -99,9 +97,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun hideAddExerciseButton() {
         exerciseAddButton
-                .animate()
-                .alpha(0.0f)
-                .setDuration(ADD_BUTTON_ANIMATION_DURATION)
+                .animateFadeOutWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
                     override fun onAnimationEnd(animation: Animator?) {
                         exerciseAddButton.makeVisible()
@@ -111,9 +107,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun showAddExerciseButton() {
         exerciseAddButton
-                .animate()
-                .alpha(1.0f)
-                .setDuration(ADD_BUTTON_ANIMATION_DURATION)
+                .animateFadeInWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
                     override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
                         exerciseAddButton.makeGone()

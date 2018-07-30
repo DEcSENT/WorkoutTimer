@@ -11,8 +11,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.App
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.presentation.common.extension.animateFadeInWithDuration
+import com.dvinc.workouttimer.presentation.common.extension.animateFadeOutWithDuration
 import com.dvinc.workouttimer.presentation.common.extension.makeGone
 import com.dvinc.workouttimer.presentation.common.extension.makeVisible
+import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURATION
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutItem
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
@@ -27,7 +30,6 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     companion object {
         const val TAG = "WorkoutFragment"
-        private const val ADD_BUTTON_ANIMATION_DURATION = 200L
     }
 
     @Inject
@@ -114,9 +116,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     private fun hideAddWorkoutButton() {
         addWorkoutButton
-                .animate()
-                .alpha(0.0f)
-                .setDuration(ADD_BUTTON_ANIMATION_DURATION)
+                .animateFadeOutWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
                     override fun onAnimationEnd(animation: Animator?) {
                         addWorkoutButton.makeVisible()
@@ -126,9 +126,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     private fun showAddWorkoutButton() {
         addWorkoutButton
-                .animate()
-                .alpha(1.0f)
-                .setDuration(ADD_BUTTON_ANIMATION_DURATION)
+                .animateFadeInWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
                     override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
                         addWorkoutButton.makeGone()
