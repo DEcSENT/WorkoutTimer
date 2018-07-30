@@ -22,4 +22,3 @@ class ExerciseDataRepositoryMock @Inject constructor() : ExerciseRepository {
         return Flowable.fromArray(mock)
     }
 }
- 

@@ -12,4 +12,3 @@ interface ExerciseRepository {
 
     fun obtainExercises(): Flowable<List<Exercise>>
 }
- 

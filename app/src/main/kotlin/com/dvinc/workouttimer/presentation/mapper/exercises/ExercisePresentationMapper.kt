@@ -64,4 +64,3 @@ class ExercisePresentationMapper @Inject constructor(
         }
     }
 }
- 

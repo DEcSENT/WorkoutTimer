@@ -22,4 +22,3 @@ abstract class NewApplicationModule {
     @Binds
     abstract fun provideExerciseRepository(repository: ExerciseDataRepositoryMock): ExerciseRepository
 }
- 

@@ -27,4 +27,3 @@ class ExerciseItem(val exercise: ExerciseUi) : Item() {
         }
     }
 }
- 

@@ -115,4 +115,3 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
                 })
     }
 }
- 

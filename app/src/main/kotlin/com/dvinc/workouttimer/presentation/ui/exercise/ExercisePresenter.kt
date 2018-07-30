@@ -31,4 +31,3 @@ class ExercisePresenter @Inject constructor(
         //TODO: show dialog
     }
 }
- 
