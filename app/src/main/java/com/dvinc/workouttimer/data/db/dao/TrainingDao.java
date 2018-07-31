@@ -19,6 +19,7 @@ import java.util.List;
 import io.reactivex.Flowable;
 
 @Dao
+@Deprecated
 public abstract class TrainingDao {
 
     @Insert

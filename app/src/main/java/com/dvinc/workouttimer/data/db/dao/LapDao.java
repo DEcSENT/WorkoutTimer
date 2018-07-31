@@ -14,6 +14,7 @@ import com.dvinc.workouttimer.data.db.entities.Lap;
 import java.util.List;
 
 @Dao
+@Deprecated
 public interface LapDao {
 
     @Insert

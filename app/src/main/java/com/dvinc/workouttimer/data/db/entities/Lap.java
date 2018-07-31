@@ -12,6 +12,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "Laps")
+@Deprecated
 public class Lap {
 
     @PrimaryKey(autoGenerate = true)
