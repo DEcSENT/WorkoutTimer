@@ -45,6 +45,7 @@ ext{
 
             android_room = "android.arch.persistence.room:runtime:$android_room_version",
 
+            //TODO: Remove this dependency after refactoring?
             android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_version",
 
             stetho = "com.facebook.stetho:stetho:$stetho_version",
@@ -73,7 +74,11 @@ ext{
 
             rxjava = "io.reactivex.rxjava2:rxjava:$rxJava_version",
 
-            rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+            rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version",
+
+            android_room = "android.arch.persistence.room:runtime:$android_room_version",
+
+            android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_version"
     ]
 
     jUnit = "junit:junit:$jUnit_version"
