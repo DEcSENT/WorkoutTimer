@@ -13,4 +13,3 @@ interface WorkoutMapper {
 
     fun fromEntityToDomain(entity: WorkoutEntity, exercises: List<ExerciseEntity>): Workout
 }
- 

@@ -31,4 +31,3 @@ interface WorkoutDao {
     @Query("DELETE FROM workout WHERE id = :id")
     fun deleteWorkoutById(id: Int)
 }
- 

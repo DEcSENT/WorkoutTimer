@@ -19,4 +19,3 @@ abstract class WorkoutDatabase : RoomDatabase() {
 
     abstract fun exerciseDao(): ExerciseDao
 }
- 

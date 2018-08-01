@@ -33,4 +33,3 @@ class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
         return totalTime
     }
 }
- 

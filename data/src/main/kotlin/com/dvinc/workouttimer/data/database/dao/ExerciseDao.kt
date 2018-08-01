@@ -19,8 +19,14 @@ interface ExerciseDao {
     @Insert
     fun addExercises(exercises: List<ExerciseEntity>)
 
+    @Insert
+    fun addExercise(exercise: ExerciseEntity)
+
     @Update
     fun updateExerciseById(exercise: ExerciseEntity)
+
+    @Query("SELECT * FROM exercise")
+    fun getAllExercises(): Flowable<List<ExerciseEntity>>
 
     @Query("SELECT * FROM exercise WHERE workout_id = :id")
     fun getExercisesByWorkoutId(id: Int): Flowable<List<ExerciseEntity>>
@@ -31,4 +37,3 @@ interface ExerciseDao {
     @Query("DELETE FROM exercise WHERE id = :id")
     fun deleteExerciseById(id: Int)
 }
- 
