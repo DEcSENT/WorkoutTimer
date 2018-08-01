@@ -8,6 +8,8 @@ package com.dvinc.workouttimer.presentation.di.module
 import android.arch.persistence.room.Room
 import android.content.Context
 import com.dvinc.workouttimer.data.database.WorkoutDatabase
+import com.dvinc.workouttimer.data.mapper.workout.WorkoutDataMapper
+import com.dvinc.workouttimer.data.mapper.workout.WorkoutMapper
 import com.dvinc.workouttimer.data.repository.exercise.mock.ExerciseDataRepositoryMock
 import com.dvinc.workouttimer.data.repository.workout.mock.WorkoutDataRepositoryMock
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
@@ -25,6 +27,9 @@ abstract class NewApplicationModule {
 
     @Binds
     abstract fun provideExerciseRepository(repository: ExerciseDataRepositoryMock): ExerciseRepository
+
+    @Binds
+    abstract fun provideWorkoutMapper(mapper: WorkoutDataMapper): WorkoutMapper
 
     @Module
     companion object {
