@@ -8,16 +8,27 @@ package com.dvinc.workouttimer.data.database.dao
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
+import android.arch.persistence.room.Update
 import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
-abstract class ExerciseDao {
+interface ExerciseDao {
 
     @Insert
-    abstract fun addExercises(exercises: List<ExerciseEntity>)
+    fun addExercises(exercises: List<ExerciseEntity>)
+
+    @Update
+    fun updateExerciseById(exercise: ExerciseEntity)
 
     @Query("SELECT * FROM exercise WHERE workout_id = :id")
-    abstract fun getExercisesByWorkoutId(id: Int): Flowable<List<ExerciseEntity>>
+    fun getExercisesByWorkoutId(id: Int): Flowable<List<ExerciseEntity>>
+
+    @Query("SELECT * FROM exercise WHERE id = :id")
+    fun getExerciseById(id: Int): Single<ExerciseEntity>
+
+    @Query("DELETE FROM exercise WHERE id = :id")
+    fun deleteExerciseById(id: Int)
 }
  

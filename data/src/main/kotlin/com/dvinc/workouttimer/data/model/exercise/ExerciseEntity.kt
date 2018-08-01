@@ -16,7 +16,7 @@ import com.dvinc.workouttimer.data.common.DEFAULT_STRING
 data class ExerciseEntity(
 
         @PrimaryKey(autoGenerate = true)
-        var uid: Int = DEFAULT_INTEGER,
+        var id: Int = DEFAULT_INTEGER,
 
         @ColumnInfo(name = "workout_id")
         var workoutId: Int = DEFAULT_INTEGER,
