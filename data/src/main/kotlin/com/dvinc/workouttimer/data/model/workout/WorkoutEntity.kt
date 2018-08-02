@@ -25,5 +25,11 @@ data class WorkoutEntity(
         val description: String,
 
         @ColumnInfo(name = "active")
-        val isActive: Boolean
+        val isActive: Boolean,
+
+        @ColumnInfo(name = "total_exercises")
+        val exerciseCount: Int,
+
+        @ColumnInfo(name = "total_time")
+        val totalTime: Long
 )

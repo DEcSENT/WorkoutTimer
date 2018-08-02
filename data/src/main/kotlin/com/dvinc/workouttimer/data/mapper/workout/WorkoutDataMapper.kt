@@ -5,31 +5,24 @@
 
 package com.dvinc.workouttimer.data.mapper.workout
 
-import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
 import com.dvinc.workouttimer.data.model.workout.WorkoutEntity
 import com.dvinc.workouttimer.domain.model.workout.Workout
 import javax.inject.Inject
 
 class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
 
-    override fun fromEntityToDomain(entity: WorkoutEntity, exercises: List<ExerciseEntity>): Workout {
-        return with(entity) {
-            Workout(
-                    id = id,
-                    name = name,
-                    description = description,
-                    exerciseCount = exercises.size,
-                    exerciseTotalTime = getTotalTime(exercises),
-                    isActive = isActive
-            )
+    override fun fromEntityToDomain(entities: List<WorkoutEntity>): List<Workout> {
+        return entities.map {
+            with(it) {
+                Workout(
+                        id = id,
+                        name = name,
+                        description = description,
+                        exerciseCount = exerciseCount,
+                        exerciseTotalTime = totalTime,
+                        isActive = isActive
+                )
+            }
         }
-    }
-
-    private fun getTotalTime(exercises: List<ExerciseEntity>): Long {
-        var totalTime = 0L
-        (0 until exercises.size).forEach {
-            totalTime += exercises[it].time
-        }
-        return totalTime
     }
 }
