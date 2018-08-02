@@ -5,9 +5,7 @@
 
 package com.dvinc.workouttimer.data.model.exercise
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.*
 
 @Entity(tableName = "exercise")
 data class ExerciseEntity(
@@ -25,5 +23,8 @@ data class ExerciseEntity(
         val description: String,
 
         @ColumnInfo(name = "time")
-        val time: Long
+        val time: Long,
+
+        @ColumnInfo(name = "type")
+        val type: ExerciseTypeEntity
 )

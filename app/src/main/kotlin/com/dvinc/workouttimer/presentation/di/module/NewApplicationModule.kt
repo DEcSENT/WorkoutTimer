@@ -14,6 +14,7 @@ import com.dvinc.workouttimer.data.mapper.exercise.ExerciseDataMapper
 import com.dvinc.workouttimer.data.mapper.exercise.ExerciseMapper
 import com.dvinc.workouttimer.data.mapper.workout.WorkoutDataMapper
 import com.dvinc.workouttimer.data.mapper.workout.WorkoutMapper
+import com.dvinc.workouttimer.data.repository.exercise.ExerciseDataRepository
 import com.dvinc.workouttimer.data.repository.exercise.mock.ExerciseDataRepositoryMock
 import com.dvinc.workouttimer.data.repository.workout.mock.WorkoutDataRepositoryMock
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
@@ -30,7 +31,7 @@ abstract class NewApplicationModule {
     abstract fun provideWorkoutRepository(repository: WorkoutDataRepositoryMock): WorkoutRepository
 
     @Binds
-    abstract fun provideExerciseRepository(repository: ExerciseDataRepositoryMock): ExerciseRepository
+    abstract fun provideExerciseRepository(repository: ExerciseDataRepository): ExerciseRepository
 
     @Binds
     abstract fun provideWorkoutMapper(mapper: WorkoutDataMapper): WorkoutMapper
