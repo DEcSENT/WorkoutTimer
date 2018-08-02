@@ -8,25 +8,22 @@ package com.dvinc.workouttimer.data.model.workout
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import com.dvinc.workouttimer.data.common.DEFAULT_BOOLEAN
-import com.dvinc.workouttimer.data.common.DEFAULT_INTEGER
-import com.dvinc.workouttimer.data.common.DEFAULT_STRING
 
 @Entity(tableName = "workout")
 data class WorkoutEntity(
 
         @PrimaryKey(autoGenerate = true)
-        var uid: Int = DEFAULT_INTEGER,
+        var uid: Int,
 
         @ColumnInfo(name = "id")
-        var id: Int = DEFAULT_INTEGER,
+        val id: Int,
 
         @ColumnInfo(name = "name")
-        var name: String = DEFAULT_STRING,
+        val name: String,
 
         @ColumnInfo(name = "description")
-        var description: String = DEFAULT_STRING,
+        val description: String,
 
         @ColumnInfo(name = "active")
-        var isActive: Boolean = DEFAULT_BOOLEAN
+        val isActive: Boolean
 )
