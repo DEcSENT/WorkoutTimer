@@ -17,7 +17,7 @@ class ExerciseDataRepositoryMock @Inject constructor() : ExerciseRepository {
     override fun obtainExercises(): Flowable<List<Exercise>> {
         val mock = ArrayList<Exercise>()
         (1..7).forEach {
-            mock.add(Exercise(it, "Exercise $it", "", 0L, ExerciseType.WORK))
+            mock.add(Exercise(it, 10, "Exercise $it", "", 0L, ExerciseType.WORK))
         }
         return Flowable.fromArray(mock)
     }

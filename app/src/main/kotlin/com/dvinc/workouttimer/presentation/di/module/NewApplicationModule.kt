@@ -10,6 +10,8 @@ import android.content.Context
 import com.dvinc.workouttimer.data.database.WorkoutDatabase
 import com.dvinc.workouttimer.data.database.dao.ExerciseDao
 import com.dvinc.workouttimer.data.database.dao.WorkoutDao
+import com.dvinc.workouttimer.data.mapper.exercise.ExerciseDataMapper
+import com.dvinc.workouttimer.data.mapper.exercise.ExerciseMapper
 import com.dvinc.workouttimer.data.mapper.workout.WorkoutDataMapper
 import com.dvinc.workouttimer.data.mapper.workout.WorkoutMapper
 import com.dvinc.workouttimer.data.repository.exercise.mock.ExerciseDataRepositoryMock
@@ -32,6 +34,9 @@ abstract class NewApplicationModule {
 
     @Binds
     abstract fun provideWorkoutMapper(mapper: WorkoutDataMapper): WorkoutMapper
+
+    @Binds
+    abstract fun provideExerciseMapper(mapper: ExerciseDataMapper): ExerciseMapper
 
     @Module
     companion object {
