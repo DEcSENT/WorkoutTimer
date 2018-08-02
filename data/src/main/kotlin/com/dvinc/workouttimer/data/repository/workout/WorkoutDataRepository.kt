@@ -10,6 +10,7 @@ import com.dvinc.workouttimer.data.mapper.workout.WorkoutMapper
 import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.domain.repository.workout.WorkoutRepository
 import io.reactivex.Flowable
+import io.reactivex.Maybe
 import javax.inject.Inject
 
 class WorkoutDataRepository @Inject constructor(
@@ -19,6 +20,11 @@ class WorkoutDataRepository @Inject constructor(
 
     override fun obtainWorkouts(): Flowable<List<Workout>> {
         return workoutDao.getWorkouts()
+                .map { workoutMapper.fromEntityToDomain(it) }
+    }
+
+    override fun obtainActiveWorkout(): Maybe<Workout> {
+        return workoutDao.getActiveWorkout()
                 .map { workoutMapper.fromEntityToDomain(it) }
     }
 }

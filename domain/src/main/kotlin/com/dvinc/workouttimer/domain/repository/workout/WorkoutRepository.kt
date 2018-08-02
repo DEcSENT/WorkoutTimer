@@ -7,8 +7,11 @@ package com.dvinc.workouttimer.domain.repository.workout
 
 import com.dvinc.workouttimer.domain.model.workout.Workout
 import io.reactivex.Flowable
+import io.reactivex.Maybe
 
 interface WorkoutRepository {
 
     fun obtainWorkouts(): Flowable<List<Workout>>
+
+    fun obtainActiveWorkout(): Maybe<Workout>
 }
