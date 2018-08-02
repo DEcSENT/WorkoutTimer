@@ -14,13 +14,7 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 
 @Dao
-interface WorkoutDao {
-
-    @Insert
-    fun addWorkout(workout: WorkoutEntity)
-
-    @Update
-    fun updateWorkout(workout: WorkoutEntity)
+interface WorkoutDao : BaseDao<WorkoutEntity> {
 
     @Query("SELECT * FROM workout")
     fun getWorkouts(): Flowable<List<WorkoutEntity>>
