@@ -9,8 +9,8 @@ import android.animation.Animator
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.dvinc.workouttimer.App
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.extension.animateFadeInWithDuration
 import com.dvinc.workouttimer.presentation.common.extension.animateFadeOutWithDuration
 import com.dvinc.workouttimer.presentation.common.extension.makeGone
@@ -19,7 +19,7 @@ import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURA
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutItem
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
-import com.dvinc.workouttimer.ui.base.BaseFragment
+import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import javax.inject.Inject
@@ -83,7 +83,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     private fun injectPresenter() {
         context?.let {
-            App.get(it).appComponent.inject(this)
+            WorkoutApp.get(it).appComponent.inject(this)
         }
     }
 

@@ -5,7 +5,7 @@
 
 package com.dvinc.workouttimer.presentation.ui.base
 
-import com.dvinc.workouttimer.common.Assert
+import com.dvinc.workouttimer.presentation.common.assert.Assert
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
