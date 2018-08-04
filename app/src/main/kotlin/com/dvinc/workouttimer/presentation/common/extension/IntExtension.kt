@@ -5,12 +5,12 @@
 
 package com.dvinc.workouttimer.presentation.common.extension
 
-import com.dvinc.workouttimer.App
+import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 
 fun Int.dp(): Int {
     if (this == 0) {
         return 0
     }
-    val metrics = App.getContext().resources?.displayMetrics
+    val metrics = WorkoutApp.context.resources?.displayMetrics
     return (this * requireNotNull(metrics) { "Metrics is null" }.density).toInt()
 }
