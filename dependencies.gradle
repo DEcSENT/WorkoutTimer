@@ -5,7 +5,7 @@ def butterKnife_version = '8.7.0'
 def dagger_version = '2.11'
 def rxJava_version = '2.1.1'
 def rxAndroid_version = '2.0.1'
-def android_room_version = '1.0.0'
+def android_room_version = '1.1.0'
 def stetho_version = '1.5.0'
 def groupie_version = '2.1.0'
 def timber_version = '4.7.1'
@@ -45,6 +45,7 @@ ext{
 
             android_room = "android.arch.persistence.room:runtime:$android_room_version",
 
+            //TODO: Remove this dependency after refactoring?
             android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_version",
 
             stetho = "com.facebook.stetho:stetho:$stetho_version",
@@ -73,7 +74,11 @@ ext{
 
             rxjava = "io.reactivex.rxjava2:rxjava:$rxJava_version",
 
-            rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version"
+            rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version",
+
+            android_room = "android.arch.persistence.room:runtime:$android_room_version",
+
+            android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_version"
     ]
 
     jUnit = "junit:junit:$jUnit_version"
