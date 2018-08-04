@@ -58,6 +58,11 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         presenter.detachView()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        clearDependencies()
+    }
+
     override fun showWorkouts(workouts: List<WorkoutUi>) {
         //TODO: Refactor this 2 lines?
         workoutAdapter.clear()
@@ -83,7 +88,13 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     private fun injectPresenter() {
         context?.let {
-            WorkoutApp.get(it).appComponent.inject(this)
+            WorkoutApp.get(it).getWorkoutComponent()?.inject(this)
+        }
+    }
+
+    private fun clearDependencies() {
+        context?.let {
+            WorkoutApp.get(it).clearWorkoutComponent()
         }
     }
 

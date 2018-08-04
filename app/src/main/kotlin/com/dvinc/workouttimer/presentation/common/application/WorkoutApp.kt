@@ -15,6 +15,7 @@ import com.dvinc.workouttimer.presentation.common.timber.ReleaseTree
 import com.dvinc.workouttimer.presentation.di.component.AppComponent
 import com.dvinc.workouttimer.presentation.di.component.DaggerAppComponent
 import com.dvinc.workouttimer.presentation.di.component.ExerciseComponent
+import com.dvinc.workouttimer.presentation.di.component.WorkoutComponent
 import com.dvinc.workouttimer.presentation.di.module.AppModule
 import timber.log.Timber
 
@@ -31,6 +32,8 @@ class WorkoutApp : Application() {
 
     lateinit var appComponent: AppComponent
 
+    private var workoutComponent: WorkoutComponent? = null
+
     private var exerciseComponent: ExerciseComponent? = null
 
     override fun onCreate() {
@@ -39,6 +42,18 @@ class WorkoutApp : Application() {
         appComponent = buildDI()
         Timber.plant(if (BuildConfig.DEBUG) Timber.DebugTree() else ReleaseTree())
         Fabric.with(this, Crashlytics())
+    }
+
+    fun getWorkoutComponent(): WorkoutComponent? {
+        if (workoutComponent == null) {
+            workoutComponent = appComponent.getWorkoutComponent()
+        }
+
+        return workoutComponent
+    }
+
+    fun clearWorkoutComponent() {
+        workoutComponent = null
     }
 
     fun getExerciseComponent(): ExerciseComponent? {

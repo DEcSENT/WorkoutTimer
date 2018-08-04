@@ -6,8 +6,6 @@
 package com.dvinc.workouttimer.presentation.di.component
 
 import com.dvinc.workouttimer.presentation.di.module.*
-import com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment
-import com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,11 +13,10 @@ import javax.inject.Singleton
 @Component(modules = [
     AppModule::class,
     DataModule::class,
-    CommonModule::class,
-    WorkoutModule::class])
+    CommonModule::class])
 interface AppComponent {
 
-    fun inject(target: WorkoutFragment)
+    fun getWorkoutComponent(): WorkoutComponent
 
     fun getExerciseComponent(): ExerciseComponent
 }
