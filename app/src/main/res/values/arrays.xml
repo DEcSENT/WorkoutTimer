@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="default_laps">
+    <string-array name="default_exercises_amount">
         <item>0</item>
         <item>1</item>
         <item>2</item>
