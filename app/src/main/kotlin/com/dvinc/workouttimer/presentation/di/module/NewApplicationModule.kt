@@ -19,6 +19,8 @@ import com.dvinc.workouttimer.data.repository.exercise.mock.ExerciseDataReposito
 import com.dvinc.workouttimer.data.repository.workout.mock.WorkoutDataRepositoryMock
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
 import com.dvinc.workouttimer.domain.repository.workout.WorkoutRepository
+import com.dvinc.workouttimer.presentation.common.resources.ResourceDataManager
+import com.dvinc.workouttimer.presentation.common.resources.ResourceManager
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -31,13 +33,16 @@ abstract class NewApplicationModule {
     abstract fun provideWorkoutRepository(repository: WorkoutDataRepositoryMock): WorkoutRepository
 
     @Binds
-    abstract fun provideExerciseRepository(repository: ExerciseDataRepository): ExerciseRepository
+    abstract fun provideExerciseRepository(repository: ExerciseDataRepositoryMock): ExerciseRepository
 
     @Binds
     abstract fun provideWorkoutMapper(mapper: WorkoutDataMapper): WorkoutMapper
 
     @Binds
     abstract fun provideExerciseMapper(mapper: ExerciseDataMapper): ExerciseMapper
+
+    @Binds
+    abstract fun provideResourceManager(manager: ResourceDataManager): ResourceManager
 
     @Module
     companion object {
