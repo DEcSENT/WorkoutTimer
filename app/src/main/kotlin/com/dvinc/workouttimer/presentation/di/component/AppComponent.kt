@@ -16,11 +16,10 @@ import javax.inject.Singleton
     AppModule::class,
     DataModule::class,
     CommonModule::class,
-    ExerciseModule::class,
     WorkoutModule::class])
 interface AppComponent {
 
     fun inject(target: WorkoutFragment)
 
-    fun inject(target: ExerciseFragment)
+    fun getExerciseComponent(): ExerciseComponent
 }

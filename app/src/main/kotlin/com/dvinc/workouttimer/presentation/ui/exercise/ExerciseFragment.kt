@@ -58,6 +58,11 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
         presenter.detachView()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        clearDependencies()
+    }
+
     override fun showExercises(exercises: List<ExerciseUi>) {
         exercisesAdapter.clear()
         exercisesAdapter.addAll(exercises.map { ExerciseItem(it) })
@@ -65,7 +70,13 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun injectPresenter() {
         context?.let {
-            WorkoutApp.get(it).appComponent.inject(this)
+            WorkoutApp.get(it).getExerciseComponent()?.inject(this)
+        }
+    }
+
+    private fun clearDependencies() {
+        context?.let {
+            WorkoutApp.get(it).clearExerciseComponent()
         }
     }
 

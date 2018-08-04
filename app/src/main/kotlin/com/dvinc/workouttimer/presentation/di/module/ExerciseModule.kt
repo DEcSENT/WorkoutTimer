@@ -9,10 +9,12 @@ import com.dvinc.workouttimer.data.mapper.exercise.ExerciseDataMapper
 import com.dvinc.workouttimer.data.mapper.exercise.ExerciseMapper
 import com.dvinc.workouttimer.data.repository.exercise.mock.ExerciseDataRepositoryMock
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
+import com.dvinc.workouttimer.presentation.di.scope.ExerciseScope
 import dagger.Binds
 import dagger.Module
 
 @Module
+@ExerciseScope
 abstract class ExerciseModule {
 
     @Binds
