@@ -64,14 +64,12 @@ dependencies {
 
     androidTestImplementation(testDependencies)
 
-    annotationProcessor(librariesAnnotationProcessors)
-
     kapt(librariesAnnotationProcessors)
 
     implementation (appDependencies)
 
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
-        transitive = true;
+        transitive = true
     }
 }
 
