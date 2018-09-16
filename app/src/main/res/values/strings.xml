@@ -1,23 +1,6 @@
 <resources>
     <string name="app_name">WorkoutTimer</string>
-    <string name="main_stop">Stop</string>
-    <string name="main_start">Start</string>
-    <string name="main_pause">Pause</string>
-    <string name="menu_title_trainings">trainings</string>
-    <string name="new_training_header">New training</string>
-    <string name="new_training_name">New training name</string>
-    <string name="new_training_default_laps">Default laps count</string>
-    <string name="new_training_cancel">Cancel</string>
-    <string name="new_training_add">Add</string>
-    <string name="new_training_error_message">An error occurred while adding new training.</string>
-    <string name="message_delete_training_success">Training deleted</string>
-    <string name="delete_training_dialog_header">Delete training?</string>
-    <string name="delete_training_dialog_positive_btn">OK</string>
-    <string name="delete_training_dialog_negative_btn">@android:string/cancel</string>
-    <string name="item_training_edit_button_description">Edit training button</string>
-    <string name="message_training_new_current_training">New current training selected</string>
 
-    <!--New string res-->
     <string name="menu_main_timer">Timer</string>
     <string name="menu_main_exercise">Exercises</string>
     <string name="menu_main_workout">Workouts</string>

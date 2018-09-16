@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment
 import com.dvinc.workouttimer.presentation.ui.main.DummyFragment
 import com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment
-import com.dvinc.workouttimer.ui.laps.LapsFragment
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
@@ -26,7 +25,7 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
             1 -> ExerciseFragment()
             2 -> WorkoutFragment()
             3 -> DummyFragment()
-            else -> LapsFragment()
+            else -> DummyFragment()
         }
     }
 

@@ -9,14 +9,14 @@ import android.animation.Animator
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.dvinc.workouttimer.App
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
+import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.extension.*
 import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURATION
 import com.dvinc.workouttimer.presentation.common.view.EXERCISE_ITEM_LEFT_PADDING
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
-import com.dvinc.workouttimer.presentation.model.exercise.ExerciseItem
+import com.dvinc.workouttimer.presentation.common.adapter.item.exercise.ExerciseItem
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
@@ -58,6 +58,11 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
         presenter.detachView()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        clearDependencies()
+    }
+
     override fun showExercises(exercises: List<ExerciseUi>) {
         exercisesAdapter.clear()
         exercisesAdapter.addAll(exercises.map { ExerciseItem(it) })
@@ -65,7 +70,13 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun injectPresenter() {
         context?.let {
-            App.get(it).appComponent.inject(this)
+            WorkoutApp.get(it).getExerciseComponent()?.inject(this)
+        }
+    }
+
+    private fun clearDependencies() {
+        context?.let {
+            WorkoutApp.get(it).clearExerciseComponent()
         }
     }
 
