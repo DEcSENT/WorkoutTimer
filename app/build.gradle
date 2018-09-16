@@ -36,10 +36,6 @@ android {
         sourceCompatibility 1.8
     }
 
-    kapt {
-        generateStubs = true
-    }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
