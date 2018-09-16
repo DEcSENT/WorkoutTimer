@@ -3,11 +3,11 @@
  * All rights reserved.
  */
 
-package com.dvinc.workouttimer.presentation.model.workout
+package com.dvinc.workouttimer.presentation.common.adapter.item.workout
 
 import com.dvinc.workouttimer.R
-import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.presentation.common.extension.toggleGone
+import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_workout.item_workout_name as workoutName

@@ -17,7 +17,7 @@ import com.dvinc.workouttimer.presentation.common.extension.makeGone
 import com.dvinc.workouttimer.presentation.common.extension.makeVisible
 import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURATION
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
-import com.dvinc.workouttimer.presentation.model.workout.WorkoutItem
+import com.dvinc.workouttimer.presentation.common.adapter.item.workout.WorkoutItem
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.xwray.groupie.GroupAdapter

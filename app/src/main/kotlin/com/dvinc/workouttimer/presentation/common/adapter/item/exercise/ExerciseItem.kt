@@ -3,10 +3,11 @@
  * All rights reserved.
  */
 
-package com.dvinc.workouttimer.presentation.model.exercise
+package com.dvinc.workouttimer.presentation.common.adapter.item.exercise
 
 import android.graphics.PorterDuff
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_exercise.item_exercise_name as name
