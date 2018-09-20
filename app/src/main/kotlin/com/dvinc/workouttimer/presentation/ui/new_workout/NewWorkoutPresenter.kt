@@ -6,10 +6,11 @@
 package com.dvinc.workouttimer.presentation.ui.new_workout
 
 import com.dvinc.workouttimer.presentation.ui.base.BasePresenter
+import javax.inject.Inject
 
-class NewWorkoutPresenter : BasePresenter<NewWorkoutView>() {
+class NewWorkoutPresenter @Inject constructor() : BasePresenter<NewWorkoutView>() {
 
-    //TODO: inject interactor
+    //TODO: inject usecase
 
     fun onNewWorkoutAdded() {
         //TODO: add new workout here
