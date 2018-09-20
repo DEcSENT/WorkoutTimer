@@ -20,6 +20,7 @@ import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.workout.WorkoutItem
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
+import com.dvinc.workouttimer.presentation.ui.new_workout.NewWorkoutFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import javax.inject.Inject
@@ -75,7 +76,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
     }
 
     override fun showNewWorkoutDialog() {
-        //TODO: show workout dialog
+        NewWorkoutFragment.newInstance().show(fragmentManager, NewWorkoutFragment.TAG)
     }
 
     override fun showMessage(message: String) {
