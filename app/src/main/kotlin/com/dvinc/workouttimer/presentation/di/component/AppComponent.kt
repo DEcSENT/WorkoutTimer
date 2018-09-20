@@ -19,4 +19,6 @@ interface AppComponent {
     fun getWorkoutComponent(): WorkoutComponent
 
     fun getExerciseComponent(): ExerciseComponent
+
+    fun getNewWorkoutComponent(): NewWorkoutComponent
 }

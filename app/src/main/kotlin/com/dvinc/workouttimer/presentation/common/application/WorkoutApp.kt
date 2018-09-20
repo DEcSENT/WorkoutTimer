@@ -12,10 +12,7 @@ import com.crashlytics.android.Crashlytics
 import com.dvinc.workouttimer.BuildConfig
 import io.fabric.sdk.android.Fabric
 import com.dvinc.workouttimer.presentation.common.timber.ReleaseTree
-import com.dvinc.workouttimer.presentation.di.component.AppComponent
-import com.dvinc.workouttimer.presentation.di.component.DaggerAppComponent
-import com.dvinc.workouttimer.presentation.di.component.ExerciseComponent
-import com.dvinc.workouttimer.presentation.di.component.WorkoutComponent
+import com.dvinc.workouttimer.presentation.di.component.*
 import com.dvinc.workouttimer.presentation.di.module.AppModule
 import timber.log.Timber
 
@@ -35,6 +32,8 @@ class WorkoutApp : Application() {
     private var workoutComponent: WorkoutComponent? = null
 
     private var exerciseComponent: ExerciseComponent? = null
+
+    private var newWorkoutComponent: NewWorkoutComponent? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -66,6 +65,18 @@ class WorkoutApp : Application() {
 
     fun clearExerciseComponent() {
         exerciseComponent = null
+    }
+
+    fun getNewWorkoutComponent(): NewWorkoutComponent? {
+        if (newWorkoutComponent == null) {
+            newWorkoutComponent = appComponent.getNewWorkoutComponent()
+        }
+
+        return newWorkoutComponent
+    }
+
+    fun clearNewWorkoutComponent() {
+        newWorkoutComponent = null
     }
 
     private fun buildDI(): AppComponent {
