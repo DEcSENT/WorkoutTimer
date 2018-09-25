@@ -12,6 +12,7 @@ import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import javax.inject.Inject
@@ -43,6 +44,7 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         injectPresenter()
     }
 
