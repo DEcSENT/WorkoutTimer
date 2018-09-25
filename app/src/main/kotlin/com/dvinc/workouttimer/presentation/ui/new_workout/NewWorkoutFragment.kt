@@ -17,6 +17,9 @@ import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_background as dialogBackground
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_cancel_button as cancelButton
+import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_add_button as addButton
+import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_name as nameEditText
+import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_description as descriptionEditText
 import javax.inject.Inject
 
 class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
@@ -50,11 +53,26 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
         injectPresenter()
         setupBackground()
         setupCancelButton()
+        setupAddWorkoutButton()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.attachView(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.detachView()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         clearDependencies()
+    }
+
+    override fun closeScreen() {
+        dismiss()
     }
 
     private fun injectPresenter() {
@@ -78,6 +96,14 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
     private fun setupCancelButton() {
         cancelButton.setOnClickListener {
             dismiss()
+        }
+    }
+
+    private fun setupAddWorkoutButton() {
+        addButton.setOnClickListener {
+            val workoutName = nameEditText.text.toString()
+            val workoutDescription = descriptionEditText.text.toString()
+            presenter.onNewWorkoutAdded(workoutName, workoutDescription)
         }
     }
 }

@@ -7,4 +7,7 @@ package com.dvinc.workouttimer.presentation.ui.new_workout
 
 import com.dvinc.workouttimer.presentation.ui.base.BaseMvpView
 
-interface NewWorkoutView : BaseMvpView
+interface NewWorkoutView : BaseMvpView {
+
+    fun closeScreen()
+}

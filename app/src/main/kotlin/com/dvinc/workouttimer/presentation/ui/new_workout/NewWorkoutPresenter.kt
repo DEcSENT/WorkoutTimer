@@ -5,14 +5,22 @@
 
 package com.dvinc.workouttimer.presentation.ui.new_workout
 
+import com.dvinc.workouttimer.domain.usecase.new_workout.NewWorkoutUseCase
 import com.dvinc.workouttimer.presentation.ui.base.BasePresenter
+import timber.log.Timber
 import javax.inject.Inject
 
-class NewWorkoutPresenter @Inject constructor() : BasePresenter<NewWorkoutView>() {
+class NewWorkoutPresenter @Inject constructor(
+        private val newWorkoutUseCase: NewWorkoutUseCase
+) : BasePresenter<NewWorkoutView>() {
 
-    //TODO: inject usecase
-
-    fun onNewWorkoutAdded() {
-        //TODO: add new workout here
+    fun onNewWorkoutAdded(name: String, description: String) {
+        addSubscription(
+                newWorkoutUseCase.addNewWorkout(name, description)
+                        .subscribe(
+                                { getView()?.closeScreen() },
+                                { Timber.e(it) }
+                        )
+        )
     }
 }
