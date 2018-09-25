@@ -15,6 +15,8 @@ import android.view.ViewGroup
 import android.view.Window
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
+import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_background as dialogBackground
+import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_cancel_button as cancelButton
 import javax.inject.Inject
 
 class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
@@ -46,6 +48,8 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
         super.onViewCreated(view, savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         injectPresenter()
+        setupBackground()
+        setupCancelButton()
     }
 
     override fun onDestroy() {
@@ -62,6 +66,18 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
     private fun clearDependencies() {
         context?.let {
             WorkoutApp.get(it).clearNewWorkoutComponent()
+        }
+    }
+
+    private fun setupBackground() {
+        dialogBackground.setOnClickListener {
+            dismiss()
+        }
+    }
+
+    private fun setupCancelButton() {
+        cancelButton.setOnClickListener {
+            dismiss()
         }
     }
 }
