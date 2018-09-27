@@ -14,6 +14,7 @@ import io.fabric.sdk.android.Fabric
 import com.dvinc.workouttimer.presentation.common.timber.ReleaseTree
 import com.dvinc.workouttimer.presentation.di.component.*
 import com.dvinc.workouttimer.presentation.di.module.AppModule
+import com.facebook.stetho.Stetho
 import timber.log.Timber
 
 class WorkoutApp : Application() {
@@ -41,6 +42,7 @@ class WorkoutApp : Application() {
         appComponent = buildDI()
         Timber.plant(if (BuildConfig.DEBUG) Timber.DebugTree() else ReleaseTree())
         Fabric.with(this, Crashlytics())
+        Stetho.initializeWithDefaults(this)
     }
 
     fun getWorkoutComponent(): WorkoutComponent? {
