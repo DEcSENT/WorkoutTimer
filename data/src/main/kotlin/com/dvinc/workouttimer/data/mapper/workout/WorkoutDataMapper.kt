@@ -11,11 +11,11 @@ import javax.inject.Inject
 
 class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
 
-    override fun fromEntityToDomain(entities: List<WorkoutEntity>): List<Workout> {
-        return entities.map { fromEntityToDomain(it) }
+    override fun fromEntity(entities: List<WorkoutEntity>): List<Workout> {
+        return entities.map { fromEntity(it) }
     }
 
-    override fun fromEntityToDomain(entity: WorkoutEntity): Workout {
+    override fun fromEntity(entity: WorkoutEntity): Workout {
         return with(entity) {
             Workout(
                     id = uid,
@@ -28,7 +28,7 @@ class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
         }
     }
 
-    override fun fromDomainToEntity(workout: Workout): WorkoutEntity {
+    override fun fromDomain(workout: Workout): WorkoutEntity {
         return with(workout) {
             WorkoutEntity(
                     name = name,

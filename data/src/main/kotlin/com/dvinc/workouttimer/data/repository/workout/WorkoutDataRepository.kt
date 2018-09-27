@@ -13,7 +13,6 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
-import io.reactivex.internal.operators.completable.CompletableFromAction
 import javax.inject.Inject
 
 class WorkoutDataRepository @Inject constructor(
@@ -23,16 +22,16 @@ class WorkoutDataRepository @Inject constructor(
 
     override fun obtainWorkouts(): Flowable<List<Workout>> {
         return workoutDao.getWorkouts()
-                .map { workoutMapper.fromEntityToDomain(it) }
+                .map { workoutMapper.fromEntity(it) }
     }
 
     override fun obtainActiveWorkout(): Maybe<Workout> {
         return workoutDao.getActiveWorkout()
-                .map { workoutMapper.fromEntityToDomain(it) }
+                .map { workoutMapper.fromEntity(it) }
     }
 
     override fun addWorkout(workout: Workout): Completable {
-        return Single.fromCallable { workoutMapper.fromDomainToEntity(workout) }
+        return Single.fromCallable { workoutMapper.fromDomain(workout) }
                 .flatMapCompletable { Completable.fromAction { workoutDao.insert(it) } }
     }
 }
