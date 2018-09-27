@@ -15,9 +15,6 @@ data class WorkoutEntity(
         @PrimaryKey(autoGenerate = true)
         var uid: Int,
 
-        @ColumnInfo(name = "id")
-        val id: Int,
-
         @ColumnInfo(name = "name")
         val name: String,
 

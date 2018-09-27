@@ -18,7 +18,7 @@ class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
     override fun fromEntityToDomain(entity: WorkoutEntity): Workout {
         return with(entity) {
             Workout(
-                    id = id,
+                    id = uid,
                     name = name,
                     description = description,
                     exerciseCount = exerciseCount,
