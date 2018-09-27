@@ -13,7 +13,7 @@ import android.arch.persistence.room.PrimaryKey
 data class WorkoutEntity(
 
         @PrimaryKey(autoGenerate = true)
-        var uid: Int,
+        var uid: Int = 0,
 
         @ColumnInfo(name = "name")
         val name: String,
