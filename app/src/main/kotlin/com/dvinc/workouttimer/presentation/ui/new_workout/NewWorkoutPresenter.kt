@@ -14,9 +14,9 @@ class NewWorkoutPresenter @Inject constructor(
         private val newWorkoutUseCase: NewWorkoutUseCase
 ) : BasePresenter<NewWorkoutView>() {
 
-    fun onNewWorkoutAdded(name: String, description: String) {
+    fun onNewWorkoutAdded(name: String, description: String, addDefaultExercises: Boolean) {
         addSubscription(
-                newWorkoutUseCase.addNewWorkout(name, description)
+                newWorkoutUseCase.addNewWorkout(name, description, addDefaultExercises)
                         .subscribe(
                                 { getView()?.closeScreen() },
                                 { Timber.e(it) }

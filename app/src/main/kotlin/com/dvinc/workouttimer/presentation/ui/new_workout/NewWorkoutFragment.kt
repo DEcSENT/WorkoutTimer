@@ -110,7 +110,8 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
         addButton.setOnClickListener {
             val workoutName = nameEditText.text.toString()
             val workoutDescription = descriptionEditText.text.toString()
-            presenter.onNewWorkoutAdded(workoutName, workoutDescription)
+            val addDefaultExercise = defaultExerciseCheckBox.isChecked
+            presenter.onNewWorkoutAdded(workoutName, workoutDescription, addDefaultExercise)
         }
     }
 
