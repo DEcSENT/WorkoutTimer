@@ -23,4 +23,8 @@ class NewWorkoutPresenter @Inject constructor(
                         )
         )
     }
+
+    fun onDefaultExerciseButtonClicked() {
+        getView()?.toggleDefaultExerciseCheckBox()
+    }
 }

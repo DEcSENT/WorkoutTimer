@@ -89,11 +89,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dialog_new_workout_description_input_layout" />
 
-        <!--TODO: Add non clickable custom checkbox-->
-        <CheckBox
+        <com.dvinc.workouttimer.presentation.common.view.NonClickableCheckBox
             android:id="@+id/dialog_new_workout_default_exercise_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:button="?android:attr/listChoiceIndicatorMultiple"
             app:layout_constraintBottom_toBottomOf="@+id/dialog_new_workout_default_exercise"
             app:layout_constraintEnd_toEndOf="@+id/dialog_new_workout_default_exercise"
             app:layout_constraintTop_toTopOf="@+id/dialog_new_workout_default_exercise" />

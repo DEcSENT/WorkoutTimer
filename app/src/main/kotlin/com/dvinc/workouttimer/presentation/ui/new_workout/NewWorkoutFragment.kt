@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_canc
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_add_button as addButton
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_name as nameEditText
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_description as descriptionEditText
+import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_default_exercise_checkbox as defaultExerciseCheckBox
+import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_default_exercise as defaultExerciseButton
 import javax.inject.Inject
 
 class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
@@ -54,6 +56,7 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
         setupBackground()
         setupCancelButton()
         setupAddWorkoutButton()
+        setupDefaultExerciseButton()
     }
 
     override fun onResume() {
@@ -73,6 +76,10 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
 
     override fun closeScreen() {
         dismiss()
+    }
+
+    override fun toggleDefaultExerciseCheckBox() {
+        defaultExerciseCheckBox.toggle()
     }
 
     private fun injectPresenter() {
@@ -104,6 +111,12 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
             val workoutName = nameEditText.text.toString()
             val workoutDescription = descriptionEditText.text.toString()
             presenter.onNewWorkoutAdded(workoutName, workoutDescription)
+        }
+    }
+
+    private fun setupDefaultExerciseButton() {
+        defaultExerciseButton.setOnClickListener {
+            presenter.onDefaultExerciseButtonClicked()
         }
     }
 }
