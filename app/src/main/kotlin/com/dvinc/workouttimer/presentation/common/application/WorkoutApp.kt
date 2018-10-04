@@ -12,11 +12,9 @@ import com.crashlytics.android.Crashlytics
 import com.dvinc.workouttimer.BuildConfig
 import io.fabric.sdk.android.Fabric
 import com.dvinc.workouttimer.presentation.common.timber.ReleaseTree
-import com.dvinc.workouttimer.presentation.di.component.AppComponent
-import com.dvinc.workouttimer.presentation.di.component.DaggerAppComponent
-import com.dvinc.workouttimer.presentation.di.component.ExerciseComponent
-import com.dvinc.workouttimer.presentation.di.component.WorkoutComponent
+import com.dvinc.workouttimer.presentation.di.component.*
 import com.dvinc.workouttimer.presentation.di.module.AppModule
+import com.facebook.stetho.Stetho
 import timber.log.Timber
 
 class WorkoutApp : Application() {
@@ -36,12 +34,15 @@ class WorkoutApp : Application() {
 
     private var exerciseComponent: ExerciseComponent? = null
 
+    private var newWorkoutComponent: NewWorkoutComponent? = null
+
     override fun onCreate() {
         super.onCreate()
         WorkoutApp.context = this
         appComponent = buildDI()
         Timber.plant(if (BuildConfig.DEBUG) Timber.DebugTree() else ReleaseTree())
         Fabric.with(this, Crashlytics())
+        Stetho.initializeWithDefaults(this)
     }
 
     fun getWorkoutComponent(): WorkoutComponent? {
@@ -66,6 +67,18 @@ class WorkoutApp : Application() {
 
     fun clearExerciseComponent() {
         exerciseComponent = null
+    }
+
+    fun getNewWorkoutComponent(): NewWorkoutComponent? {
+        if (newWorkoutComponent == null) {
+            newWorkoutComponent = appComponent.getNewWorkoutComponent()
+        }
+
+        return newWorkoutComponent
+    }
+
+    fun clearNewWorkoutComponent() {
+        newWorkoutComponent = null
     }
 
     private fun buildDI(): AppComponent {

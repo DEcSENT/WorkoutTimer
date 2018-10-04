@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">WorkoutTimer</string>
 
+    <!--Common string resources-->
+    <string name="cancel">Cancel</string>
+    <string name="add">add</string>
+    <!--Common string resources end-->
+
     <string name="menu_main_timer">Timer</string>
     <string name="menu_main_exercise">Exercises</string>
     <string name="menu_main_workout">Workouts</string>
@@ -16,4 +21,9 @@
     <string name="exercise_type_pause">Pause</string>
     <string name="exercise_type_work">Work</string>
     <string name="exercise_add_button">Add exercise</string>
+
+    <string name="dialog_new_workout_title">New workout</string>
+    <string name="dialog_new_workout_name_hint">Name</string>
+    <string name="dialog_new_workout_description_hint">Description</string>
+    <string name="dialog_new_workout_default_exercise">Add default exercise</string>
 </resources>

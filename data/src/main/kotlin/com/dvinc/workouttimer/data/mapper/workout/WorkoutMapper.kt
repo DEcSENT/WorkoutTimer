@@ -10,7 +10,9 @@ import com.dvinc.workouttimer.domain.model.workout.Workout
 
 interface WorkoutMapper {
 
-    fun fromEntityToDomain(entities: List<WorkoutEntity>): List<Workout>
+    fun fromEntity(entities: List<WorkoutEntity>): List<Workout>
 
-    fun fromEntityToDomain(entity: WorkoutEntity): Workout
+    fun fromEntity(entity: WorkoutEntity): Workout
+
+    fun fromDomain(workout: Workout): WorkoutEntity
 }

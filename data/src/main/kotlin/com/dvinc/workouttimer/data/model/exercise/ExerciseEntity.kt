@@ -11,7 +11,7 @@ import android.arch.persistence.room.*
 data class ExerciseEntity(
 
         @PrimaryKey(autoGenerate = true)
-        var id: Int,
+        var id: Int = 0,
 
         @ColumnInfo(name = "workout_id")
         val workoutId: Int,

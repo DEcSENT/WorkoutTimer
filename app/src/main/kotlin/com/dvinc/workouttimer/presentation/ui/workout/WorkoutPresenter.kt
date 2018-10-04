@@ -24,7 +24,7 @@ class WorkoutPresenter @Inject constructor(
     }
 
     fun onAddButtonClick() {
-        //TODO: show dialog
+        getView()?.showNewWorkoutDialog()
     }
 
     fun onWorkoutDeleted(workout: Workout) {
