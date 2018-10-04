@@ -27,4 +27,9 @@ class WorkoutUseCase @Inject constructor(
         return Completable.complete()
                 .compose(threadScheduler.ioToUiCompletable())
     }
+
+    fun deleteWorkoutById(id: Int): Completable {
+        return workoutRepository.deleteWorkoutById(id)
+                .compose(threadScheduler.ioToUiCompletable())
+    }
 }

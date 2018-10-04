@@ -34,4 +34,8 @@ class WorkoutDataRepository @Inject constructor(
         return Single.fromCallable { workoutMapper.fromDomain(workout) }
                 .flatMapCompletable { Completable.fromAction { workoutDao.insert(it) } }
     }
+
+    override fun deleteWorkoutById(id: Int): Completable {
+        return Completable.fromAction { workoutDao.deleteWorkoutById(id) }
+    }
 }
