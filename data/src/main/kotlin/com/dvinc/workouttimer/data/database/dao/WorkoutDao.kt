@@ -18,10 +18,10 @@ interface WorkoutDao : BaseDao<WorkoutEntity> {
     @Query("SELECT * FROM workout")
     fun getWorkouts(): Flowable<List<WorkoutEntity>>
 
-    @Query("SELECT * FROM workout WHERE id = :id")
+    @Query("SELECT * FROM workout WHERE uid = :id")
     fun getWorkoutById(id: Int): Single<WorkoutEntity>
 
-    @Query("DELETE FROM workout WHERE id = :id")
+    @Query("DELETE FROM workout WHERE uid = :id")
     fun deleteWorkoutById(id: Int)
 
     @Query("SELECT * FROM workout WHERE active = 1")

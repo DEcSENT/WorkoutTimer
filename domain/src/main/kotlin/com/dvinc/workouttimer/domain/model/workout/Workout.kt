@@ -6,10 +6,10 @@
 package com.dvinc.workouttimer.domain.model.workout
 
 data class Workout(
-        val id: Int,
+        val id: Int = 0,
         val name: String,
         val description: String,
-        val exerciseCount: Int,
-        val exerciseTotalTime: Long,
-        val isActive: Boolean
+        val exerciseCount: Int = 0,
+        val exerciseTotalTime: Long = 0,
+        val isActive: Boolean = false
 )
