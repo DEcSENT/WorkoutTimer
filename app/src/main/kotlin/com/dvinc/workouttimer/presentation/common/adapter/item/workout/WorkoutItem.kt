@@ -6,6 +6,7 @@
 package com.dvinc.workouttimer.presentation.common.adapter.item.workout
 
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.presentation.common.adapter.listener.workout.WorkoutItemButtonsClickListener
 import com.dvinc.workouttimer.presentation.common.extension.toggleGone
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -16,9 +17,11 @@ import kotlinx.android.synthetic.main.item_workout.item_workout_total_exercises_
 import kotlinx.android.synthetic.main.item_workout.item_workout_exercises_total_time as totalTime
 import kotlinx.android.synthetic.main.item_workout.item_workout_active as activeLabel
 import kotlinx.android.synthetic.main.item_workout.item_workout_buttons_group as workoutControlButtonsGroup
+import kotlinx.android.synthetic.main.item_workout.item_workout_delete_button as deleteWorkoutButton
 
 class WorkoutItem constructor(
         val workout: WorkoutUi,
+        val buttonsClickListener: WorkoutItemButtonsClickListener,
         private var isExpanded: Boolean = false
 ) : Item() {
 
@@ -37,6 +40,10 @@ class WorkoutItem constructor(
             itemView.setOnClickListener {
                 isExpanded = !isExpanded
                 notifyChanged()
+            }
+
+            deleteWorkoutButton.setOnClickListener {
+                buttonsClickListener.onDeleteButtonClick(workout.id)
             }
         }
     }

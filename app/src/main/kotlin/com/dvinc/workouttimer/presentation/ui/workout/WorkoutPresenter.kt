@@ -5,7 +5,6 @@
 
 package com.dvinc.workouttimer.presentation.ui.workout
 
-import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.domain.usecase.workout.WorkoutUseCase
 import com.dvinc.workouttimer.presentation.mapper.workout.WorkoutPresentationMapper
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
@@ -27,8 +26,12 @@ class WorkoutPresenter @Inject constructor(
         getView()?.showNewWorkoutDialog()
     }
 
-    fun onWorkoutDeleted(workout: Workout) {
-        //TODO: delete workout. And rename this method?
+    fun onWorkoutDeleted(workoutId: Int) {
+        addSubscription(workoutUseCase.deleteWorkoutById(workoutId)
+                .subscribe(
+                        { /* TODO: Show message here */ },
+                        { Timber.e(it) }
+                ))
     }
 
     fun onWorkoutClick(workout: WorkoutUi) {
