@@ -44,7 +44,6 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
         injectPresenter()
         initWorkoutsList()
-        setupAdapterItemClickListener()
         setupScrollListener()
         setupAddButtonCLickListener()
     }
@@ -71,7 +70,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
                 .map { workoutUi ->
                     WorkoutItem(workoutUi, object : WorkoutItemButtonsClickListener {
                         override fun onActivateButtonClick(workoutId: Int) {
-                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                            presenter.onWorkoutActivated(workoutId)
                         }
 
                         override fun onDeleteButtonClick(workoutId: Int) {
@@ -121,14 +120,6 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
                     leftPadding = 0.dp(),
                     rightPadding = 0.dp()
             ))
-        }
-    }
-
-    private fun setupAdapterItemClickListener() {
-        workoutAdapter.setOnItemClickListener { item, _ ->
-            if (item is WorkoutItem) {
-                presenter.onWorkoutClick(item.workout)
-            }
         }
     }
 

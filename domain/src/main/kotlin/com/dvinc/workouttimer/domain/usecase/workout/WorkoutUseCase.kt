@@ -23,8 +23,7 @@ class WorkoutUseCase @Inject constructor(
     }
 
     fun selectActiveWorkout(workoutId: Int): Completable {
-        //TODO: flow for workout updating
-        return Completable.complete()
+        return workoutRepository.makeWorkoutActiveById(workoutId)
                 .compose(threadScheduler.ioToUiCompletable())
     }
 

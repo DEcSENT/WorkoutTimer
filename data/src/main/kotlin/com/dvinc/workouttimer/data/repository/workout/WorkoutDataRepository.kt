@@ -38,4 +38,8 @@ class WorkoutDataRepository @Inject constructor(
     override fun deleteWorkoutById(id: Int): Completable {
         return Completable.fromAction { workoutDao.deleteWorkoutById(id) }
     }
+
+    override fun makeWorkoutActiveById(workoutId: Int): Completable {
+        return Completable.fromAction { workoutDao.activateWorkoutById(workoutId) }
+    }
 }

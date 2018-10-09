@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.item_workout.item_workout_exercises_total_
 import kotlinx.android.synthetic.main.item_workout.item_workout_active as activeLabel
 import kotlinx.android.synthetic.main.item_workout.item_workout_buttons_group as workoutControlButtonsGroup
 import kotlinx.android.synthetic.main.item_workout.item_workout_delete_button as deleteWorkoutButton
+import kotlinx.android.synthetic.main.item_workout.item_workout_activate_button as activateWorkoutButton
 
 class WorkoutItem constructor(
         val workout: WorkoutUi,
@@ -44,6 +45,10 @@ class WorkoutItem constructor(
 
             deleteWorkoutButton.setOnClickListener {
                 buttonsClickListener.onDeleteButtonClick(workout.id)
+            }
+
+            activateWorkoutButton.setOnClickListener {
+                buttonsClickListener.onActivateButtonClick(workout.id)
             }
         }
     }
