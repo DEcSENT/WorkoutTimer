@@ -5,9 +5,9 @@
 
 package com.dvinc.workouttimer.data.database.dao
 
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Update
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Update
 
 interface BaseDao<T> {
 

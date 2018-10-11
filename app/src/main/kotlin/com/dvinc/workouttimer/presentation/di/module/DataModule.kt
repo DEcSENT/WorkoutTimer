@@ -5,8 +5,8 @@
 
 package com.dvinc.workouttimer.presentation.di.module
 
-import android.arch.persistence.room.Room
 import android.content.Context
+import androidx.room.Room
 import com.dvinc.workouttimer.data.database.WorkoutDatabase
 import com.dvinc.workouttimer.data.database.dao.ExerciseDao
 import com.dvinc.workouttimer.data.database.dao.WorkoutDao

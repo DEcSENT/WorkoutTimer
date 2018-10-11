@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -145,7 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/item_workout_description"
         app:layout_constraintVertical_bias="0.0" />
 
-    <android.support.constraint.Group
+    <androidx.constraintlayout.widget.Group
         android:id="@+id/item_workout_buttons_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -153,4 +153,4 @@
         app:constraint_referenced_ids="item_workout_delete_button, item_workout_activate_button, item_workout_edit_button"
         tools:visibility="visible" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

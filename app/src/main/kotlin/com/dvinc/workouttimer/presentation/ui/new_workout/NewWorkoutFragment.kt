@@ -8,11 +8,11 @@ package com.dvinc.workouttimer.presentation.ui.new_workout
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.fragment.app.DialogFragment
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_background as dialogBackground

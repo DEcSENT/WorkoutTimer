@@ -8,8 +8,8 @@ package com.dvinc.workouttimer.presentation.common.adapter.divider
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.dvinc.workouttimer.R
 
 //TODO: Try to optimize this class

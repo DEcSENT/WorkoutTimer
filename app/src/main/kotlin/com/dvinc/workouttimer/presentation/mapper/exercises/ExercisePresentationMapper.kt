@@ -5,8 +5,6 @@
 
 package com.dvinc.workouttimer.presentation.mapper.exercises
 
-import android.content.Context
-import android.support.v4.content.ContextCompat
 import com.dvinc.workouttimer.domain.model.exercise.Exercise
 import com.dvinc.workouttimer.domain.model.exercise.ExerciseType
 import com.dvinc.workouttimer.presentation.common.resources.ResourceManager

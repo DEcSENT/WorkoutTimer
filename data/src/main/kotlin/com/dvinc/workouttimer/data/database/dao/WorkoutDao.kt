@@ -5,9 +5,9 @@
 
 package com.dvinc.workouttimer.data.database.dao
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Query
-import android.arch.persistence.room.Transaction
+import androidx.room.Dao
+import androidx.room.Query
+import androidx.room.Transaction
 import com.dvinc.workouttimer.data.model.workout.WorkoutEntity
 import io.reactivex.Flowable
 import io.reactivex.Maybe
