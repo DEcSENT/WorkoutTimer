@@ -24,4 +24,8 @@
 
     <color name="color_exercise_type_pause">#fff700</color>
     <color name="color_exercise_type_work">#ff0004</color>
+
+    <color name="color_workout_item_delete_button">#ff0000</color>
+    <color name="color_workout_item_activate_button">#00AC1A</color>
+    <color name="color_workout_item_edit_button">#0000ff</color>
 </resources>

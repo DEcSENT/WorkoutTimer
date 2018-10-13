@@ -32,6 +32,7 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="2"
+        android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/item_workout_name"
         app:layout_constraintTop_toBottomOf="@+id/item_workout_total_exercises_count_text"
@@ -101,49 +102,44 @@
 
     <Button
         android:id="@+id/item_workout_delete_button"
+        style="@style/WorkoutItemControlButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:background="@color/color_workout_item_delete_button"
         android:text="@string/item_workout_delete"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_activate_button"
         app:layout_constraintEnd_toStartOf="@+id/item_workout_activate_button"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_workout_description" />
+        app:layout_constraintTop_toTopOf="@+id/item_workout_activate_button" />
 
     <Button
         android:id="@+id/item_workout_activate_button"
+        style="@style/WorkoutItemControlButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/color_workout_item_activate_button"
         android:text="@string/item_workout_activate"
-        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_workout_edit_button"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/item_workout_delete_button"
-        app:layout_constraintTop_toBottomOf="@+id/item_workout_description"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/item_workout_description" />
 
     <Button
         android:id="@+id/item_workout_edit_button"
+        style="@style/WorkoutItemControlButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:background="@color/color_workout_item_edit_button"
         android:text="@string/item_workout_edit"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_activate_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/item_workout_activate_button"
         app:layout_constraintTop_toBottomOf="@+id/item_workout_description"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/item_workout_activate_button" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/item_workout_buttons_group"
