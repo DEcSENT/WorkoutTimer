@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:background="@drawable/button_add_workout"
-        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/workout_add_workout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
