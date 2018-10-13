@@ -1,6 +1,7 @@
 # Workout Timer
 
 [![Build Status](https://travis-ci.org/DEcSENT/WorkoutTimer.svg?branch=master)](https://travis-ci.org/DEcSENT/WorkoutTimer)
+[![codebeat badge](https://codebeat.co/badges/472cd3bc-a660-41b6-8487-5855eb767e4e)](https://codebeat.co/projects/github-com-decsent-workouttimer-master)
 
 ## Description
 
