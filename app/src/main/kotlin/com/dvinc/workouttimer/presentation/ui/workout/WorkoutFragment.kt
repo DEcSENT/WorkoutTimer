@@ -146,7 +146,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
                 .animateFadeOutWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
                     override fun onAnimationEnd(animation: Animator?) {
-                        addWorkoutButton.makeVisible()
+                        addWorkoutButton.makeGone()
                     }
                 })
     }
@@ -155,8 +155,8 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         addWorkoutButton
                 .animateFadeInWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
-                    override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
-                        addWorkoutButton.makeGone()
+                    override fun onAnimationEnd(animation: Animator?) {
+                        addWorkoutButton.makeVisible()
                     }
                 })
     }
