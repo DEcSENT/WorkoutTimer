@@ -26,4 +26,7 @@
     <string name="dialog_new_workout_name_hint">Name</string>
     <string name="dialog_new_workout_description_hint">Description</string>
     <string name="dialog_new_workout_default_exercise">Add default exercise</string>
+    <string name="item_workout_delete">delete</string>
+    <string name="item_workout_activate">activate</string>
+    <string name="item_workout_edit">edit</string>
 </resources>

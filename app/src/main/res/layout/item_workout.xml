@@ -1,104 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="4dp">
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/item_workout_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/color_item_workout_main_text"
+        android:textSize="@dimen/item_workout_text_big"
+        app:layout_constraintEnd_toStartOf="@+id/item_workout_active"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="TestName" />
 
-        <TextView
-            android:id="@+id/item_workout_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/color_item_workout_main_text"
-            android:textSize="@dimen/item_workout_text_big"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="TestName" />
+    <TextView
+        android:id="@+id/item_workout_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/item_workout_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_workout_total_exercises_count_text"
+        tools:text="So, this is long workout description..." />
 
-        <TextView
-            android:id="@+id/item_workout_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/item_workout_name"
-            app:layout_constraintTop_toBottomOf="@+id/item_workout_name"
-            tools:text="So, this is long workout description..." />
+    <TextView
+        android:id="@+id/item_workout_total_exercises_count_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/item_workout_total_exercise"
+        android:textSize="@dimen/item_workout_text_small"
+        app:layout_constraintStart_toStartOf="@+id/item_workout_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_workout_name" />
 
-        <TextView
-            android:id="@+id/item_workout_total_exercises_count_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/item_workout_total_exercise"
-            android:textSize="@dimen/item_workout_text_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/item_workout_name"
-            app:layout_constraintTop_toBottomOf="@+id/item_workout_description" />
+    <TextView
+        android:id="@+id/item_workout_total_exercises_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/color_item_workout_main_text"
+        android:textSize="@dimen/item_workout_text_small"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises_count_text"
+        app:layout_constraintStart_toEndOf="@+id/item_workout_total_exercises_count_text"
+        app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises_count_text"
+        tools:text="20" />
 
-        <TextView
-            android:id="@+id/item_workout_total_exercises_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/color_item_workout_main_text"
-            android:textSize="@dimen/item_workout_text_small"
-            app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises_count_text"
-            app:layout_constraintStart_toEndOf="@+id/item_workout_total_exercises_count_text"
-            app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises_count_text"
-            tools:text="20" />
+    <TextView
+        android:id="@+id/item_workout_exercises_total_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/item_workout_total_time"
+        android:textSize="@dimen/item_workout_text_small"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises_count"
+        app:layout_constraintEnd_toStartOf="@+id/item_workout_exercises_total_time"
+        app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises_count" />
 
-        <TextView
-            android:id="@+id/item_workout_exercises_total_time_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/item_workout_total_time"
-            android:textSize="@dimen/item_workout_text_small"
-            app:layout_constraintBottom_toBottomOf="@+id/item_workout_total_exercises_count"
-            app:layout_constraintEnd_toStartOf="@+id/item_workout_exercises_total_time"
-            app:layout_constraintTop_toTopOf="@+id/item_workout_total_exercises_count" />
+    <TextView
+        android:id="@+id/item_workout_exercises_total_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/color_item_workout_main_text"
+        android:textSize="@dimen/item_workout_text_small"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_exercises_total_time_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_workout_exercises_total_time_text"
+        tools:text="0:10:50" />
 
-        <TextView
-            android:id="@+id/item_workout_exercises_total_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:textColor="@color/color_item_workout_main_text"
-            android:textSize="@dimen/item_workout_text_small"
-            app:layout_constraintBottom_toBottomOf="@+id/item_workout_exercises_total_time_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_workout_exercises_total_time_text"
-            tools:text="0:10:50" />
+    <TextView
+        android:id="@+id/item_workout_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@color/color_item_workout_active"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="@string/item_workout_active"
+        android:textColor="@color/white"
+        android:textSize="@dimen/item_workout_text_small"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_workout_name"
+        tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/item_workout_active"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@color/color_item_workout_active"
-            android:paddingEnd="4dp"
-            android:paddingStart="4dp"
-            android:text="@string/item_workout_active"
-            android:textColor="@color/white"
-            android:textSize="@dimen/item_workout_text_small"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/item_workout_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_workout_name"
-            tools:visibility="visible" />
-    </android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/item_workout_delete_button"
+        style="@style/WorkoutItemControlButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round_workout_item_button_delete"
+        android:text="@string/item_workout_delete"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_activate_button"
+        app:layout_constraintEnd_toStartOf="@+id/item_workout_activate_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_workout_activate_button" />
 
-</android.support.v7.widget.CardView>
+    <Button
+        android:id="@+id/item_workout_activate_button"
+        style="@style/WorkoutItemControlButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_round_workout_item_button_activate"
+        android:text="@string/item_workout_activate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_workout_edit_button"
+        app:layout_constraintStart_toEndOf="@+id/item_workout_delete_button"
+        app:layout_constraintTop_toBottomOf="@+id/item_workout_description" />
+
+    <Button
+        android:id="@+id/item_workout_edit_button"
+        style="@style/WorkoutItemControlButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_round_workout_item_button_edit"
+        android:text="@string/item_workout_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/item_workout_activate_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_workout_activate_button"
+        app:layout_constraintTop_toBottomOf="@+id/item_workout_description"
+        app:layout_constraintTop_toTopOf="@+id/item_workout_activate_button" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/item_workout_buttons_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="item_workout_delete_button, item_workout_activate_button, item_workout_edit_button"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

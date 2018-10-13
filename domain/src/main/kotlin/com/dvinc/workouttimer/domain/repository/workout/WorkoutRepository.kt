@@ -17,4 +17,8 @@ interface WorkoutRepository {
     fun obtainActiveWorkout(): Maybe<Workout>
 
     fun addWorkout(workout: Workout): Completable
+
+    fun deleteWorkoutById(id: Int): Completable
+
+    fun makeWorkoutActiveById(workoutId: Int): Completable
 }

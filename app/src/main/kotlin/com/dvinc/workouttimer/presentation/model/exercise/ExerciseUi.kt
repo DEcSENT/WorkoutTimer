@@ -5,7 +5,7 @@
 
 package com.dvinc.workouttimer.presentation.model.exercise
 
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 
 data class ExerciseUi(
         val id: Int,

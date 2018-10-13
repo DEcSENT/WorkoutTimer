@@ -9,7 +9,7 @@
     android:focusable="true"
     tools:background="#808080">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dialog_new_workout_name_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,9 +47,9 @@
                 android:hint="@string/dialog_new_workout_name_hint"
                 android:inputType="textCapSentences"
                 android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dialog_new_workout_description_input_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -67,7 +67,7 @@
                 android:hint="@string/dialog_new_workout_description_hint"
                 android:inputType="textCapSentences"
                 android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/dialog_new_workout_default_exercise"
@@ -123,6 +123,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dialog_new_workout_default_exercise" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

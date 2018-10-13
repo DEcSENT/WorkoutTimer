@@ -1,36 +1,34 @@
 def kotlin_version = '1.2.50'
-def android_support_version = '27.1.1'
-def constraint_layout_version = '1.1.0'
+def android_x_version = '1.0.0'
+def constraint_layout_version = '1.1.2'
 def dagger_version = '2.11'
 def rxJava_version = '2.1.1'
 def rxAndroid_version = '2.0.1'
-def android_room_version = '1.1.0'
+def android_room_version = '2.1.0-alpha01'
 def stetho_version = '1.5.0'
 def groupie_version = '2.1.0'
 def timber_version = '4.7.1'
 
 def jUnit_version = '4.12'
-def test_runner_version = '1.0.2'
-def espresso_version = '3.0.2'
+def test_runner_version = '1.1.0-alpha3'
+def espresso_version = '3.1.0-alpha3'
 
 ext{
 
     librariesAnnotationProcessors = [
             dagger_processor = "com.google.dagger:dagger-compiler:$dagger_version",
 
-            android_room_processor = "android.arch.persistence.room:compiler:$android_room_version"
+            android_room_processor = "androidx.room:room-compiler:$android_room_version"
     ]
 
     appDependencies = [
             kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
 
-            support_library = "com.android.support:appcompat-v7:$android_support_version",
+            appcompat_library = "androidx.appcompat:appcompat:$android_x_version",
 
-            support_design = "com.android.support:design:$android_support_version",
+            android_material = "com.google.android.material:material:$android_x_version",
 
-            constraint_layout = "com.android.support.constraint:constraint-layout:$constraint_layout_version",
-
-            card_view = "com.android.support:cardview-v7:$android_support_version",
+            constraint_layout = "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
 
             dagger = "com.google.dagger:dagger:$dagger_version",
 
@@ -38,7 +36,7 @@ ext{
 
             rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version",
 
-            android_room = "android.arch.persistence.room:runtime:$android_room_version",
+            android_room = "androidx.room:room-runtime:$android_room_version",
 
             stetho = "com.facebook.stetho:stetho:$stetho_version",
 
@@ -68,17 +66,17 @@ ext{
 
             rxandroid = "io.reactivex.rxjava2:rxandroid:$rxAndroid_version",
 
-            android_room = "android.arch.persistence.room:runtime:$android_room_version",
+            android_room = "androidx.room:room-runtime:$android_room_version",
 
-            android_room_rx = "android.arch.persistence.room:rxjava2:$android_room_version"
+            android_room_rx = "androidx.room:room-rxjava2:$android_room_version"
     ]
 
     jUnit = "junit:junit:$jUnit_version"
 
     testDependencies = [
 
-            testRunner = "com.android.support.test:runner:$test_runner_version",
+            testRunner = "androidx.test:runner:$test_runner_version",
 
-            espresso = "com.android.support.test.espresso:espresso-core:$espresso_version"
+            espresso = "androidx.test.espresso:espresso-core:$espresso_version"
     ]
 }

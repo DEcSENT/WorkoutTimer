@@ -5,8 +5,8 @@
 
 package com.dvinc.workouttimer.presentation.model.exercise
 
-import android.support.annotation.ColorRes
-import android.support.annotation.StringRes
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import com.dvinc.workouttimer.R
 
 enum class ExerciseTypeUi(

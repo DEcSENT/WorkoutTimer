@@ -5,7 +5,9 @@
 
 package com.dvinc.workouttimer.data.model.exercise
 
-import android.arch.persistence.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "exercise")
 data class ExerciseEntity(

@@ -5,9 +5,9 @@
 
 package com.dvinc.workouttimer.presentation.common.resources
 
-import android.support.annotation.ArrayRes
-import android.support.annotation.ColorRes
-import android.support.annotation.StringRes
+import androidx.annotation.ArrayRes
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 
 interface ResourceManager {
 

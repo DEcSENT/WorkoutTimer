@@ -6,8 +6,8 @@
 package com.dvinc.workouttimer.presentation.common.resources
 
 import android.content.Context
-import android.support.annotation.StringRes
-import android.support.v4.content.ContextCompat
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import javax.inject.Inject
 
 class ResourceDataManager @Inject constructor(val context: Context) : ResourceManager {

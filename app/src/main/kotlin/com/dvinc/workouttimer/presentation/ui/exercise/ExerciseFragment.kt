@@ -7,7 +7,7 @@ package com.dvinc.workouttimer.presentation.ui.exercise
 
 import android.animation.Animator
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
@@ -90,7 +90,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun setupScrollListener() {
         exercisesRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0)
                     hideAddExerciseButton()
                 else if (dy < 0){

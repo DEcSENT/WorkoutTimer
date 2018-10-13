@@ -7,17 +7,16 @@ package com.dvinc.workouttimer.presentation.ui.workout
 
 import android.animation.Animator
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
-import com.dvinc.workouttimer.presentation.common.extension.animateFadeInWithDuration
-import com.dvinc.workouttimer.presentation.common.extension.animateFadeOutWithDuration
-import com.dvinc.workouttimer.presentation.common.extension.makeGone
-import com.dvinc.workouttimer.presentation.common.extension.makeVisible
 import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURATION
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.workout.WorkoutItem
+import com.dvinc.workouttimer.presentation.common.adapter.listener.workout.WorkoutItemButtonsClickListener
+import com.dvinc.workouttimer.presentation.common.extension.*
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.dvinc.workouttimer.presentation.ui.new_workout.NewWorkoutFragment
@@ -68,7 +67,21 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         //TODO: Refactor this 2 lines?
         workoutAdapter.clear()
         workoutAdapter.addAll(workouts
-                .map { WorkoutItem(it) })
+                .map { workoutUi ->
+                    WorkoutItem(workoutUi, object : WorkoutItemButtonsClickListener {
+                        override fun onActivateButtonClick(workoutId: Int) {
+                            presenter.onWorkoutActivated(workoutId)
+                        }
+
+                        override fun onDeleteButtonClick(workoutId: Int) {
+                            presenter.onWorkoutDeleted(workoutId)
+                        }
+
+                        override fun onEditButtonClick(workoutId: Int) {
+                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        }
+                    })
+                })
     }
 
     override fun showDeleteWorkoutDialog(workout: WorkoutUi) {
@@ -101,19 +114,21 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
 
     private fun initWorkoutsList() {
         workoutRecycler.adapter = workoutAdapter
-        workoutAdapter.setOnItemClickListener { item, _ ->
-            if (item is WorkoutItem) {
-                presenter.onWorkoutClick(item.workout)
-            }
+        context?.let {
+            workoutRecycler.addItemDecoration(HorizontalDivider(
+                    context = it,
+                    leftPadding = 0.dp(),
+                    rightPadding = 0.dp()
+            ))
         }
     }
 
     private fun setupScrollListener() {
         workoutRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0)
                     hideAddWorkoutButton()
-                else if (dy < 0){
+                else if (dy < 0) {
                     showAddWorkoutButton()
                 }
             }
@@ -131,7 +146,7 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
                 .animateFadeOutWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
                     override fun onAnimationEnd(animation: Animator?) {
-                        addWorkoutButton.makeVisible()
+                        addWorkoutButton.makeGone()
                     }
                 })
     }
@@ -140,8 +155,8 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         addWorkoutButton
                 .animateFadeInWithDuration(ADD_BUTTON_ANIMATION_DURATION)
                 .setListener(object : SimpleAnimationListener() {
-                    override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
-                        addWorkoutButton.makeGone()
+                    override fun onAnimationEnd(animation: Animator?) {
+                        addWorkoutButton.makeVisible()
                     }
                 })
     }
