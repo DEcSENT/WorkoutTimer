@@ -6,12 +6,13 @@
 package com.dvinc.workouttimer.presentation.ui.main
 
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.dvinc.workouttimer.R
-import com.dvinc.workouttimer.presentation.common.adapter.main.MainPagerAdapter
+import com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment
+import com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment
 import kotlinx.android.synthetic.main.activity_main_refactored.activity_main_bottom_navigation as bottomNavigation
-import kotlinx.android.synthetic.main.activity_main_refactored.activity_main_view_pager as viewPager
+import kotlinx.android.synthetic.main.activity_main_refactored.activity_main_fragment_container as fragmentContainer
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,27 +20,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_refactored)
 
-        setupViewPager()
         setupBottomNavigation()
+
+        //TODO: Replace DummyFragments
+        replaceFragment(DummyFragment(), "Replace me")
     }
 
     private fun setupBottomNavigation() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_timer -> {
-                    viewPager.currentItem = 0
+                    replaceFragment(DummyFragment(), "Replace me")
                     true
                 }
                 R.id.action_exercise -> {
-                    viewPager.currentItem = 1
+                    replaceFragment(ExerciseFragment(), ExerciseFragment.TAG)
                     true
                 }
                 R.id.action_workout -> {
-                    viewPager.currentItem = 2
+                    replaceFragment(WorkoutFragment(), WorkoutFragment.TAG)
                     true
                 }
                 R.id.action_settings -> {
-                    viewPager.currentItem = 3
+                    replaceFragment(DummyFragment(), "Replace me 2")
                     true
                 }
                 else -> true
@@ -48,19 +51,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupViewPager() {
-        viewPager.adapter = MainPagerAdapter(supportFragmentManager)
-
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            }
-
-            override fun onPageSelected(position: Int) {
-                bottomNavigation.menu.getItem(position).isChecked = true
-            }
-        })
+    private fun replaceFragment(fragment: Fragment, tag: String) {
+        with(this.supportFragmentManager) {
+            beginTransaction()
+                    .apply {
+                        setCustomAnimations(
+                                R.anim.animation_fade_in,
+                                R.anim.animation_fade_out,
+                                R.anim.animation_fade_in,
+                                R.anim.animation_fade_out
+                        )
+                    }
+                    .replace(R.id.activity_main_fragment_container, fragment, tag)
+                    .commit()
+        }
     }
 }
