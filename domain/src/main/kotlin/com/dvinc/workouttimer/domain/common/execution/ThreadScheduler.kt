@@ -22,5 +22,7 @@ open class ThreadScheduler @Inject constructor() {
 
     fun <T> ioToUiFlowable() = { upstream: Flowable<T> -> upstream.subscribeOn(io()).observeOn(ui()) }
 
+    fun <T> ioToUiMaybe() = { upstream: Maybe<T> -> upstream.subscribeOn(io()).observeOn(ui()) }
+
     fun ioToUiCompletable() = { upstream: Completable -> upstream.subscribeOn(io()).observeOn(ui()) }
 }

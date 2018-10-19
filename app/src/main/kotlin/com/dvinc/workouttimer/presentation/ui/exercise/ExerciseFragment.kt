@@ -10,6 +10,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.extension.*
@@ -50,7 +51,8 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     override fun onResume() {
         super.onResume()
         presenter.attachView(this)
-        presenter.initView()
+        presenter.loadExercises()
+        presenter.loadCurrentActiveWorkout()
     }
 
     override fun onPause() {
@@ -66,6 +68,10 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     override fun showExercises(exercises: List<ExerciseUi>) {
         exercisesAdapter.clear()
         exercisesAdapter.addAll(exercises.map { ExerciseItem(it) })
+    }
+
+    override fun showActiveWorkoutInfo(workout: Workout) {
+        //TODO: Show workout info
     }
 
     private fun injectPresenter() {

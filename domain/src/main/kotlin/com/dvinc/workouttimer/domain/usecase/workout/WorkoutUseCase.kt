@@ -10,6 +10,7 @@ import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.domain.repository.workout.WorkoutRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Maybe
 import javax.inject.Inject
 
 class WorkoutUseCase @Inject constructor(
@@ -30,5 +31,10 @@ class WorkoutUseCase @Inject constructor(
     fun deleteWorkoutById(id: Int): Completable {
         return workoutRepository.deleteWorkoutById(id)
                 .compose(threadScheduler.ioToUiCompletable())
+    }
+
+    fun obtainActiveWorkout(): Maybe<Workout> {
+        return workoutRepository.obtainActiveWorkout()
+                .compose(threadScheduler.ioToUiMaybe())
     }
 }
