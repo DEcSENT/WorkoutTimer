@@ -24,6 +24,10 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_recycler as exercisesRecycler
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_add_button as exerciseAddButton
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_name as workoutName
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_description as workoutDescription
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_time as workoutTotalTime
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_exercises_count as workoutExercises
 import javax.inject.Inject
 
 class ExerciseFragment : BaseFragment(), ExerciseView {
@@ -71,7 +75,12 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     }
 
     override fun showActiveWorkoutInfo(workout: Workout) {
-        //TODO: Show workout info
+        with(workout) {
+            workoutName.text = name
+            workoutDescription.text = description
+            workoutTotalTime.text = exerciseTotalTime.toString()
+            workoutExercises.text = exerciseCount.toString()
+        }
     }
 
     private fun injectPresenter() {
