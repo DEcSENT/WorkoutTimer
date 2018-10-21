@@ -1,7 +1,7 @@
 def kotlin_version = '1.2.71'
 def android_x_version = '1.0.0'
 def constraint_layout_version = '1.1.2'
-def dagger_version = '2.11'
+def dagger_version = '2.15'
 def rxJava_version = '2.1.1'
 def rxAndroid_version = '2.0.1'
 def android_room_version = '2.1.0-alpha01'
@@ -12,6 +12,9 @@ def timber_version = '4.7.1'
 def jUnit_version = '4.12'
 def test_runner_version = '1.1.0-alpha3'
 def espresso_version = '3.1.0-alpha3'
+
+def leakCanaryVersion = '1.6.2'
+def hyperionVersion = '0.9.24'
 
 ext{
 
@@ -69,6 +72,26 @@ ext{
             android_room = "androidx.room:room-runtime:$android_room_version",
 
             android_room_rx = "androidx.room:room-rxjava2:$android_room_version"
+    ]
+
+    toolsDependenciesDebug = [
+            leakCanary = "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion",
+
+            leakCanaryFragment = "com.squareup.leakcanary:leakcanary-support-fragment:$leakCanaryVersion",
+
+            hyperionCore =  "com.willowtreeapps.hyperion:hyperion-core:$hyperionVersion",
+
+            hyperionAttr = "com.willowtreeapps.hyperion:hyperion-attr:$hyperionVersion",
+
+            hyperionMeasurement =  "com.willowtreeapps.hyperion:hyperion-measurement:$hyperionVersion",
+
+            hyperionGeiger =  "com.willowtreeapps.hyperion:hyperion-geiger-counter:$hyperionVersion",
+
+            hyperionPhoenix = "com.willowtreeapps.hyperion:hyperion-phoenix:$hyperionVersion",
+    ]
+
+    toolsDependenciesRelease = [
+            leakCanaryRelease = "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
     ]
 
     jUnit = "junit:junit:$jUnit_version"
