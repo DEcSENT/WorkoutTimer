@@ -62,11 +62,16 @@ dependencies {
 
     kapt(librariesAnnotationProcessors)
 
-    implementation (appDependencies)
+    implementation(appDependencies)
 
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true
     }
+
+    // LeakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
 }
 
 def initFabricPropertiesIfNeeded() {

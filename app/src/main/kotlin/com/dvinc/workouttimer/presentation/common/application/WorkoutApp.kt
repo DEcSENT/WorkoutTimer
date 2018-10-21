@@ -15,7 +15,9 @@ import com.dvinc.workouttimer.presentation.common.timber.ReleaseTree
 import com.dvinc.workouttimer.presentation.di.component.*
 import com.dvinc.workouttimer.presentation.di.module.AppModule
 import com.facebook.stetho.Stetho
+import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber
+import com.squareup.leakcanary.RefWatcher
 
 class WorkoutApp : Application() {
 
@@ -23,8 +25,14 @@ class WorkoutApp : Application() {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
 
+        private lateinit var refWatcher: RefWatcher
+
         fun get(context: Context): WorkoutApp {
             return context.applicationContext as WorkoutApp
+        }
+
+        fun getRefWatcher(): RefWatcher {
+            return refWatcher
         }
     }
 
@@ -43,6 +51,7 @@ class WorkoutApp : Application() {
         Timber.plant(if (BuildConfig.DEBUG) Timber.DebugTree() else ReleaseTree())
         Fabric.with(this, Crashlytics())
         Stetho.initializeWithDefaults(this)
+        setupLeakCanary()
     }
 
     fun getWorkoutComponent(): WorkoutComponent? {
@@ -85,5 +94,12 @@ class WorkoutApp : Application() {
         return DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .build()
+    }
+
+    private fun setupLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        refWatcher = LeakCanary.install(this)
     }
 }

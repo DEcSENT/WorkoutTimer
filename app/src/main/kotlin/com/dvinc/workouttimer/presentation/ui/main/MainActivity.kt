@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupBottomNavigation() {
         bottomNavigation.setOnNavigationItemSelectedListener {
+            //TODO: Prevent fragment duplicate
             when (it.itemId) {
                 R.id.action_timer -> {
                     replaceFragment(DummyFragment(), "Replace me")
