@@ -39,8 +39,8 @@ class NewWorkoutFragment : DialogFragment(), NewWorkoutView {
     override fun onStart() {
         super.onStart()
         with(dialog) {
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-            window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
     }
 
