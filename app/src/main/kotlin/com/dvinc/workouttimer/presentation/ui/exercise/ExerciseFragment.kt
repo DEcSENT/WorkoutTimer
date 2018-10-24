@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_description as workoutDescription
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_time as workoutTotalTime
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_exercises_count as workoutExercises
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_group as activeWorkoutGroup
 import javax.inject.Inject
 
 class ExerciseFragment : BaseFragment(), ExerciseView {
@@ -75,6 +76,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     }
 
     override fun showActiveWorkoutInfo(workout: Workout) {
+        activeWorkoutGroup.makeVisible()
         with(workout) {
             workoutName.text = name
             workoutDescription.text = description

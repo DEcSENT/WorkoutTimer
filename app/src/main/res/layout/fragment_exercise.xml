@@ -77,7 +77,7 @@
         tools:text="0:10:50" />
 
     <View
-        android:id="@+id/fragment_exercise_active_workout_group_divider"
+        android:id="@+id/fragment_exercise_active_workout_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
@@ -85,6 +85,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_exercise_active_workout_total_time_text" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/fragment_exercise_active_workout_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="
+        fragment_exercise_active_workout_description,
+        fragment_exercise_active_workout_name,
+        fragment_exercise_total_exercises_count_text,
+        fragment_exercise_active_workout_total_exercises_count,
+        fragment_exercise_active_workout_total_time_text,
+        fragment_exercise_active_workout_total_time,
+        fragment_exercise_active_workout_divider" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_exercise_recycler"
@@ -94,7 +108,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_exercise_active_workout_group_divider"
+        app:layout_constraintTop_toBottomOf="@id/fragment_exercise_active_workout_divider"
         tools:itemCount="4"
         tools:listitem="@layout/item_exercise" />
 
