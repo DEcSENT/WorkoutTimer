@@ -20,6 +20,7 @@ import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.exercise.ExerciseItem
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
+import com.dvinc.workouttimer.presentation.ui.new_exercise.NewExerciseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_recycler as exercisesRecycler
@@ -83,6 +84,10 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
             workoutTotalTime.text = exerciseTotalTime.toString()
             workoutExercises.text = exerciseCount.toString()
         }
+    }
+
+    override fun showNewExerciseDialog() {
+        NewExerciseFragment.newInstance().show(fragmentManager, NewExerciseFragment.TAG)
     }
 
     private fun injectPresenter() {

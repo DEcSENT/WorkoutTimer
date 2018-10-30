@@ -14,4 +14,6 @@ interface ExerciseView : BaseMvpView {
     fun showExercises(exercises: List<ExerciseUi>)
 
     fun showActiveWorkoutInfo(workout: Workout)
+
+    fun showNewExerciseDialog()
 }

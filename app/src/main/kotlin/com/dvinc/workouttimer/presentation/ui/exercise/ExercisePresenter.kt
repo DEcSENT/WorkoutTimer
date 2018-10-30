@@ -38,6 +38,6 @@ class ExercisePresenter @Inject constructor(
     }
 
     fun onAddExerciseButtonClick() {
-        //TODO: show dialog
+        getView()?.showNewExerciseDialog()
     }
 }
