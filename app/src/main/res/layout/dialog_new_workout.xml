@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    tools:background="#808080">
+    tools:background="@color/color_dialog_mock_shadow">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

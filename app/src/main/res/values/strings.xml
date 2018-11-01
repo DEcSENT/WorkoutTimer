@@ -32,4 +32,6 @@
     <string name="item_workout_edit">edit</string>
 
     <string name="fragment_exercise_active_workout_description">Current active workout</string>
+    <string name="dialog_new_exercise_title">New exercise</string>
+    <string name="dialog_new_exercise_name_hint">Name</string>
 </resources>
