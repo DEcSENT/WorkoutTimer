@@ -44,6 +44,8 @@ class WorkoutApp : Application() {
 
     private var newWorkoutComponent: NewWorkoutComponent? = null
 
+    private var newExerciseComponent: NewExerciseComponent? = null
+
     override fun onCreate() {
         super.onCreate()
         WorkoutApp.context = this
@@ -87,6 +89,18 @@ class WorkoutApp : Application() {
     }
 
     fun clearNewWorkoutComponent() {
+        newWorkoutComponent = null
+    }
+
+    fun getNewExerciseComponent(): NewExerciseComponent? {
+        if (newExerciseComponent == null) {
+            newExerciseComponent = appComponent.getNewExerciseComponent()
+        }
+
+        return newExerciseComponent
+    }
+
+    fun clearNewExerciseComponent() {
         newWorkoutComponent = null
     }
 
