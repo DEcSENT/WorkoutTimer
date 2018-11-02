@@ -50,6 +50,29 @@
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/dialog_new_exercise_cancel_button"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/cancel"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_new_exercise_add_button"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_new_exercise_add_button"
+            app:layout_constraintTop_toTopOf="@+id/dialog_new_exercise_add_button" />
 
+        <Button
+            android:id="@+id/dialog_new_exercise_add_button"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/add"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
