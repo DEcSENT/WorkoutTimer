@@ -5,4 +5,5 @@
 
 package com.dvinc.workouttimer.presentation.ui.base
 
+@Deprecated("Delete after migration to viewModels")
 interface BaseMvpView

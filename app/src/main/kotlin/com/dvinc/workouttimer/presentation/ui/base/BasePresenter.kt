@@ -9,6 +9,7 @@ import com.dvinc.workouttimer.presentation.common.assert.Assert
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
+@Deprecated("Delete after migration to viewModels")
 abstract class BasePresenter<T : BaseMvpView> {
 
     private var view: T? = null

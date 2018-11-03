@@ -7,9 +7,8 @@ package com.dvinc.workouttimer.presentation.ui.workout
 
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseMvpView
-import com.dvinc.workouttimer.presentation.ui.base.MessageView
 
-interface WorkoutView : BaseMvpView, MessageView {
+interface WorkoutView : BaseMvpView {
 
     fun showWorkouts(workouts: List<WorkoutUi>)
 

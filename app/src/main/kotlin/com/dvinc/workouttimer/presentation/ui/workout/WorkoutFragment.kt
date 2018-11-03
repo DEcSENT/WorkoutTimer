@@ -92,14 +92,6 @@ class WorkoutFragment : BaseFragment(), WorkoutView {
         NewWorkoutFragment.newInstance().show(fragmentManager, NewWorkoutFragment.TAG)
     }
 
-    override fun showMessage(message: String) {
-        //TODO: show message
-    }
-
-    override fun showError(error: String) {
-        //TODO: show error
-    }
-
     private fun injectPresenter() {
         context?.let {
             WorkoutApp.get(it).getWorkoutComponent()?.inject(this)

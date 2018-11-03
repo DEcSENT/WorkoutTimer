@@ -7,6 +7,7 @@ package com.dvinc.workouttimer.presentation.common.assert
 
 import com.dvinc.workouttimer.BuildConfig
 
+@Deprecated("Delete after migration to viewModels")
 class Assert {
 
     companion object {
