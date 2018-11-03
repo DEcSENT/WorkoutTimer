@@ -18,6 +18,7 @@ import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURA
 import com.dvinc.workouttimer.presentation.common.view.EXERCISE_ITEM_LEFT_PADDING
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.exercise.ExerciseItem
+import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.dvinc.workouttimer.presentation.ui.new_exercise.NewExerciseFragment
@@ -41,9 +42,14 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     @Inject
     lateinit var presenter: ExercisePresenter
 
-    override fun getFragmentLayoutId() = R.layout.fragment_exercise
+    @Inject
+    lateinit var viewModeFactory: ViewModelFactory
+
+    private lateinit var exerciseViewModel: ExerciseViewModel
 
     private val exercisesAdapter: GroupAdapter<ViewHolder> = GroupAdapter()
+
+    override fun getFragmentLayoutId() = R.layout.fragment_exercise
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,6 +58,8 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
         initExercisesList()
         setupScrollListener()
         setupAddButtonClickListener()
+
+        exerciseViewModel = obtainViewModel(viewModeFactory)
     }
 
     override fun onResume() {
@@ -115,7 +123,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0)
                     hideAddExerciseButton()
-                else if (dy < 0){
+                else if (dy < 0) {
                     showAddExerciseButton()
                 }
             }

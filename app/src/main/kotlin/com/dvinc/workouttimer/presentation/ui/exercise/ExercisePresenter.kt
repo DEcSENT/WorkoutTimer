@@ -12,6 +12,7 @@ import com.dvinc.workouttimer.presentation.ui.base.BasePresenter
 import timber.log.Timber
 import javax.inject.Inject
 
+@Deprecated("Delete after migration to viewModels")
 class ExercisePresenter @Inject constructor(
         private val exercisesUseCase: ExerciseUseCase,
         private val workoutUseCase: WorkoutUseCase,
