@@ -10,6 +10,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.R
+import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.extension.*
@@ -19,10 +20,16 @@ import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.exercise.ExerciseItem
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
+import com.dvinc.workouttimer.presentation.ui.new_exercise.NewExerciseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_recycler as exercisesRecycler
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_add_button as exerciseAddButton
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_name as workoutName
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_description as workoutDescription
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_time as workoutTotalTime
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_exercises_count as workoutExercises
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_group as activeWorkoutGroup
 import javax.inject.Inject
 
 class ExerciseFragment : BaseFragment(), ExerciseView {
@@ -50,7 +57,8 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     override fun onResume() {
         super.onResume()
         presenter.attachView(this)
-        presenter.initView()
+        presenter.loadExercises()
+        presenter.loadCurrentActiveWorkout()
     }
 
     override fun onPause() {
@@ -66,6 +74,20 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     override fun showExercises(exercises: List<ExerciseUi>) {
         exercisesAdapter.clear()
         exercisesAdapter.addAll(exercises.map { ExerciseItem(it) })
+    }
+
+    override fun showActiveWorkoutInfo(workout: Workout) {
+        activeWorkoutGroup.makeVisible()
+        with(workout) {
+            workoutName.text = name
+            workoutDescription.text = description
+            workoutTotalTime.text = exerciseTotalTime.toString()
+            workoutExercises.text = exerciseCount.toString()
+        }
+    }
+
+    override fun showNewExerciseDialog() {
+        NewExerciseFragment.newInstance().show(fragmentManager, NewExerciseFragment.TAG)
     }
 
     private fun injectPresenter() {

@@ -31,11 +31,6 @@ android {
         }
     }
 
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
-    }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -62,7 +57,11 @@ dependencies {
 
     kapt(librariesAnnotationProcessors)
 
-    implementation (appDependencies)
+    implementation(appDependencies)
+
+    debugImplementation(toolsDependenciesDebug)
+
+    releaseImplementation(toolsDependenciesRelease)
 
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true

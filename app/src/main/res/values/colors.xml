@@ -28,4 +28,6 @@
     <color name="color_workout_item_delete_button">#ff0000</color>
     <color name="color_workout_item_activate_button">#00AC1A</color>
     <color name="color_workout_item_edit_button">#0000ff</color>
+
+    <color name="color_dialog_mock_shadow">#808080</color>
 </resources>
