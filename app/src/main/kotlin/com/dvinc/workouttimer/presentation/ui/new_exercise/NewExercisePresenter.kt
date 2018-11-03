@@ -11,6 +11,7 @@ import javax.inject.Inject
 class NewExercisePresenter @Inject constructor() : BasePresenter<NewExerciseView>() {
 
     fun onNewExerciseAdded(name: String) {
-
+        //TODO: Add new exercise here after architecture refactoring
+        //TODO: Add additional parameters for new exercise
     }
 }
