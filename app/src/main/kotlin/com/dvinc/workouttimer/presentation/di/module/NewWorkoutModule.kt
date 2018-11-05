@@ -5,6 +5,7 @@
 
 package com.dvinc.workouttimer.presentation.di.module
 
+import androidx.lifecycle.ViewModel
 import com.dvinc.workouttimer.data.mapper.exercise.ExerciseDataMapper
 import com.dvinc.workouttimer.data.mapper.exercise.ExerciseMapper
 import com.dvinc.workouttimer.data.mapper.workout.WorkoutDataMapper
@@ -13,8 +14,11 @@ import com.dvinc.workouttimer.data.repository.exercise.ExerciseDataRepository
 import com.dvinc.workouttimer.data.repository.workout.WorkoutDataRepository
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
 import com.dvinc.workouttimer.domain.repository.workout.WorkoutRepository
+import com.dvinc.workouttimer.presentation.di.annotation.ViewModelKey
+import com.dvinc.workouttimer.presentation.ui.new_workout.NewWorkoutViewModel
 import dagger.Binds
 import dagger.Module
+import dagger.multibindings.IntoMap
 
 @Module
 abstract class NewWorkoutModule {
@@ -30,4 +34,9 @@ abstract class NewWorkoutModule {
 
     @Binds
     abstract fun provideExerciseMapper(mapper: ExerciseDataMapper): ExerciseMapper
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewWorkoutViewModel::class)
+    abstract fun provideExerciseViewModel(viewModel: NewWorkoutViewModel): ViewModel
 }

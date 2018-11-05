@@ -5,26 +5,28 @@
 
 package com.dvinc.workouttimer.presentation.ui.new_workout
 
+import androidx.lifecycle.MutableLiveData
 import com.dvinc.workouttimer.domain.usecase.new_workout.NewWorkoutUseCase
-import com.dvinc.workouttimer.presentation.ui.base.BasePresenter
+import com.dvinc.workouttimer.presentation.ui.base.BaseViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
-class NewWorkoutPresenter @Inject constructor(
+class NewWorkoutViewModel @Inject constructor(
         private val newWorkoutUseCase: NewWorkoutUseCase
-) : BasePresenter<NewWorkoutView>() {
+) : BaseViewModel() {
+
+    /*
+     * Experimental flow for controlling dialog visibility.
+     */
+    val dialogVisibilityData = MutableLiveData<Boolean>()
 
     fun onNewWorkoutAdded(name: String, description: String, addDefaultExercises: Boolean) {
         addSubscription(
                 newWorkoutUseCase.addNewWorkout(name, description, addDefaultExercises)
                         .subscribe(
-                                { getView()?.closeScreen() },
+                                { dialogVisibilityData.postValue(false) },
                                 { Timber.e(it) }
                         )
         )
-    }
-
-    fun onDefaultExerciseButtonClicked() {
-        getView()?.toggleDefaultExerciseCheckBox()
     }
 }
