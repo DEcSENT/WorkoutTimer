@@ -33,14 +33,11 @@ import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_group as activeWorkoutGroup
 import javax.inject.Inject
 
-class ExerciseFragment : BaseFragment(), ExerciseView {
+class ExerciseFragment : BaseFragment() {
 
     companion object {
         const val TAG = "ExerciseFragment"
     }
-
-    @Inject
-    lateinit var presenter: ExercisePresenter
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
@@ -54,24 +51,11 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        injectPresenter()
+        injectDependencies()
+        initViewModel()
         initExercisesList()
         setupScrollListener()
         setupAddButtonClickListener()
-
-        exerciseViewModel = obtainViewModel(viewModeFactory)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.attachView(this)
-        presenter.loadExercises()
-        presenter.loadCurrentActiveWorkout()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        presenter.detachView()
     }
 
     override fun onDestroy() {
@@ -79,26 +63,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
         clearDependencies()
     }
 
-    override fun showExercises(exercises: List<ExerciseUi>) {
-        exercisesAdapter.clear()
-        exercisesAdapter.addAll(exercises.map { ExerciseItem(it) })
-    }
-
-    override fun showActiveWorkoutInfo(workout: Workout) {
-        activeWorkoutGroup.makeVisible()
-        with(workout) {
-            workoutName.text = name
-            workoutDescription.text = description
-            workoutTotalTime.text = exerciseTotalTime.toString()
-            workoutExercises.text = exerciseCount.toString()
-        }
-    }
-
-    override fun showNewExerciseDialog() {
-        NewExerciseFragment.newInstance().show(fragmentManager, NewExerciseFragment.TAG)
-    }
-
-    private fun injectPresenter() {
+    private fun injectDependencies() {
         context?.let {
             WorkoutApp.get(it).getExerciseComponent()?.inject(this)
         }
@@ -107,6 +72,29 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
     private fun clearDependencies() {
         context?.let {
             WorkoutApp.get(it).clearExerciseComponent()
+        }
+    }
+
+    private fun initViewModel() {
+        exerciseViewModel = obtainViewModel(viewModeFactory)
+        observe(exerciseViewModel.exercisesData, ::showExercises)
+        observe(exerciseViewModel.activeWorkoutData, ::showActiveWorkoutInfo)
+    }
+
+    private fun showExercises(exercises: List<ExerciseUi>) {
+        exercisesAdapter.clear()
+        exercisesAdapter.addAll(exercises.map {
+            ExerciseItem(it)
+        })
+    }
+
+    private fun showActiveWorkoutInfo(workout: Workout) {
+        activeWorkoutGroup.makeVisible()
+        with(workout) {
+            workoutName.text = name
+            workoutDescription.text = description
+            workoutTotalTime.text = exerciseTotalTime.toString()
+            workoutExercises.text = exerciseCount.toString()
         }
     }
 
@@ -132,7 +120,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun setupAddButtonClickListener() {
         exerciseAddButton.setOnClickListener {
-            presenter.onAddExerciseButtonClick()
+            showNewExerciseDialog()
         }
     }
 
@@ -154,5 +142,10 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
                         exerciseAddButton.makeGone()
                     }
                 })
+    }
+
+    private fun showNewExerciseDialog() {
+        //TODO: Refactor navigation system
+        NewExerciseFragment.newInstance().show(fragmentManager, NewExerciseFragment.TAG)
     }
 }
