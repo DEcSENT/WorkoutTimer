@@ -19,6 +19,18 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(getFragmentLayoutId(), container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        injectDependencies()
+        initViewModel()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        clearDependencies()
+        setupLeakCanaryRefWatcher()
+    }
+
     /**
      * Getting fragment layout resource id.
      *
@@ -27,10 +39,20 @@ abstract class BaseFragment : Fragment() {
     @LayoutRes
     protected abstract fun getFragmentLayoutId(): Int
 
-    override fun onDestroy() {
-        super.onDestroy()
-        setupLeakCanaryRefWatcher()
-    }
+    /**
+     * Use this method for injecting dependencies via Dagger.
+     */
+    abstract fun injectDependencies()
+
+    /**
+     * Use this method for clearing Dagger dependencies.
+     */
+    abstract fun clearDependencies()
+
+    /**
+     * Use this method for obtaining viewModel and observing liveData.
+     */
+    abstract fun initViewModel()
 
     private fun setupLeakCanaryRefWatcher() {
         WorkoutApp.getRefWatcher().watch(this)

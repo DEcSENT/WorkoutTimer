@@ -38,38 +38,31 @@ class WorkoutFragment : BaseFragment() {
 
     private lateinit var workoutViewModel: WorkoutViewModel
 
-    override fun getFragmentLayoutId() = R.layout.fragment_workout
-
     private val workoutAdapter: GroupAdapter<ViewHolder> = GroupAdapter()
+
+    override fun getFragmentLayoutId() = R.layout.fragment_workout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        injectDependencies()
-        initViewModel()
         initWorkoutsList()
         setupScrollListener()
         setupAddButtonCLickListener()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        clearDependencies()
-    }
-
-    private fun injectDependencies() {
+    override fun injectDependencies() {
         context?.let {
             WorkoutApp.get(it).getWorkoutComponent()?.inject(this)
         }
     }
 
-    private fun clearDependencies() {
+    override fun clearDependencies() {
         context?.let {
             WorkoutApp.get(it).clearWorkoutComponent()
         }
     }
 
-    private fun initViewModel() {
+    override fun initViewModel() {
         workoutViewModel = obtainViewModel(viewModelFactory)
         observe(workoutViewModel.workoutsData, ::showWorkouts)
     }
@@ -93,10 +86,6 @@ class WorkoutFragment : BaseFragment() {
                         }
                     })
                 })
-    }
-
-    private fun showNewWorkoutDialog() {
-        NewWorkoutFragment.newInstance().show(fragmentManager, NewWorkoutFragment.TAG)
     }
 
     private fun initWorkoutsList() {
@@ -146,5 +135,9 @@ class WorkoutFragment : BaseFragment() {
                         addWorkoutButton.makeVisible()
                     }
                 })
+    }
+
+    private fun showNewWorkoutDialog() {
+        NewWorkoutFragment.newInstance().show(fragmentManager, NewWorkoutFragment.TAG)
     }
 }

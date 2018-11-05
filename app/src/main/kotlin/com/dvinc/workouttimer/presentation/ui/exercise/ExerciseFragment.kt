@@ -51,31 +51,24 @@ class ExerciseFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        injectDependencies()
-        initViewModel()
         initExercisesList()
         setupScrollListener()
         setupAddButtonClickListener()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        clearDependencies()
-    }
-
-    private fun injectDependencies() {
+    override fun injectDependencies() {
         context?.let {
             WorkoutApp.get(it).getExerciseComponent()?.inject(this)
         }
     }
 
-    private fun clearDependencies() {
+    override fun clearDependencies() {
         context?.let {
             WorkoutApp.get(it).clearExerciseComponent()
         }
     }
 
-    private fun initViewModel() {
+    override fun initViewModel() {
         exerciseViewModel = obtainViewModel(viewModeFactory)
         observe(exerciseViewModel.exercisesData, ::showExercises)
         observe(exerciseViewModel.activeWorkoutData, ::showActiveWorkoutInfo)
