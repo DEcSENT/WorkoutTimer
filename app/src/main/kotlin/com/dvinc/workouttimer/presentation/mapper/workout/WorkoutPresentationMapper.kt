@@ -35,4 +35,3 @@ class WorkoutPresentationMapper @Inject constructor() {
         return dateFormat.format(time)
     }
 }
- 

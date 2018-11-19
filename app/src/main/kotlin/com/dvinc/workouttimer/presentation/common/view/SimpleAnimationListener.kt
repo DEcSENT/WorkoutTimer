@@ -25,4 +25,3 @@ open class SimpleAnimationListener : Animator.AnimatorListener {
         //Override me if you want
     }
 }
- 

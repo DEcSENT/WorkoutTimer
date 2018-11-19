@@ -5,7 +5,10 @@
 
 package com.dvinc.workouttimer.presentation.di.component
 
-import com.dvinc.workouttimer.presentation.di.module.*
+import com.dvinc.workouttimer.presentation.di.module.AppModule
+import com.dvinc.workouttimer.presentation.di.module.DataModule
+import com.dvinc.workouttimer.presentation.di.module.CommonModule
+import com.dvinc.workouttimer.presentation.di.module.ViewModelModule
 import dagger.Component
 import javax.inject.Singleton
 

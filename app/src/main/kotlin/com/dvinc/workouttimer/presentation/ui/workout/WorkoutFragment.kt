@@ -16,7 +16,13 @@ import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURA
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.workout.WorkoutItem
 import com.dvinc.workouttimer.presentation.common.adapter.listener.workout.WorkoutItemButtonsClickListener
-import com.dvinc.workouttimer.presentation.common.extension.*
+import com.dvinc.workouttimer.presentation.common.extension.observe
+import com.dvinc.workouttimer.presentation.common.extension.obtainViewModel
+import com.dvinc.workouttimer.presentation.common.extension.dp
+import com.dvinc.workouttimer.presentation.common.extension.animateFadeInWithDuration
+import com.dvinc.workouttimer.presentation.common.extension.animateFadeOutWithDuration
+import com.dvinc.workouttimer.presentation.common.extension.makeGone
+import com.dvinc.workouttimer.presentation.common.extension.makeVisible
 import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment

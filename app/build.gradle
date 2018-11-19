@@ -6,6 +6,7 @@ apply from: rootProject.file('dependencies.gradle')
 apply from: rootProject.file('versions.gradle')
 apply plugin: 'io.fabric'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'io.gitlab.arturbosch.detekt'
 
 android {
     compileSdkVersion versions.compileSdk
