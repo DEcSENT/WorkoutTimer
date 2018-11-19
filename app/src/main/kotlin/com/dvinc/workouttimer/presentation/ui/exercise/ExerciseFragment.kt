@@ -18,6 +18,7 @@ import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURA
 import com.dvinc.workouttimer.presentation.common.view.EXERCISE_ITEM_LEFT_PADDING
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.exercise.ExerciseItem
+import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.dvinc.workouttimer.presentation.ui.new_exercise.NewExerciseFragment
@@ -32,73 +33,61 @@ import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_group as activeWorkoutGroup
 import javax.inject.Inject
 
-class ExerciseFragment : BaseFragment(), ExerciseView {
+class ExerciseFragment : BaseFragment() {
 
     companion object {
         const val TAG = "ExerciseFragment"
     }
 
     @Inject
-    lateinit var presenter: ExercisePresenter
+    lateinit var viewModeFactory: ViewModelFactory
 
-    override fun getFragmentLayoutId() = R.layout.fragment_exercise
+    private lateinit var exerciseViewModel: ExerciseViewModel
 
     private val exercisesAdapter: GroupAdapter<ViewHolder> = GroupAdapter()
+
+    override fun getFragmentLayoutId() = R.layout.fragment_exercise
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        injectPresenter()
         initExercisesList()
         setupScrollListener()
         setupAddButtonClickListener()
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.attachView(this)
-        presenter.loadExercises()
-        presenter.loadCurrentActiveWorkout()
+    override fun injectDependencies() {
+        context?.let {
+            WorkoutApp.get(it).getExerciseComponent()?.inject(this)
+        }
     }
 
-    override fun onPause() {
-        super.onPause()
-        presenter.detachView()
+    override fun clearDependencies() {
+        context?.let {
+            WorkoutApp.get(it).clearExerciseComponent()
+        }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        clearDependencies()
+    override fun initViewModel() {
+        exerciseViewModel = obtainViewModel(viewModeFactory)
+        observe(exerciseViewModel.exercisesData, ::showExercises)
+        observe(exerciseViewModel.activeWorkoutData, ::showActiveWorkoutInfo)
     }
 
-    override fun showExercises(exercises: List<ExerciseUi>) {
+    private fun showExercises(exercises: List<ExerciseUi>) {
         exercisesAdapter.clear()
-        exercisesAdapter.addAll(exercises.map { ExerciseItem(it) })
+        exercisesAdapter.addAll(exercises.map {
+            ExerciseItem(it)
+        })
     }
 
-    override fun showActiveWorkoutInfo(workout: Workout) {
+    private fun showActiveWorkoutInfo(workout: Workout) {
         activeWorkoutGroup.makeVisible()
         with(workout) {
             workoutName.text = name
             workoutDescription.text = description
             workoutTotalTime.text = exerciseTotalTime.toString()
             workoutExercises.text = exerciseCount.toString()
-        }
-    }
-
-    override fun showNewExerciseDialog() {
-        NewExerciseFragment.newInstance().show(fragmentManager, NewExerciseFragment.TAG)
-    }
-
-    private fun injectPresenter() {
-        context?.let {
-            WorkoutApp.get(it).getExerciseComponent()?.inject(this)
-        }
-    }
-
-    private fun clearDependencies() {
-        context?.let {
-            WorkoutApp.get(it).clearExerciseComponent()
         }
     }
 
@@ -115,7 +104,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0)
                     hideAddExerciseButton()
-                else if (dy < 0){
+                else if (dy < 0) {
                     showAddExerciseButton()
                 }
             }
@@ -124,7 +113,7 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
 
     private fun setupAddButtonClickListener() {
         exerciseAddButton.setOnClickListener {
-            presenter.onAddExerciseButtonClick()
+            showNewExerciseDialog()
         }
     }
 
@@ -146,5 +135,10 @@ class ExerciseFragment : BaseFragment(), ExerciseView {
                         exerciseAddButton.makeGone()
                     }
                 })
+    }
+
+    private fun showNewExerciseDialog() {
+        //TODO: Refactor navigation system
+        NewExerciseFragment.newInstance().show(fragmentManager, NewExerciseFragment.TAG)
     }
 }

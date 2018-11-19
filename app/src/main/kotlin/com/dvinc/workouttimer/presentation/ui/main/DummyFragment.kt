@@ -7,4 +7,15 @@ class DummyFragment : BaseFragment() {
 
     override fun getFragmentLayoutId() = R.layout.fragment_dummy
 
+    override fun injectDependencies() {
+        // Empty
+    }
+
+    override fun clearDependencies() {
+        // Empty
+    }
+
+    override fun initViewModel() {
+        // Empty
+    }
 }

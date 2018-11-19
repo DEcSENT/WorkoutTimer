@@ -13,7 +13,8 @@ import javax.inject.Singleton
 @Component(modules = [
     AppModule::class,
     DataModule::class,
-    CommonModule::class])
+    CommonModule::class,
+    ViewModelModule::class])
 interface AppComponent {
 
     fun getWorkoutComponent(): WorkoutComponent

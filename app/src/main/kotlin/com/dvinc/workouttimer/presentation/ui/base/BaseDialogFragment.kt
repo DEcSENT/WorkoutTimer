@@ -6,21 +6,21 @@
 package com.dvinc.workouttimer.presentation.ui.base
 
 import android.os.Bundle
-import androidx.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.annotation.LayoutRes
+import androidx.fragment.app.DialogFragment
 import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseDialogFragment : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(getFragmentLayoutId(), container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         injectDependencies()
         initViewModel()
     }

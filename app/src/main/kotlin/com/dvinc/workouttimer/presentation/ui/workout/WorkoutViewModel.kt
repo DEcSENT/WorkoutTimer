@@ -5,24 +5,23 @@
 
 package com.dvinc.workouttimer.presentation.ui.workout
 
+import androidx.lifecycle.MutableLiveData
 import com.dvinc.workouttimer.domain.usecase.workout.WorkoutUseCase
 import com.dvinc.workouttimer.presentation.mapper.workout.WorkoutPresentationMapper
-import com.dvinc.workouttimer.presentation.ui.base.BasePresenter
+import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
+import com.dvinc.workouttimer.presentation.ui.base.BaseViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
-class WorkoutPresenter @Inject constructor(
+class WorkoutViewModel @Inject constructor(
         private val workoutUseCase: WorkoutUseCase,
         private val mapper: WorkoutPresentationMapper
-) : BasePresenter<WorkoutView>() {
+) : BaseViewModel() {
 
-    override fun attachView(view: WorkoutView) {
-        super.attachView(view)
-        initWorkoutView()
-    }
+    val workoutsData = MutableLiveData<List<WorkoutUi>>()
 
-    fun onAddButtonClick() {
-        getView()?.showNewWorkoutDialog()
+    init {
+        loadWorkouts()
     }
 
     fun onWorkoutDeleted(workoutId: Int) {
@@ -40,11 +39,11 @@ class WorkoutPresenter @Inject constructor(
                         { Timber.e(it) }))
     }
 
-    private fun initWorkoutView() {
+    private fun loadWorkouts() {
         addSubscription(workoutUseCase.obtainWorkouts()
                 .map { mapper.mapDomainToUi(it) }
                 .subscribe(
-                        { getView()?.showWorkouts(it) },
+                        { workoutsData.postValue(it) },
                         { Timber.e(it) }
                 ))
     }
