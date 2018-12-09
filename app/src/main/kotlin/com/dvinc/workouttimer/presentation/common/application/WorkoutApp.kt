@@ -12,7 +12,12 @@ import com.crashlytics.android.Crashlytics
 import com.dvinc.workouttimer.BuildConfig
 import io.fabric.sdk.android.Fabric
 import com.dvinc.workouttimer.presentation.common.timber.ReleaseTree
-import com.dvinc.workouttimer.presentation.di.component.*
+import com.dvinc.workouttimer.presentation.di.component.DaggerAppComponent
+import com.dvinc.workouttimer.presentation.di.component.AppComponent
+import com.dvinc.workouttimer.presentation.di.component.ExerciseComponent
+import com.dvinc.workouttimer.presentation.di.component.NewWorkoutComponent
+import com.dvinc.workouttimer.presentation.di.component.WorkoutComponent
+import com.dvinc.workouttimer.presentation.di.component.NewExerciseComponent
 import com.dvinc.workouttimer.presentation.di.module.AppModule
 import com.facebook.stetho.Stetho
 import com.squareup.leakcanary.LeakCanary

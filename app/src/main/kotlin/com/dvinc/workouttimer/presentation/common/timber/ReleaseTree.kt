@@ -32,4 +32,3 @@ class ReleaseTree : Timber.Tree() {
         Crashlytics.logException(exception)
     }
 }
- 

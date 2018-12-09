@@ -5,6 +5,8 @@ apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('dependencies.gradle')
 apply from: rootProject.file('versions.gradle')
 apply plugin: 'io.fabric'
+apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'io.gitlab.arturbosch.detekt'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -77,4 +79,18 @@ def initFabricPropertiesIfNeeded() {
             entry(key: "apiKey", value: crashlyticsdemoApikey)
         }
     }
+}
+
+dexcount {
+    format = "list"
+    includeClasses = false
+    includeClassCount = false
+    includeFieldCount = true
+    includeTotalMethodCount = true
+    orderByMethodCount = true
+    verbose = true
+    maxTreeDepth = 2
+    runOnEachPackage = true
+    maxMethodCount = 65000
+    enabled = true
 }
