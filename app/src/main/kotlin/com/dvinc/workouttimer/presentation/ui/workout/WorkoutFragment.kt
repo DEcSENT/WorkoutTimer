@@ -88,7 +88,7 @@ class WorkoutFragment : BaseFragment() {
                         }
 
                         override fun onEditButtonClick(workoutId: Int) {
-                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                            TODO("not implemented")
                         }
                     })
                 })
