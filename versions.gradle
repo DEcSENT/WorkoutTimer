@@ -6,7 +6,7 @@ ext.versions = [
 
         minSdk   : 19,
 
-        targetSdk: 27,
+        targetSdk: 28,
 
         code     : 1,
 
