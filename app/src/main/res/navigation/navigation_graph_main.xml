@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.dvinc.workouttimer.presentation.ui.main.DummyFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_dummy" />
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment"
+        android:label="ExerciseFragment"
+        tools:layout="@layout/fragment_exercise" />
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment"
+        android:label="WorkoutFragment"
+        tools:layout="@layout/fragment_workout" />
+    <action
+        android:id="@+id/action_global_exerciseFragment"
+        app:destination="@id/exerciseFragment" />
+    <action
+        android:id="@+id/action_global_workoutFragment"
+        app:destination="@id/workoutFragment" />
+</navigation>
