@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph_main"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/timerFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.dvinc.workouttimer.presentation.ui.main.DummyFragment"
+        android:id="@+id/timerFragment"
+        android:name="com.dvinc.workouttimer.presentation.ui.timer.TimerFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_dummy" />
+        tools:layout="@layout/fragment_timer" />
     <fragment
         android:id="@+id/exerciseFragment"
         android:name="com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment"
@@ -20,10 +20,22 @@
         android:name="com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment"
         android:label="WorkoutFragment"
         tools:layout="@layout/fragment_workout" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.dvinc.workouttimer.presentation.ui.settings.SettingsFragment"
+        android:label="WorkoutFragment"
+        tools:layout="@layout/fragment_settings" />
+
+    <action
+        android:id="@+id/action_global_timerFragment"
+        app:destination="@id/timerFragment" />
     <action
         android:id="@+id/action_global_exerciseFragment"
         app:destination="@id/exerciseFragment" />
     <action
         android:id="@+id/action_global_workoutFragment"
         app:destination="@id/workoutFragment" />
+    <action
+        android:id="@+id/action_global_settingsFragment"
+        app:destination="@id/settingsFragment" />
 </navigation>
