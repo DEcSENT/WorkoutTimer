@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/timerFragment"
+        android:id="@+id/action_timer"
         android:icon="@drawable/ic_home"
         android:title="@string/menu_main_timer" />
     <item
-        android:id="@+id/exerciseFragment"
+        android:id="@+id/action_exercise"
         android:icon="@drawable/ic_home"
         android:title="@string/menu_main_exercise" />
     <item
-        android:id="@+id/workoutFragment"
+        android:id="@+id/action_workout"
         android:icon="@drawable/ic_home"
         android:title="@string/menu_main_workout" />
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/action_settings"
         android:icon="@drawable/ic_home"
         android:title="@string/menu_main_settings" />
 </menu>

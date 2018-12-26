@@ -9,7 +9,6 @@ def stetho_version = '1.5.0'
 def groupie_version = '2.1.0'
 def timber_version = '4.7.1'
 def android_lifecycle_version = '2.0.0'
-def navigation_version = "1.0.0-alpha08"
 
 def jUnit_version = '4.12'
 def test_runner_version = '1.1.0-alpha3'
@@ -53,11 +52,7 @@ ext{
 
             timber = "com.jakewharton.timber:timber:$timber_version",
 
-            android_lifecycle =  "androidx.lifecycle:lifecycle-extensions:$android_lifecycle_version",
-
-            android_navigation = "android.arch.navigation:navigation-fragment-ktx:$navigation_version",
-
-            android_navigation_ui = "android.arch.navigation:navigation-ui-ktx:$navigation_version"
+            android_lifecycle =  "androidx.lifecycle:lifecycle-extensions:$android_lifecycle_version"
     ]
 
     domainDependencies = [
