@@ -13,6 +13,10 @@ import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
  */
 class SettingsFragment : BaseFragment() {
 
+    companion object {
+        const val TAG = "SettingsFragment"
+    }
+
     override fun getFragmentLayoutId() = R.layout.fragment_settings
 
     override fun injectDependencies() {

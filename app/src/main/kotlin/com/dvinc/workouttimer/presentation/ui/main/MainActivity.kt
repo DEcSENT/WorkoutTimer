@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavigation()
 
         //Initial fragment
-        replaceFragment(TimerFragment(), "Timer")
+        replaceFragment(TimerFragment(), TimerFragment.TAG)
     }
 
     private fun setupBottomNavigation() {
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             //TODO: Prevent fragment duplicate
             when (it.itemId) {
                 R.id.action_timer -> {
-                    replaceFragment(TimerFragment(), "Timer")
+                    replaceFragment(TimerFragment(), TimerFragment.TAG)
                     true
                 }
                 R.id.action_exercise -> {
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_settings -> {
-                    replaceFragment(SettingsFragment(), "Settings")
+                    replaceFragment(SettingsFragment(), SettingsFragment.TAG)
                     true
                 }
                 else -> true
