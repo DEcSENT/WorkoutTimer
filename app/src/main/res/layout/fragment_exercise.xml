@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:background="@drawable/button_add_workout"
-        android:text="@string/exercise_add_button"
+        android:text="@string/fragment_exercise_exercise_add_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
