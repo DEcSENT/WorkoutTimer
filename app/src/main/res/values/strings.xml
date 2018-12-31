@@ -34,4 +34,6 @@
     <string name="fragment_exercise_active_workout_description">Current active workout</string>
     <string name="dialog_new_exercise_title">New exercise</string>
     <string name="dialog_new_exercise_name_hint">Name</string>
+
+    <string name="fragment_workout_stub_view_text">Your workouts list is empty</string>
 </resources>
