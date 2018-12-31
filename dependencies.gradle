@@ -52,7 +52,7 @@ ext{
 
             timber = "com.jakewharton.timber:timber:$timber_version",
 
-            android_lifecycle =  "androidx.lifecycle:lifecycle-extensions:$android_lifecycle_version",
+            android_lifecycle =  "androidx.lifecycle:lifecycle-extensions:$android_lifecycle_version"
     ]
 
     domainDependencies = [

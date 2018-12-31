@@ -10,20 +10,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.ui.exercise.ExerciseFragment
+import com.dvinc.workouttimer.presentation.ui.settings.SettingsFragment
+import com.dvinc.workouttimer.presentation.ui.timer.TimerFragment
 import com.dvinc.workouttimer.presentation.ui.workout.WorkoutFragment
-import kotlinx.android.synthetic.main.activity_main_refactored.activity_main_bottom_navigation as bottomNavigation
-import kotlinx.android.synthetic.main.activity_main_refactored.activity_main_fragment_container as fragmentContainer
+import kotlinx.android.synthetic.main.activity_main.activity_main_bottom_navigation as bottomNavigation
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_refactored)
-
+        setContentView(R.layout.activity_main)
         setupBottomNavigation()
 
-        //TODO: Replace DummyFragments
-        replaceFragment(DummyFragment(), "Replace me")
+        //Initial fragment
+        replaceFragment(TimerFragment(), TimerFragment.TAG)
     }
 
     private fun setupBottomNavigation() {
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             //TODO: Prevent fragment duplicate
             when (it.itemId) {
                 R.id.action_timer -> {
-                    replaceFragment(DummyFragment(), "Replace me")
+                    replaceFragment(TimerFragment(), TimerFragment.TAG)
                     true
                 }
                 R.id.action_exercise -> {
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_settings -> {
-                    replaceFragment(DummyFragment(), "Replace me 2")
+                    replaceFragment(SettingsFragment(), SettingsFragment.TAG)
                     true
                 }
                 else -> true
