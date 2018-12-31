@@ -28,6 +28,7 @@
     <!--Exercise region-->
     <string name="fragment_exercise_active_workout_description">Current active workout</string>
     <string name="fragment_exercise_exercise_add_button">Add exercise</string>
+    <string name="fragment_exercise_stub_view_text">Your exercises list is empty</string>
 
     <string name="item_exercise_type_icon_description">Exercise type</string>
     <!--Exercise region end-->

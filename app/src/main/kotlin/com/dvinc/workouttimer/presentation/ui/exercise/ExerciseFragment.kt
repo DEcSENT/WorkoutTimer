@@ -28,6 +28,7 @@ import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.dvinc.workouttimer.presentation.ui.new_exercise.NewExerciseFragment
+import com.redmadrobot.lib.sd.LoadingStateDelegate
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_recycler as exercisesRecycler
@@ -37,8 +38,10 @@ import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_time as workoutTotalTime
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_total_exercises_count as workoutExercises
 import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_active_workout_group as activeWorkoutGroup
+import kotlinx.android.synthetic.main.fragment_exercise.fragment_exercise_stub_view as stubView
 import javax.inject.Inject
 
+//TODO: Add state and stub view for situation when no workout and no exercise in user db
 class ExerciseFragment : BaseFragment() {
 
     companion object {
@@ -52,11 +55,14 @@ class ExerciseFragment : BaseFragment() {
 
     private val exercisesAdapter: GroupAdapter<ViewHolder> = GroupAdapter()
 
+    private lateinit var screenState: LoadingStateDelegate
+
     override fun getFragmentLayoutId() = R.layout.fragment_exercise
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initScreenState()
         initExercisesList()
         setupScrollListener()
         setupAddButtonClickListener()
@@ -80,11 +86,20 @@ class ExerciseFragment : BaseFragment() {
         observe(exerciseViewModel.activeWorkoutData, ::showActiveWorkoutInfo)
     }
 
+    private fun initScreenState() {
+        screenState = LoadingStateDelegate(exercisesRecycler, null, stubView)
+    }
+
     private fun showExercises(exercises: List<ExerciseUi>) {
-        exercisesAdapter.clear()
-        exercisesAdapter.addAll(exercises.map {
-            ExerciseItem(it)
-        })
+        if (exercises.isEmpty()) {
+            screenState.showStub()
+        } else {
+            screenState.showContent()
+            exercisesAdapter.clear()
+            exercisesAdapter.addAll(exercises.map {
+                ExerciseItem(it)
+            })
+        }
     }
 
     private fun showActiveWorkoutInfo(workout: Workout) {
