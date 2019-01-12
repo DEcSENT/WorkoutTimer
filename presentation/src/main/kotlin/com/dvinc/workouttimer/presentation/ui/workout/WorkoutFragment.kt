@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
-import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURATION
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.workout.WorkoutItem
@@ -24,6 +23,7 @@ import com.dvinc.workouttimer.presentation.common.extension.animateFadeOutWithDu
 import com.dvinc.workouttimer.presentation.common.extension.makeGone
 import com.dvinc.workouttimer.presentation.common.extension.makeVisible
 import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
+import com.dvinc.workouttimer.presentation.di.provider.DiProvider
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.dvinc.workouttimer.presentation.ui.new_workout.NewWorkoutFragment
@@ -63,14 +63,12 @@ class WorkoutFragment : BaseFragment() {
 
     override fun injectDependencies() {
         context?.let {
-            WorkoutApp.get(it).getWorkoutComponent()?.inject(this)
+            DiProvider.getWorkoutComponent()?.inject(this)
         }
     }
 
     override fun clearDependencies() {
-        context?.let {
-            WorkoutApp.get(it).clearWorkoutComponent()
-        }
+        DiProvider.clearWorkoutComponent()
     }
 
     override fun initViewModel() {

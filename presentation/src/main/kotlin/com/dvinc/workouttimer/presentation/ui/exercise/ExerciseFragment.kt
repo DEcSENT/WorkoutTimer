@@ -12,7 +12,6 @@ import android.view.View
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.domain.model.workout.Workout
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
-import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.extension.observe
 import com.dvinc.workouttimer.presentation.common.extension.obtainViewModel
 import com.dvinc.workouttimer.presentation.common.extension.dp
@@ -25,6 +24,7 @@ import com.dvinc.workouttimer.presentation.common.view.EXERCISE_ITEM_LEFT_PADDIN
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.exercise.ExerciseItem
 import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
+import com.dvinc.workouttimer.presentation.di.provider.DiProvider
 import com.dvinc.workouttimer.presentation.model.exercise.ExerciseUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.dvinc.workouttimer.presentation.ui.new_exercise.NewExerciseFragment
@@ -70,14 +70,12 @@ class ExerciseFragment : BaseFragment() {
 
     override fun injectDependencies() {
         context?.let {
-            WorkoutApp.get(it).getExerciseComponent()?.inject(this)
+            DiProvider.getExerciseComponent()?.inject(this)
         }
     }
 
     override fun clearDependencies() {
-        context?.let {
-            WorkoutApp.get(it).clearExerciseComponent()
-        }
+        DiProvider.clearExerciseComponent()
     }
 
     override fun initViewModel() {
