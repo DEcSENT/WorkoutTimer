@@ -34,7 +34,15 @@ class WorkoutApp : Application() {
     override fun onCreate() {
         super.onCreate()
         WorkoutApp.context = this
+        initDi()
+        initTools()
+    }
+
+    private fun initDi() {
         DiProvider.buildDi(this)
+    }
+
+    private fun initTools() {
         Timber.plant(if (BuildConfig.DEBUG) Timber.DebugTree() else ReleaseTree())
         Fabric.with(this, Crashlytics())
         Stetho.initializeWithDefaults(this)
