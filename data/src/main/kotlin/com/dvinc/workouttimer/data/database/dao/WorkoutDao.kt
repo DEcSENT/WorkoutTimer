@@ -9,7 +9,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import com.dvinc.workouttimer.data.database.entity.workout.WorkoutEntity
-import com.dvinc.workouttimer.data.database.entity.workout.WorkoutWithExecrisesWrapper
+import com.dvinc.workouttimer.data.database.entity.workout.WorkoutWithExercisesWrapper
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
@@ -18,16 +18,16 @@ import io.reactivex.Single
 interface WorkoutDao : BaseDao<WorkoutEntity> {
 
     @Query("SELECT * FROM workouts")
-    fun getWorkouts(): Flowable<List<WorkoutWithExecrisesWrapper>>
+    fun getWorkouts(): Flowable<List<WorkoutWithExercisesWrapper>>
 
     @Query("SELECT * FROM workouts WHERE uid = :id")
-    fun getWorkoutById(id: Int): Single<WorkoutWithExecrisesWrapper>
+    fun getWorkoutById(id: Int): Single<WorkoutWithExercisesWrapper>
 
     @Query("DELETE FROM workouts WHERE uid = :id")
     fun deleteWorkoutById(id: Int)
 
     @Query("SELECT * FROM workouts WHERE active = 1")
-    fun getActiveWorkout(): Maybe<WorkoutWithExecrisesWrapper>
+    fun getActiveWorkout(): Maybe<WorkoutWithExercisesWrapper>
 
     @Query("UPDATE workouts SET active = 1 WHERE uid = :workoutId")
     fun makeWorkoutActiveById(workoutId: Int)

@@ -7,19 +7,19 @@ package com.dvinc.workouttimer.data.mapper.workout
 
 import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
 import com.dvinc.workouttimer.data.database.entity.workout.WorkoutEntity
-import com.dvinc.workouttimer.data.database.entity.workout.WorkoutWithExecrisesWrapper
+import com.dvinc.workouttimer.data.database.entity.workout.WorkoutWithExercisesWrapper
 import com.dvinc.workouttimer.domain.model.workout.Workout
 import javax.inject.Inject
 
 class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
 
-    override fun fromEntity(wrappers: List<WorkoutWithExecrisesWrapper>): List<Workout> {
+    override fun fromEntity(wrappers: List<WorkoutWithExercisesWrapper>): List<Workout> {
         return wrappers.map {
             fromEntity(it)
         }
     }
 
-    override fun fromEntity(wrapper: WorkoutWithExecrisesWrapper): Workout {
+    override fun fromEntity(wrapper: WorkoutWithExercisesWrapper): Workout {
         return with(wrapper) {
             Workout(
                     id = requireNotNull(workout).uid,

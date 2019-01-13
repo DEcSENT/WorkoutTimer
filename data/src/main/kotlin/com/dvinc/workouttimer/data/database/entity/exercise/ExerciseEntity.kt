@@ -9,7 +9,7 @@ import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
 import com.dvinc.workouttimer.data.database.entity.workout.WorkoutEntity
 
-@Entity(tableName = "exercise",
+@Entity(tableName = "exercises",
         foreignKeys = [ForeignKey(entity = WorkoutEntity::class,
                 parentColumns = ["uid"],
                 childColumns = ["workout_id"],
@@ -18,7 +18,7 @@ import com.dvinc.workouttimer.data.database.entity.workout.WorkoutEntity
 data class ExerciseEntity(
 
         @PrimaryKey(autoGenerate = true)
-        var id: Int = 0,
+        var uid: Int = 0,
 
         @ColumnInfo(name = "workout_id")
         val workoutId: Int,

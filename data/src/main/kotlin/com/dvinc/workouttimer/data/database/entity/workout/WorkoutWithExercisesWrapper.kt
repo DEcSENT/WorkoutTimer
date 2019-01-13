@@ -9,8 +9,11 @@ import androidx.room.Embedded
 import androidx.room.Relation
 import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
 
-//TODO: descr
-class WorkoutWithExecrisesWrapper {
+/**
+ * Wrapper for Room relations.
+ * Contains Workout with Exercises.
+ */
+class WorkoutWithExercisesWrapper {
 
     @Embedded
     var workout: WorkoutEntity? = null

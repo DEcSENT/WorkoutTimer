@@ -14,15 +14,15 @@ import io.reactivex.Single
 @Dao
 interface ExerciseDao : BaseDao<ExerciseEntity> {
 
-    @Query("SELECT * FROM exercise")
+    @Query("SELECT * FROM exercises")
     fun getAllExercises(): Flowable<List<ExerciseEntity>>
 
-    @Query("SELECT * FROM exercise WHERE workout_id = :id")
+    @Query("SELECT * FROM exercises WHERE workout_id = :id")
     fun getExercisesByWorkoutId(id: Int): Flowable<List<ExerciseEntity>>
 
-    @Query("SELECT * FROM exercise WHERE id = :id")
+    @Query("SELECT * FROM exercises WHERE uid = :id")
     fun getExerciseById(id: Int): Single<ExerciseEntity>
 
-    @Query("DELETE FROM exercise WHERE id = :id")
+    @Query("DELETE FROM exercises WHERE uid = :id")
     fun deleteExerciseById(id: Int)
 }
