@@ -7,8 +7,8 @@ package com.dvinc.workouttimer.data.repository.exercise
 
 import com.dvinc.workouttimer.data.database.dao.ExerciseDao
 import com.dvinc.workouttimer.data.mapper.exercise.ExerciseMapper
-import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
-import com.dvinc.workouttimer.data.model.exercise.ExerciseTypeEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseTypeEntity
 import com.dvinc.workouttimer.domain.model.exercise.Exercise
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
 import io.reactivex.Completable

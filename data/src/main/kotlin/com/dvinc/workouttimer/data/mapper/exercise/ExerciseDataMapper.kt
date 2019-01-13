@@ -5,8 +5,8 @@
 
 package com.dvinc.workouttimer.data.mapper.exercise
 
-import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
-import com.dvinc.workouttimer.data.model.exercise.ExerciseTypeEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseTypeEntity
 import com.dvinc.workouttimer.domain.model.exercise.Exercise
 import com.dvinc.workouttimer.domain.model.exercise.ExerciseType
 import javax.inject.Inject

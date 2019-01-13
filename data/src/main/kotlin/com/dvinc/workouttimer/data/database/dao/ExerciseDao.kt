@@ -7,7 +7,7 @@ package com.dvinc.workouttimer.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
 import io.reactivex.Flowable
 import io.reactivex.Single
 

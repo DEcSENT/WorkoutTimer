@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.dvinc.workouttimer.data.model.exercise
+package com.dvinc.workouttimer.data.database.entity.exercise
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

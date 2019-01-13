@@ -5,7 +5,7 @@
 
 package com.dvinc.workouttimer.data.mapper.exercise
 
-import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
 import com.dvinc.workouttimer.domain.model.exercise.Exercise
 
 interface ExerciseMapper {
