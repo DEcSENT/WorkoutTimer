@@ -5,11 +5,16 @@
 
 package com.dvinc.workouttimer.data.database.entity.exercise
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
+import com.dvinc.workouttimer.data.database.entity.workout.WorkoutEntity
 
-@Entity(tableName = "exercise")
+@Entity(tableName = "exercise",
+        foreignKeys = [ForeignKey(entity = WorkoutEntity::class,
+                parentColumns = ["uid"],
+                childColumns = ["workout_id"],
+                onDelete = CASCADE)],
+        indices = [Index("workout_id")])
 data class ExerciseEntity(
 
         @PrimaryKey(autoGenerate = true)
