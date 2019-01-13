@@ -17,7 +17,6 @@ class ExerciseDataMapper @Inject constructor() : ExerciseMapper {
         return entities.map { fromEntityToDomain(it) }
     }
 
-    //TODO: Mapper for type mapping?
     override fun fromEntityToDomain(entity: ExerciseEntity): Exercise {
         return with(entity) {
             Exercise(
@@ -26,11 +25,15 @@ class ExerciseDataMapper @Inject constructor() : ExerciseMapper {
                     name = name,
                     description = description,
                     time = time,
-                    type = when (type) {
-                        ExerciseTypeEntity.PAUSE -> ExerciseType.PAUSE
-                        ExerciseTypeEntity.WORK -> ExerciseType.WORK
-                    }
+                    type = fromEntity(type)
             )
+        }
+    }
+
+    private fun fromEntity(type: ExerciseTypeEntity): ExerciseType {
+        return when (type) {
+            ExerciseTypeEntity.PAUSE -> ExerciseType.PAUSE
+            ExerciseTypeEntity.WORK -> ExerciseType.WORK
         }
     }
 }
