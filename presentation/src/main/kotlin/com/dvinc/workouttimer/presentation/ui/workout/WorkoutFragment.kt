@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.dvinc.workouttimer.R
 import com.dvinc.workouttimer.presentation.common.adapter.divider.HorizontalDivider
-import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.view.ADD_BUTTON_ANIMATION_DURATION
 import com.dvinc.workouttimer.presentation.common.view.SimpleAnimationListener
 import com.dvinc.workouttimer.presentation.common.adapter.item.workout.WorkoutItem
@@ -24,13 +23,16 @@ import com.dvinc.workouttimer.presentation.common.extension.animateFadeOutWithDu
 import com.dvinc.workouttimer.presentation.common.extension.makeGone
 import com.dvinc.workouttimer.presentation.common.extension.makeVisible
 import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
+import com.dvinc.workouttimer.presentation.di.provider.DiProvider
 import com.dvinc.workouttimer.presentation.model.workout.WorkoutUi
 import com.dvinc.workouttimer.presentation.ui.base.BaseFragment
 import com.dvinc.workouttimer.presentation.ui.new_workout.NewWorkoutFragment
+import com.redmadrobot.lib.sd.LoadingStateDelegate
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_workout.fragment_workout_recycler as workoutRecycler
+import kotlinx.android.synthetic.main.fragment_workout.fragment_workout_stub_view as stubView
 import kotlinx.android.synthetic.main.fragment_workout.fragment_workout_add_button as addWorkoutButton
 
 class WorkoutFragment : BaseFragment() {
@@ -46,11 +48,14 @@ class WorkoutFragment : BaseFragment() {
 
     private val workoutAdapter: GroupAdapter<ViewHolder> = GroupAdapter()
 
+    private lateinit var screenState: LoadingStateDelegate
+
     override fun getFragmentLayoutId() = R.layout.fragment_workout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initScreenState()
         initWorkoutsList()
         setupScrollListener()
         setupAddButtonCLickListener()
@@ -58,14 +63,12 @@ class WorkoutFragment : BaseFragment() {
 
     override fun injectDependencies() {
         context?.let {
-            WorkoutApp.get(it).getWorkoutComponent()?.inject(this)
+            DiProvider.getWorkoutComponent()?.inject(this)
         }
     }
 
     override fun clearDependencies() {
-        context?.let {
-            WorkoutApp.get(it).clearWorkoutComponent()
-        }
+        DiProvider.clearWorkoutComponent()
     }
 
     override fun initViewModel() {
@@ -73,25 +76,34 @@ class WorkoutFragment : BaseFragment() {
         observe(workoutViewModel.workoutsData, ::showWorkouts)
     }
 
+    private fun initScreenState() {
+        screenState = LoadingStateDelegate(workoutRecycler, null, stubView)
+    }
+
     private fun showWorkouts(workouts: List<WorkoutUi>) {
-        //TODO: Refactor this 2 lines?
-        workoutAdapter.clear()
-        workoutAdapter.addAll(workouts
-                .map { workoutUi ->
-                    WorkoutItem(workoutUi, object : WorkoutItemButtonsClickListener {
-                        override fun onActivateButtonClick(workoutId: Int) {
-                            workoutViewModel.onWorkoutActivated(workoutId)
-                        }
+        if (workouts.isEmpty()) {
+            screenState.showStub()
+        } else {
+            screenState.showContent()
+            //TODO: Refactor this 2 lines?
+            workoutAdapter.clear()
+            workoutAdapter.addAll(workouts
+                    .map { workoutUi ->
+                        WorkoutItem(workoutUi, object : WorkoutItemButtonsClickListener {
+                            override fun onActivateButtonClick(workoutId: Int) {
+                                workoutViewModel.onWorkoutActivated(workoutId)
+                            }
 
-                        override fun onDeleteButtonClick(workoutId: Int) {
-                            workoutViewModel.onWorkoutDeleted(workoutId)
-                        }
+                            override fun onDeleteButtonClick(workoutId: Int) {
+                                workoutViewModel.onWorkoutDeleted(workoutId)
+                            }
 
-                        override fun onEditButtonClick(workoutId: Int) {
-                            TODO("not implemented")
-                        }
+                            override fun onEditButtonClick(workoutId: Int) {
+                                TODO("not implemented")
+                            }
+                        })
                     })
-                })
+        }
     }
 
     private fun initWorkoutsList() {

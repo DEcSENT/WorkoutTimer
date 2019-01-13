@@ -113,6 +113,29 @@
         tools:itemCount="4"
         tools:listitem="@layout/item_exercise" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_exercise_stub_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_exercise_add_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_exercise_active_workout_divider"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_exercise_stub_view_text"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <Button
         android:id="@+id/fragment_exercise_add_button"
         style="@style/AddNewItemButtonStyle"
@@ -120,7 +143,7 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:background="@drawable/button_add_workout"
-        android:text="@string/exercise_add_button"
+        android:text="@string/fragment_exercise_exercise_add_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

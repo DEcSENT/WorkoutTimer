@@ -5,18 +5,46 @@
 
 ## Description
 
-There will be beautiful application with great code. Work in progress.
+This is my big playground with experiments.
+
+Here will be beautiful application with great code. **Work in progress.**
+
+## Technology stack
+
+### Libraries
+
+- Android X
+- Dagger 2
+- RxJava 2
+- RxAndroid
+- Room
+- Groupie
+- [State Delegator](https://github.com/RedMadRobot/state-delegator)
+- Stetho
+- Timber
+- LeakCanary
+
+## Tools
+- [Hyperion](https://github.com/willowtreeapps/Hyperion-Android) (app debugging & inspection tool)
+- Fabric
+- DexCount
+- Detekt
+
+### Other
+
+- Travis CI
+- Codebeat static analysis
 
 ## Notes
 
-If you want to clone and build this project you should remember about hidden Fabric keys - add your personal keys in *app* folder in fabric.properties file.
+If you want to clone and build this project you should remember about hidden Fabric keys - add your personal keys in *presentation* folder in fabric.properties file.
 And don't forget to write me why you want to clone and build this project.
 
 ## License
 
 MIT License
 
-Copyright (c) 2018 Denis Verentsov
+Copyright (c) 2018 - 2019 Denis Verentsov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

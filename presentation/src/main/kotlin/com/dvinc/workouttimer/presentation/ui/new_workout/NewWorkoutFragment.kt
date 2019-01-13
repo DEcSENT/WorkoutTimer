@@ -12,10 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import com.dvinc.workouttimer.R
-import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.extension.observe
 import com.dvinc.workouttimer.presentation.common.extension.obtainViewModel
 import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
+import com.dvinc.workouttimer.presentation.di.provider.DiProvider
 import com.dvinc.workouttimer.presentation.ui.base.BaseDialogFragment
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_background as dialogBackground
 import kotlinx.android.synthetic.main.dialog_new_workout.dialog_new_workout_cancel_button as cancelButton
@@ -61,14 +61,12 @@ class NewWorkoutFragment : BaseDialogFragment() {
 
     override fun injectDependencies() {
         context?.let {
-            WorkoutApp.get(it).getNewWorkoutComponent()?.inject(this)
+            DiProvider.getNewWorkoutComponent()?.inject(this)
         }
     }
 
     override fun clearDependencies() {
-        context?.let {
-            WorkoutApp.get(it).clearNewWorkoutComponent()
-        }
+        DiProvider.clearNewWorkoutComponent()
     }
 
     override fun initViewModel() {

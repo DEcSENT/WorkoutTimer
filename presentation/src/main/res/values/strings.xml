@@ -1,37 +1,52 @@
 <resources>
     <string name="app_name">WorkoutTimer</string>
 
-    <!--Common string resources-->
+    <!--Common region-->
     <string name="cancel">Cancel</string>
     <string name="add">add</string>
-    <!--Common string resources end-->
+    <!--Common region end-->
 
+    <!--Menu region-->
     <string name="menu_main_timer">Timer</string>
     <string name="menu_main_exercise">Exercises</string>
     <string name="menu_main_workout">Workouts</string>
     <string name="menu_main_settings">Settings</string>
+    <!--Menu region end-->
+
+    <!--Workout region-->
+    <string name="fragment_workout_workout_add_workout">Add workout</string>
+    <string name="fragment_workout_stub_view_text">Your workouts list is empty</string>
 
     <string name="item_workout_total_exercise">Exercises:</string>
     <string name="item_workout_total_time">Time:</string>
     <string name="item_workout_active">Active</string>
+    <string name="item_workout_delete">delete</string>
+    <string name="item_workout_activate">activate</string>
+    <string name="item_workout_edit">edit</string>
+    <!--Workout region end-->
 
-    <string name="workout_add_workout">Add workout</string>
+    <!--Exercise region-->
+    <string name="fragment_exercise_active_workout_description">Current active workout</string>
+    <string name="fragment_exercise_exercise_add_button">Add exercise</string>
+    <string name="fragment_exercise_stub_view_text">Your exercises list is empty</string>
+
     <string name="item_exercise_type_icon_description">Exercise type</string>
+    <!--Exercise region end-->
 
+    <!--Exercise types region-->
     <string name="exercise_type_pause">Pause</string>
     <string name="exercise_type_work">Work</string>
-    <string name="exercise_add_button">Add exercise</string>
+    <!--Exercise types region end-->
 
+    <!--New workout dialog region-->
     <string name="dialog_new_workout_title">New workout</string>
     <string name="dialog_new_workout_name_hint">Name</string>
     <string name="dialog_new_workout_description_hint">Description</string>
     <string name="dialog_new_workout_default_exercise">Add default exercise</string>
+    <!--New workout dialog region end-->
 
-    <string name="item_workout_delete">delete</string>
-    <string name="item_workout_activate">activate</string>
-    <string name="item_workout_edit">edit</string>
-
-    <string name="fragment_exercise_active_workout_description">Current active workout</string>
+    <!--New exercise dialog region-->
     <string name="dialog_new_exercise_title">New exercise</string>
     <string name="dialog_new_exercise_name_hint">Name</string>
+    <!--New exercise dialog region end-->
 </resources>

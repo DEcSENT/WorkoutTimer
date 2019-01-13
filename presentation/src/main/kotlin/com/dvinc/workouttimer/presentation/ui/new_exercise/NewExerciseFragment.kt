@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import com.dvinc.workouttimer.R
-import com.dvinc.workouttimer.presentation.common.application.WorkoutApp
 import com.dvinc.workouttimer.presentation.common.extension.obtainViewModel
 import com.dvinc.workouttimer.presentation.common.viewmodel.ViewModelFactory
+import com.dvinc.workouttimer.presentation.di.provider.DiProvider
 import com.dvinc.workouttimer.presentation.ui.base.BaseDialogFragment
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.dialog_new_exercise.dialog_new_exercise_background as dialogBackground
@@ -52,14 +52,12 @@ class NewExerciseFragment : BaseDialogFragment() {
 
     override fun injectDependencies() {
         context?.let {
-            WorkoutApp.get(it).getNewExerciseComponent()?.inject(this)
+            DiProvider.getNewExerciseComponent()?.inject(this)
         }
     }
 
     override fun clearDependencies() {
-        context?.let {
-            WorkoutApp.get(it).clearNewExerciseComponent()
-        }
+        DiProvider.clearNewExerciseComponent()
     }
 
     private fun setupCancelButton() {
