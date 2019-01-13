@@ -6,12 +6,12 @@
 package com.dvinc.workouttimer.domain.repository.exercise
 
 import com.dvinc.workouttimer.domain.model.exercise.Exercise
+import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Single
 
 interface ExerciseRepository {
 
     fun obtainExercises(): Flowable<List<Exercise>>
 
-    fun addDefaultExercises(workoutId: Int): Single<Pair<Int, Long>>
+    fun addDefaultExercises(workoutId: Long): Completable
 }

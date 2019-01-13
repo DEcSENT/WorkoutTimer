@@ -26,7 +26,7 @@ class ExerciseDataRepository @Inject constructor(
                 .map { exerciseMapper.fromEntityToDomain(it) }
     }
 
-    override fun addDefaultExercises(workoutId: Int): Single<Pair<Int, Long>> {
+    override fun addDefaultExercises(workoutId: Long): Completable {
         //TODO: Clean up here
         val simpleExercise = ExerciseEntity(
                 workoutId = workoutId,
@@ -37,6 +37,5 @@ class ExerciseDataRepository @Inject constructor(
         )
 
         return Completable.fromAction { exerciseDao.insert(simpleExercise) }
-                .andThen(Single.just(Pair(1, 1000L)))
     }
 }

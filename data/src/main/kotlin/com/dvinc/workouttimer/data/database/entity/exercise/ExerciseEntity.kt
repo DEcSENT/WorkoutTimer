@@ -21,7 +21,7 @@ data class ExerciseEntity(
         var uid: Int = 0,
 
         @ColumnInfo(name = "workout_id")
-        val workoutId: Int,
+        val workoutId: Long,
 
         @ColumnInfo(name = "name")
         val name: String,

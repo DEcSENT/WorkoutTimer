@@ -26,8 +26,16 @@ class NewWorkoutUseCase @Inject constructor(
         //TODO: Think about default exercises logic
         val workout = Workout(
                 name = name,
-                description = description)
+                description = description
+        )
         return workoutRepository.addWorkout(workout)
+                .flatMapCompletable { insertedWorkoutId ->
+                    if (addDefaultExercise) {
+                        exerciseRepository.addDefaultExercises(insertedWorkoutId)
+                    } else {
+                        Completable.complete()
+                    }
+                }
                 .compose(threadScheduler.ioToUiCompletable())
     }
 }

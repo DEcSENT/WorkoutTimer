@@ -9,6 +9,7 @@ import com.dvinc.workouttimer.domain.model.workout.Workout
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Maybe
+import io.reactivex.Single
 
 interface WorkoutRepository {
 
@@ -16,7 +17,7 @@ interface WorkoutRepository {
 
     fun obtainActiveWorkout(): Maybe<Workout>
 
-    fun addWorkout(workout: Workout): Completable
+    fun addWorkout(workout: Workout): Single<Long>
 
     fun deleteWorkoutById(id: Int): Completable
 

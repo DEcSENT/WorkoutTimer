@@ -30,9 +30,9 @@ class WorkoutDataRepository @Inject constructor(
                 .map { workoutMapper.fromEntity(it) }
     }
 
-    override fun addWorkout(workout: Workout): Completable {
+    override fun addWorkout(workout: Workout): Single<Long> {
         return Single.fromCallable { workoutMapper.fromDomain(workout) }
-                .flatMapCompletable { Completable.fromAction { workoutDao.insert(it) } }
+                .map { workoutDao.insert(it) }
     }
 
     override fun deleteWorkoutById(id: Int): Completable {

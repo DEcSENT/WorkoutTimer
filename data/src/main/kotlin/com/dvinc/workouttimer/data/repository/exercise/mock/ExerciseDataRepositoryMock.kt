@@ -8,6 +8,7 @@ package com.dvinc.workouttimer.data.repository.exercise.mock
 import com.dvinc.workouttimer.domain.model.exercise.Exercise
 import com.dvinc.workouttimer.domain.model.exercise.ExerciseType
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
@@ -23,7 +24,7 @@ class ExerciseDataRepositoryMock @Inject constructor() : ExerciseRepository {
         return Flowable.fromArray(mock)
     }
 
-    override fun addDefaultExercises(workoutId: Int): Single<Pair<Int, Long>> {
+    override fun addDefaultExercises(workoutId: Long): Completable {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
