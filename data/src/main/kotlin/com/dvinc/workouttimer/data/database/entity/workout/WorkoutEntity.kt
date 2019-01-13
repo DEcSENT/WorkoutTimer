@@ -9,7 +9,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "workout")
+@Entity(tableName = "workouts")
 data class WorkoutEntity(
 
         @PrimaryKey(autoGenerate = true)
@@ -22,11 +22,5 @@ data class WorkoutEntity(
         val description: String,
 
         @ColumnInfo(name = "active")
-        val isActive: Boolean,
-
-        @ColumnInfo(name = "total_exercises")
-        val exerciseCount: Int,
-
-        @ColumnInfo(name = "total_time")
-        val totalTime: Long
+        val isActive: Boolean
 )
