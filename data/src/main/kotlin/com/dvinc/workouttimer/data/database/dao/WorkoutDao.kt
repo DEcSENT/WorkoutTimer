@@ -17,17 +17,20 @@ import io.reactivex.Single
 @Dao
 interface WorkoutDao : BaseDao<WorkoutEntity> {
 
+    @Transaction
     @Query("SELECT * FROM workouts")
     fun getWorkouts(): Flowable<List<WorkoutWithExercisesWrapper>>
 
+    @Transaction
     @Query("SELECT * FROM workouts WHERE uid = :id")
     fun getWorkoutById(id: Int): Single<WorkoutWithExercisesWrapper>
 
-    @Query("DELETE FROM workouts WHERE uid = :id")
-    fun deleteWorkoutById(id: Int)
-
+    @Transaction
     @Query("SELECT * FROM workouts WHERE active = 1")
     fun getActiveWorkout(): Maybe<WorkoutWithExercisesWrapper>
+
+    @Query("DELETE FROM workouts WHERE uid = :id")
+    fun deleteWorkoutById(id: Int)
 
     @Query("UPDATE workouts SET active = 1 WHERE uid = :workoutId")
     fun makeWorkoutActiveById(workoutId: Int)
