@@ -6,7 +6,7 @@
 package com.dvinc.workouttimer.domain.model.exercise
 
 data class Exercise(
-        val id: Int,
+        val id: Int = 0,
         val workoutId: Long,
         val name: String,
         val description: String,

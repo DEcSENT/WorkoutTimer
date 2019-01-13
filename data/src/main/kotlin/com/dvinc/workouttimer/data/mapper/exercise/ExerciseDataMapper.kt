@@ -13,11 +13,11 @@ import javax.inject.Inject
 
 class ExerciseDataMapper @Inject constructor() : ExerciseMapper {
 
-    override fun fromEntityToDomain(entities: List<ExerciseEntity>): List<Exercise> {
-        return entities.map { fromEntityToDomain(it) }
+    override fun fromEntity(entities: List<ExerciseEntity>): List<Exercise> {
+        return entities.map { fromEntity(it) }
     }
 
-    override fun fromEntityToDomain(entity: ExerciseEntity): Exercise {
+    override fun fromEntity(entity: ExerciseEntity): Exercise {
         return with(entity) {
             Exercise(
                     id = uid,
@@ -30,10 +30,35 @@ class ExerciseDataMapper @Inject constructor() : ExerciseMapper {
         }
     }
 
+    override fun fromDomain(exercises: List<Exercise>): List<ExerciseEntity> {
+        return exercises.map {
+            fromDomain(it)
+        }
+    }
+
+    override fun fromDomain(exercise: Exercise): ExerciseEntity {
+        return with(exercise) {
+            ExerciseEntity(
+                    workoutId = workoutId,
+                    name = name,
+                    description = description,
+                    time = time,
+                    type = fromDomain(type)
+            )
+        }
+    }
+
     private fun fromEntity(type: ExerciseTypeEntity): ExerciseType {
         return when (type) {
             ExerciseTypeEntity.PAUSE -> ExerciseType.PAUSE
             ExerciseTypeEntity.WORK -> ExerciseType.WORK
+        }
+    }
+
+    private fun fromDomain(type: ExerciseType): ExerciseTypeEntity {
+        return when (type) {
+            ExerciseType.PAUSE -> ExerciseTypeEntity.PAUSE
+            ExerciseType.WORK -> ExerciseTypeEntity.WORK
         }
     }
 }

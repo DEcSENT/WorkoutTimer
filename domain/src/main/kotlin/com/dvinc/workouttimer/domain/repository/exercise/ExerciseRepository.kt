@@ -13,5 +13,7 @@ interface ExerciseRepository {
 
     fun obtainExercises(): Flowable<List<Exercise>>
 
-    fun addDefaultExercises(workoutId: Long): Completable
+    fun addExercise(exercise: Exercise): Completable
+
+    fun addExercises(exercises: List<Exercise>): Completable
 }

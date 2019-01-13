@@ -23,19 +23,16 @@ class ExerciseDataRepository @Inject constructor(
 
     override fun obtainExercises(): Flowable<List<Exercise>> {
         return exerciseDao.getAllExercises()
-                .map { exerciseMapper.fromEntityToDomain(it) }
+                .map { exerciseMapper.fromEntity(it) }
     }
 
-    override fun addDefaultExercises(workoutId: Long): Completable {
-        //TODO: Clean up here
-        val simpleExercise = ExerciseEntity(
-                workoutId = workoutId,
-                name = "Test 1",
-                description = "Hilarious exercise",
-                time = 10000,
-                type = ExerciseTypeEntity.WORK
-        )
+    override fun addExercise(exercise: Exercise): Completable {
+        return Single.fromCallable { exerciseMapper.fromDomain(exercise) }
+                .flatMapCompletable { Completable.fromAction { exerciseDao.insert(it) } }
+    }
 
-        return Completable.fromAction { exerciseDao.insert(simpleExercise) }
+    override fun addExercises(exercises: List<Exercise>): Completable {
+        return Single.fromCallable { exerciseMapper.fromDomain(exercises) }
+                .flatMapCompletable { Completable.fromAction { exerciseDao.insert(it) } }
     }
 }
