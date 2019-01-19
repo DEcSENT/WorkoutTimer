@@ -6,7 +6,7 @@
 package com.dvinc.workouttimer.data.database.converter
 
 import androidx.room.TypeConverter
-import com.dvinc.workouttimer.data.model.exercise.ExerciseTypeEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseTypeEntity
 
 object ExerciseTypeConverter {
 

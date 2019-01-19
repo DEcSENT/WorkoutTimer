@@ -3,20 +3,17 @@
  * All rights reserved.
  */
 
-package com.dvinc.workouttimer.data.model.exercise
+package com.dvinc.workouttimer.data.database.entity.workout
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "exercise")
-data class ExerciseEntity(
+@Entity(tableName = "workouts")
+data class WorkoutEntity(
 
         @PrimaryKey(autoGenerate = true)
-        var id: Int = 0,
-
-        @ColumnInfo(name = "workout_id")
-        val workoutId: Int,
+        var uid: Int = 0,
 
         @ColumnInfo(name = "name")
         val name: String,
@@ -24,9 +21,6 @@ data class ExerciseEntity(
         @ColumnInfo(name = "description")
         val description: String,
 
-        @ColumnInfo(name = "time")
-        val time: Long,
-
-        @ColumnInfo(name = "type")
-        val type: ExerciseTypeEntity
+        @ColumnInfo(name = "active")
+        val isActive: Boolean
 )

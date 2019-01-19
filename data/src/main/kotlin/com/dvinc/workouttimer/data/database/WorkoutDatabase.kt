@@ -11,12 +11,19 @@ import androidx.room.TypeConverters
 import com.dvinc.workouttimer.data.database.converter.ExerciseTypeConverter
 import com.dvinc.workouttimer.data.database.dao.ExerciseDao
 import com.dvinc.workouttimer.data.database.dao.WorkoutDao
-import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
-import com.dvinc.workouttimer.data.model.workout.WorkoutEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
+import com.dvinc.workouttimer.data.database.entity.workout.WorkoutEntity
 
-@Database(entities = [(WorkoutEntity::class), (ExerciseEntity::class)], version = 1)
+@Database(
+        entities = [(WorkoutEntity::class), (ExerciseEntity::class)],
+        version = WorkoutDatabase.DATABASE_VERSION,
+        exportSchema = false)
 @TypeConverters(ExerciseTypeConverter::class)
 abstract class WorkoutDatabase : RoomDatabase() {
+
+    companion object {
+        const val DATABASE_VERSION = 1
+    }
 
     abstract fun workoutDao(): WorkoutDao
 

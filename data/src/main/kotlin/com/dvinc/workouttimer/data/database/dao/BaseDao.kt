@@ -12,10 +12,10 @@ import androidx.room.Update
 interface BaseDao<T> {
 
     @Insert
-    fun insert(obj: T)
+    fun insert(obj: T): Long
 
     @Insert
-    fun insert(vararg obj: T)
+    fun insert(objs: List<T>): List<Long>
 
     @Update
     fun update(obj: T)

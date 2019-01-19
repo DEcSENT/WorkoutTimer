@@ -7,8 +7,8 @@ package com.dvinc.workouttimer.data.repository.exercise
 
 import com.dvinc.workouttimer.data.database.dao.ExerciseDao
 import com.dvinc.workouttimer.data.mapper.exercise.ExerciseMapper
-import com.dvinc.workouttimer.data.model.exercise.ExerciseEntity
-import com.dvinc.workouttimer.data.model.exercise.ExerciseTypeEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseTypeEntity
 import com.dvinc.workouttimer.domain.model.exercise.Exercise
 import com.dvinc.workouttimer.domain.repository.exercise.ExerciseRepository
 import io.reactivex.Completable
@@ -23,20 +23,16 @@ class ExerciseDataRepository @Inject constructor(
 
     override fun obtainExercises(): Flowable<List<Exercise>> {
         return exerciseDao.getAllExercises()
-                .map { exerciseMapper.fromEntityToDomain(it) }
+                .map { exerciseMapper.fromEntity(it) }
     }
 
-    override fun addDefaultExercises(workoutId: Int): Single<Pair<Int, Long>> {
-        //TODO: Clean up here
-        val simpleExercise = ExerciseEntity(
-                workoutId = workoutId,
-                name = "Test 1",
-                description = "Hilarious exercise",
-                time = 10000,
-                type = ExerciseTypeEntity.WORK
-        )
+    override fun addExercise(exercise: Exercise): Completable {
+        return Single.fromCallable { exerciseMapper.fromDomain(exercise) }
+                .flatMapCompletable { Completable.fromAction { exerciseDao.insert(it) } }
+    }
 
-        return Completable.fromAction { exerciseDao.insert(simpleExercise) }
-                .andThen(Single.just(Pair(1, 1000L)))
+    override fun addExercises(exercises: List<Exercise>): Completable {
+        return Single.fromCallable { exerciseMapper.fromDomain(exercises) }
+                .flatMapCompletable { Completable.fromAction { exerciseDao.insert(it) } }
     }
 }

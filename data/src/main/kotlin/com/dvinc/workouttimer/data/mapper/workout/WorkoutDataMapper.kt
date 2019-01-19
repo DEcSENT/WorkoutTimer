@@ -5,25 +5,29 @@
 
 package com.dvinc.workouttimer.data.mapper.workout
 
-import com.dvinc.workouttimer.data.model.workout.WorkoutEntity
+import com.dvinc.workouttimer.data.database.entity.exercise.ExerciseEntity
+import com.dvinc.workouttimer.data.database.entity.workout.WorkoutEntity
+import com.dvinc.workouttimer.data.database.entity.workout.WorkoutWithExercisesWrapper
 import com.dvinc.workouttimer.domain.model.workout.Workout
 import javax.inject.Inject
 
 class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
 
-    override fun fromEntity(entities: List<WorkoutEntity>): List<Workout> {
-        return entities.map { fromEntity(it) }
+    override fun fromEntity(wrappers: List<WorkoutWithExercisesWrapper>): List<Workout> {
+        return wrappers.map {
+            fromEntity(it)
+        }
     }
 
-    override fun fromEntity(entity: WorkoutEntity): Workout {
-        return with(entity) {
+    override fun fromEntity(wrapper: WorkoutWithExercisesWrapper): Workout {
+        return with(wrapper) {
             Workout(
-                    id = uid,
-                    name = name,
-                    description = description,
-                    exerciseCount = exerciseCount,
-                    exerciseTotalTime = totalTime,
-                    isActive = isActive
+                    id = requireNotNull(workout).uid,
+                    name = requireNotNull(workout).name,
+                    description = requireNotNull(workout).description,
+                    isActive = requireNotNull(workout).isActive,
+                    exerciseCount = requireNotNull(exercises).size,
+                    exerciseTotalTime = calculateTotalExerciseTime(requireNotNull(exercises))
             )
         }
     }
@@ -33,10 +37,16 @@ class WorkoutDataMapper @Inject constructor() : WorkoutMapper {
             WorkoutEntity(
                     name = name,
                     description = description,
-                    exerciseCount = exerciseCount,
-                    totalTime = exerciseTotalTime,
                     isActive = isActive
             )
         }
+    }
+
+    private fun calculateTotalExerciseTime(exercises: List<ExerciseEntity>): Long {
+        var totalTime = 0L
+        exercises.forEach {
+            totalTime += it.time
+        }
+        return totalTime
     }
 }
